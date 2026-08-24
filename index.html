@@ -260,6 +260,82 @@ main{position:relative;isolation:isolate}
 @media(max-width:900px){.about-feature-grid{grid-template-columns:1fr;gap:34px}.about-feature-points{grid-template-columns:1fr 1fr 1fr}}
 @media(max-width:620px){.about-feature{padding-top:56px;padding-bottom:56px}.about-feature-points{grid-template-columns:1fr}.about-feature-copy h2{font-size:36px}}
 
+
+/* === Refined headings, streamlined trust marquee, and rebuilt About section === */
+.section-head::after{display:none!important;content:none!important}
+.section-head{max-width:800px;margin:0 auto 40px;text-align:center}
+.section-head .eyebrow{margin-bottom:10px;color:#294e74;letter-spacing:.16em}
+.section-head h2{font-size:clamp(32px,3.1vw,46px);line-height:1.08;letter-spacing:-.035em;max-width:790px;margin:0 auto 14px;color:var(--navy);font-weight:820}
+.section-head>p:not(.eyebrow){max-width:680px;margin:0 auto;color:#17385d;font-size:15px;line-height:1.7}
+
+.marquee-section{position:relative;padding:66px 0 0;background:#f8fafc;border-block:1px solid #e2e9f1;overflow:hidden;color:var(--navy)}
+.marquee-section::before,.marquee-section::after{display:none!important;content:none!important}
+.marquee-intro{max-width:820px;margin:0 auto 38px;text-align:center;padding:0 20px}
+.marquee-intro .eyebrow{color:#9b6100;margin:0 0 10px}
+.marquee-intro h2{font-size:clamp(30px,3vw,43px);line-height:1.08;letter-spacing:-.035em;margin:0 auto 14px;color:var(--navy);max-width:760px}
+.marquee-intro>p:not(.eyebrow){margin:0 auto;max-width:670px;color:#17385d;font-size:14px;line-height:1.7}
+.marquee-shell{position:relative;border-top:1px solid #e2e9f1;border-bottom:1px solid #e2e9f1;background:#fff;padding:24px 0;overflow:hidden}
+.marquee-shell::before,.marquee-shell::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:3;pointer-events:none}
+.marquee-shell::before{left:0;background:linear-gradient(90deg,#fff,rgba(255,255,255,0))}
+.marquee-shell::after{right:0;background:linear-gradient(-90deg,#fff,rgba(255,255,255,0))}
+.marquee{display:flex;width:max-content;gap:0;animation:marquee 30s linear infinite}
+.marquee-track{display:flex;gap:0;padding:0}
+.client-mark{min-width:220px;height:58px;padding:0 26px;display:flex;align-items:center;justify-content:center;gap:11px;border:0!important;border-right:1px solid #e2e9f1!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#17385d!important;font-size:13px;font-weight:800;letter-spacing:0;backdrop-filter:none!important}
+.client-mark::after{display:none!important;content:none!important}
+.client-mark .icon{width:22px;height:22px;padding:0;border:0;border-radius:0;background:transparent;color:#c77a00;flex:none}
+.marquee-proof-row{display:none!important}
+
+.about-feature{background:#fff;padding:88px 0}
+.about-feature::before,.about-feature::after{display:none!important}
+.about-feature-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:70px;align-items:center;max-width:1180px}
+.about-media{position:relative;min-width:0}
+.about-media-frame{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center;padding:34px;background:linear-gradient(145deg,#f7f9fc,#eef3f8);border:1px solid #dfe7f0;overflow:hidden}
+.about-media-frame::before{content:"";position:absolute;width:360px;height:360px;border-radius:50%;border:1px solid rgba(232,154,7,.17);box-shadow:0 0 0 48px rgba(232,154,7,.025),0 0 0 96px rgba(7,31,63,.018)}
+.about-product-image{position:relative;z-index:2;width:100%;height:440px;object-fit:contain;filter:drop-shadow(0 26px 28px rgba(7,31,63,.18))}
+.about-media-caption{position:absolute;left:28px;right:28px;bottom:-24px;z-index:4;padding:15px 18px;background:var(--navy);color:#fff;border-left:3px solid var(--gold2);box-shadow:0 16px 36px rgba(7,31,63,.18)}
+.about-media-caption span,.about-media-caption strong{display:block}.about-media-caption span{font-size:10px;color:#9db4ca;text-transform:uppercase;letter-spacing:.12em;font-weight:800}.about-media-caption strong{font-size:13px;margin-top:3px}
+.about-feature-copy{align-self:center}
+.about-feature-copy .eyebrow{margin:0 0 10px;color:#9b6100}
+.about-feature-copy h2{font-size:clamp(36px,3.7vw,52px);line-height:1.04;letter-spacing:-.04em;margin:0 0 20px;color:var(--navy);max-width:620px}
+.about-feature-copy>p{font-size:15px;line-height:1.75;color:#17385d;margin:0 0 15px;max-width:650px}
+.about-feature-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:28px 0 26px;border-block:1px solid #dfe7f0}
+.about-feature-points span{padding:18px 16px 18px 0;border:0!important;border-radius:0!important;background:transparent!important;min-width:0}
+.about-feature-points span+span{padding-left:16px;border-left:1px solid #dfe7f0!important}
+.about-feature-points .icon{width:20px;height:20px;color:#c77a00;margin-bottom:10px}
+.about-feature-points strong,.about-feature-points small{display:block}
+.about-feature-points strong{font-size:12px;color:var(--navy);margin-bottom:4px}
+.about-feature-points small{font-size:10px;line-height:1.45;color:#24496f}
+.about-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+@media(max-width:900px){
+  .about-feature{padding:68px 0 78px}
+  .about-feature-grid{grid-template-columns:1fr;gap:58px}
+  .about-media{max-width:680px;margin:0 auto;width:100%}
+  .about-media-frame{min-height:440px}
+  .about-product-image{height:380px}
+  .about-feature-copy{text-align:center;max-width:720px;margin:0 auto}
+  .about-feature-copy h2,.about-feature-copy>p{margin-left:auto;margin-right:auto}
+  .about-feature-points{text-align:left}
+  .about-actions{justify-content:center}
+  .marquee-intro{margin-bottom:30px}
+}
+@media(max-width:620px){
+  .section-head{margin-bottom:30px}
+  .section-head h2{font-size:34px}
+  .marquee-section{padding-top:50px}
+  .marquee-intro h2{font-size:31px}
+  .marquee-shell::before,.marquee-shell::after{width:34px}
+  .client-mark{min-width:185px;height:54px;padding:0 18px;font-size:12px}
+  .about-feature{padding:56px 0 70px}
+  .about-media-frame{min-height:350px;padding:20px}
+  .about-product-image{height:310px}
+  .about-media-caption{left:14px;right:14px;bottom:-20px}
+  .about-feature-copy h2{font-size:36px}
+  .about-feature-points{grid-template-columns:1fr}
+  .about-feature-points span{padding:15px 0!important}
+  .about-feature-points span+span{border-left:0!important;border-top:1px solid #dfe7f0!important}
+}
+
 </style>
 </head>
 <body>
@@ -356,33 +432,46 @@ main{position:relative;isolation:isolate}
   </div>
 </section>
 <section class="trust-strip"><div class="container trust-grid"><div class="trust-item"><svg class="icon"><use href="#i-shield"/></svg><div><strong>Since 1995</strong><span>Decades of duplication expertise</span></div></div><div class="trust-item"><svg class="icon"><use href="#i-globe"/></svg><div><strong>Worldwide Customers</strong><span>Professional solutions globally</span></div></div><div class="trust-item"><svg class="icon"><use href="#i-lock"/></svg><div><strong>Secure & Compliant</strong><span>Data erase and verification options</span></div></div><div class="trust-item"><svg class="icon"><use href="#i-headset"/></svg><div><strong>Expert Support</strong><span>Help before and after purchase</span></div></div></div></section>
-<section class="section" id="categories"><div class="container"><div class="section-head"><p class="eyebrow">Browse by media</p><h2>Find the right system faster.</h2><p>Start with the media you need to duplicate, then narrow down by target count and workflow.</p></div><div class="category-grid" id="categoryGrid"></div></div></section>
+<section class="section" id="categories"><div class="container"><div class="section-head"><p class="eyebrow">Browse by media</p><h2>Choose the right duplicator by media type.</h2><p>Start with the media you need to duplicate, then narrow down by target count and workflow.</p></div><div class="category-grid" id="categoryGrid"></div></div></section>
 <section class="section compact" id="finder"><div class="container"><div class="finder"><div class="finder-intro"><p class="eyebrow" style="color:#ffb528;margin-bottom:4px">System finder</p><h3>Find the right duplicator</h3><p>Three quick choices. One cleaner shortlist.</p></div><div class="field"><label for="media">What media?</label><select id="media"><option value="">Select media type</option><option>USB</option><option>SD / microSD</option><option>NVMe / M.2</option><option>HDD / SSD</option><option>Disc</option></select></div><div class="field"><label for="targets">How many targets?</label><select id="targets"><option value="">Select target count</option><option>1–4</option><option>5–15</option><option>16–31</option><option>32+</option></select></div><div class="field"><label for="use">Primary use?</label><select id="use"><option value="">Select use case</option><option>Everyday duplication</option><option>High-volume production</option><option>Secure erasure</option><option>Forensics</option></select></div><button class="btn btn-primary" id="findSystem">Find My System</button></div></div></section>
 <section class="section" id="products"><div class="container"><div class="section-head"><p class="eyebrow">Popular systems</p><h2>Best-selling duplicators</h2><p>Focused product cards with the information buyers need most: media, capacity, key capability and price.</p></div><div class="product-grid" id="productGrid"></div></div></section>
 <section class="marquee-section" aria-label="Professional organizations and technical teams served">
   <div class="container marquee-intro">
-    <div class="marquee-heading-wrap">
-      <p class="eyebrow">Trusted Across Professional Environments</p>
-      <h2>Supporting organizations that depend on reliable data workflows.</h2>
-    </div>
-    <p class="marquee-intro-copy">From public-sector teams and universities to system integrators and technical labs, Acumen Disc supports professional duplication workflows where consistency matters.</p>
+    <p class="eyebrow">Trusted Across Professional Environments</p>
+    <h2>Built for teams that depend on reliable data workflows.</h2>
+    <p>Professional duplication systems for public-sector organizations, education, enterprise IT, integrators and technical teams.</p>
   </div>
-  <div class="marquee-rail" aria-label="Organizations and professional teams served">
+  <div class="marquee-shell">
     <div class="marquee" id="clientMarquee"></div>
   </div>
-  <div class="container marquee-proof-row" aria-label="Professional workflows served">
-    <span><svg class="icon"><use href="#i-bank"/></svg><strong>Government</strong><small>Procurement-ready systems</small></span>
-    <span><svg class="icon"><use href="#i-book"/></svg><strong>Education</strong><small>Labs and campus IT workflows</small></span>
-    <span><svg class="icon"><use href="#i-brief"/></svg><strong>Enterprise</strong><small>Deployment and data operations</small></span>
-    <span><svg class="icon"><use href="#i-lock"/></svg><strong>Forensics</strong><small>Controlled duplication workflows</small></span>
+</section>
+<section class="section about-feature" id="about">
+  <div class="container about-feature-grid">
+    <div class="about-media">
+      <div class="about-media-frame">
+        <img class="about-product-image" data-product-key="usb" alt="Acumen Disc professional USB duplicator tower" loading="lazy" decoding="async">
+      </div>
+      <div class="about-media-caption"><span>Professional duplication systems</span><strong>Built for dependable daily workflows</strong></div>
+    </div>
+    <div class="about-feature-copy">
+      <p class="eyebrow">About Acumen Disc</p>
+      <h2>Professional duplication expertise since 1995.</h2>
+      <p>Acumen Disc develops professional media duplication and data-management systems for organizations that need dependable, repeatable workflows across USB, memory cards, NVMe, HDD/SSD and optical media.</p>
+      <p>From straightforward standalone systems to OEM, ODM and specialized requirements, the focus is practical: help technical teams choose, deploy and support the right duplication workflow with confidence.</p>
+      <div class="about-feature-points">
+        <span><svg class="icon"><use href="#i-shield"/></svg><strong>Established 1995</strong><small>Decades of duplication experience</small></span>
+        <span><svg class="icon"><use href="#i-brief"/></svg><strong>OEM / ODM Capability</strong><small>Support for partners and integrators</small></span>
+        <span><svg class="icon"><use href="#i-headset"/></svg><strong>Specialist Guidance</strong><small>Product selection and workflow support</small></span>
+      </div>
+      <div class="about-actions"><a class="btn btn-primary" href="#products">Explore Systems →</a><a class="btn btn-secondary" href="#quote">Talk to a Specialist</a></div>
+    </div>
   </div>
 </section>
-<section class="section about-feature" id="about"><div class="container about-feature-grid"><div class="about-feature-copy"><p class="eyebrow">About Acumen Disc</p><h2>Duplication expertise since 1995.</h2><p>Acumen Disc specializes in professional duplication and media-management systems for businesses, institutions, integrators and technical teams, with support for standard and custom workflows across modern storage media.</p><div class="about-feature-points"><span><svg class="icon"><use href="#i-shield"/></svg><strong>Established 1995</strong><small>Decades of duplication expertise</small></span><span><svg class="icon"><use href="#i-brief"/></svg><strong>OEM / ODM Support</strong><small>Solutions for partners and integrators</small></span><span><svg class="icon"><use href="#i-check"/></svg><strong>Custom Solutions</strong><small>Guidance for specialized workflows</small></span></div><a class="btn btn-secondary" href="#quote">Talk to a Specialist →</a></div><div class="about-visual" role="img" aria-label="Professional data center infrastructure"><div class="about-badges"><div class="about-badge"><strong>1995</strong><span>Established</span></div><div class="about-badge"><strong>OEM / ODM</strong><span>Business support</span></div><div class="about-badge"><strong>Custom</strong><span>Solution options</span></div></div></div></div></section>
-<section class="section" id="industries"><div class="container"><div class="section-head"><p class="eyebrow">Solutions by industry</p><h2>Purpose-built for the way teams work.</h2><p>Use cases matter as much as specifications. These routes help buyers identify the right system by environment.</p></div><div class="industry-grid" id="industryGrid"></div></div></section>
+<section class="section" id="industries"><div class="container"><div class="section-head"><p class="eyebrow">Solutions by industry</p><h2>Duplication solutions for professional environments.</h2><p>Use cases matter as much as specifications. These routes help buyers identify the right system by environment.</p></div><div class="industry-grid" id="industryGrid"></div></div></section>
 <section class="section compact"><div class="container"><div class="procurement"><div class="proc-copy"><p class="eyebrow" style="color:#ffbd3e">Institutional purchasing</p><h2>Government, education & enterprise procurement made simpler.</h2><p>Acumen Disc supports qualified organizational purchasing with product guidance and purchase-order workflows for eligible customers.</p><div class="proc-points"><span><svg class="icon"><use href="#i-check"/></svg>Government & school PO support</span><span><svg class="icon"><use href="#i-check"/></svg>Volume purchasing</span><span><svg class="icon"><use href="#i-check"/></svg>Specialist product guidance</span></div><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-primary" href="#quote">Request a Quote</a><a class="btn btn-outline-light" href="#faq">Learn More</a></div></div><div class="proc-art" role="img" aria-label="United States Capitol building representing government and institutional procurement"></div></div></div></section>
 <section class="section" id="compare"><div class="container"><div class="section-head"><p class="eyebrow">Compare systems</p><h2>Choose with confidence.</h2><p>A focused side-by-side view keeps comparison useful instead of overwhelming.</p></div><div class="compare-shell"><table class="compare-table"><thead><tr><th>Feature</th><th>USB 1→7</th><th>SD 1→7</th><th>NVMe 1→4</th><th>HDD 1→3 Forensic</th></tr></thead><tbody><tr><td>Best for</td><td>General USB jobs</td><td>Memory cards</td><td>High-speed SSD</td><td>Forensic workflows</td></tr><tr><td>Target count</td><td>Up to 7</td><td>Up to 7</td><td>Up to 4</td><td>Up to 3</td></tr><tr><td>Verification</td><td>Available</td><td>Available</td><td>Available</td><td>Yes</td></tr><tr><td>Erase options</td><td>Available</td><td>Available</td><td>Available</td><td>Advanced</td></tr></tbody></table><div class="compare-cta"><a class="btn btn-secondary" href="#products">View Featured Systems</a></div></div></div></section>
-<section class="section compact" id="resources"><div class="container"><div class="section-head"><p class="eyebrow">Resources</p><h2>Useful guidance before and after purchase.</h2></div><div class="resource-grid"><a class="resource-card" href="#"><svg class="icon"><use href="#i-book"/></svg><div><h3>Duplicator Buying Guide</h3><p>Understand media type, target count and the features that matter most.</p><span class="text-link">Read guide →</span></div></a><a class="resource-card" href="#"><svg class="icon"><use href="#i-shield"/></svg><div><h3>Secure Erase Guide</h3><p>Learn the difference between erase methods and where each one fits.</p><span class="text-link">Read guide →</span></div></a><a class="resource-card" href="#"><svg class="icon"><use href="#i-download"/></svg><div><h3>Support & Downloads</h3><p>Make manuals, product documents and technical help easy to find.</p><span class="text-link">Visit support →</span></div></a></div></div></section>
-<section class="section" id="faq"><div class="container"><div class="section-head"><p class="eyebrow">FAQ</p><h2>Answers to common buying questions.</h2><p>A standalone FAQ section keeps support content easy to scan without crowding other parts of the page.</p></div><div class="faq-wrap" id="faqList"></div></div></section>
+<section class="section compact" id="resources"><div class="container"><div class="section-head"><p class="eyebrow">Resources</p><h2>Resources for product selection and support.</h2></div><div class="resource-grid"><a class="resource-card" href="#"><svg class="icon"><use href="#i-book"/></svg><div><h3>Duplicator Buying Guide</h3><p>Understand media type, target count and the features that matter most.</p><span class="text-link">Read guide →</span></div></a><a class="resource-card" href="#"><svg class="icon"><use href="#i-shield"/></svg><div><h3>Secure Erase Guide</h3><p>Learn the difference between erase methods and where each one fits.</p><span class="text-link">Read guide →</span></div></a><a class="resource-card" href="#"><svg class="icon"><use href="#i-download"/></svg><div><h3>Support & Downloads</h3><p>Make manuals, product documents and technical help easy to find.</p><span class="text-link">Visit support →</span></div></a></div></div></section>
+<section class="section" id="faq"><div class="container"><div class="section-head"><p class="eyebrow">FAQ</p><h2>Common product and purchasing questions.</h2><p>A standalone FAQ section keeps support content easy to scan without crowding other parts of the page.</p></div><div class="faq-wrap" id="faqList"></div></div></section>
 <section class="section compact"><div class="container"><div class="newsletter"><div class="newsletter-copy"><svg class="icon"><use href="#i-mail"/></svg><div><h3>Stay informed</h3><p>Product updates, buying guides and useful technical resources — no clutter.</p></div></div><form class="newsletter-form" id="newsletterForm"><label class="sr-only" for="email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label><input id="email" type="email" placeholder="Enter your email address" required><button class="btn btn-primary" type="submit">Subscribe</button></form></div></div></section>
 <section class="section compact" id="quote"><div class="container"><div class="final-cta"><div><h2>Need help finding the right system?</h2><p>Tell the team what you need to duplicate and how many copies you need to make.</p></div><div class="final-actions"><a class="btn btn-primary" href="tel:+15622793988">Talk to an Expert</a><a class="btn btn-outline-light" href="mailto:info@acumendisc.com?subject=Acumen%20Disc%20Quote%20Request">Request a Quote</a></div></div></div></section>
 </main>
