@@ -341,11 +341,12 @@ main{position:relative;isolation:isolate}
 .nav{grid-template-columns:150px minmax(0,1fr) auto;gap:22px;height:74px}
 .brand-logo{width:136px;height:48px}
 .acumen-product-nav{display:flex;justify-content:center;align-items:stretch;gap:6px;height:100%;min-width:0}
-.acumen-product-nav>a,.menu-trigger{position:relative;display:flex;align-items:center;gap:7px;height:100%;padding:0 11px;border:0;background:transparent;color:#172a43;font-size:13px;font-weight:600;letter-spacing:.01em;white-space:nowrap;cursor:pointer}
-.acumen-product-nav>a:after,.menu-trigger:after{content:"";position:absolute;left:11px;right:11px;bottom:17px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
+.acumen-product-nav>a,.menu-trigger{position:relative;display:flex;align-items:center;gap:8px;height:100%;padding:0 12px;border:0;background:transparent;color:#172a43;font-size:13px;font-weight:650;letter-spacing:.005em;white-space:nowrap;cursor:pointer;transition:color .2s ease,background .2s ease}
+.acumen-product-nav>a:after,.menu-trigger:after{content:"";position:absolute;left:12px;right:12px;bottom:15px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:center;transition:transform .2s ease}
+.acumen-product-nav>a:hover,.menu-trigger:hover,.menu-dropdown:focus-within>.menu-trigger{color:var(--navy)}
 .acumen-product-nav>a:hover:after,.acumen-product-nav>a.is-active:after,.menu-dropdown:hover>.menu-trigger:after,.menu-dropdown:focus-within>.menu-trigger:after{transform:scaleX(1)}
-.menu-trigger span{font-size:14px;line-height:1;transform:translateY(-1px);transition:transform .2s ease;color:#425875}
-.menu-dropdown:hover>.menu-trigger span,.menu-dropdown:focus-within>.menu-trigger span{transform:rotate(180deg)}
+.menu-caret{display:inline-block;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #344a63;transform:translateY(1px);transition:transform .2s ease,border-top-color .2s ease;flex:none}
+.menu-dropdown:hover>.menu-trigger .menu-caret,.menu-dropdown:focus-within>.menu-trigger .menu-caret,.menu-dropdown.is-open>.menu-trigger .menu-caret{transform:translateY(0) rotate(180deg);border-top-color:var(--gold)}
 .menu-dropdown{position:relative;height:100%;display:flex;align-items:stretch}
 .menu-panel{position:absolute;left:0;top:calc(100% - 1px);z-index:90;width:260px;padding:10px;background:#fff;border:1px solid #dfe7ef;border-top:2px solid var(--gold);box-shadow:0 20px 50px rgba(7,31,63,.16);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .18s ease,transform .18s ease,visibility .18s;border-radius:0 0 10px 10px}
 .menu-panel-wide{width:310px;max-height:520px;overflow:auto}
@@ -375,12 +376,18 @@ main{position:relative;isolation:isolate}
 .menu-group+.menu-group{border-left:1px solid #edf1f5;padding-left:20px}
 .menu-panel-flash .menu-group:nth-child(4){border-left:0;padding-left:0;border-top:1px solid #edf1f5;padding-top:14px}
 .menu-panel-flash .menu-group:nth-child(5){border-top:1px solid #edf1f5;padding-top:14px}
-.menu-panel .menu-group-title{font-size:12px;font-weight:850;color:var(--navy);padding:8px 10px 7px;margin-bottom:2px}
-.menu-panel .menu-group-title:after{content:"";display:block;width:24px;height:2px;margin-top:7px;background:var(--gold)}
-.menu-panel .menu-group a:not(.menu-group-title){font-size:11.5px;color:#51657c;padding:7px 10px}
+.menu-panel .menu-group-title{font-size:12.5px;font-weight:850;color:var(--navy);padding:8px 10px 9px;margin-bottom:3px;border-bottom:1px solid #e7edf3}
+.menu-panel .menu-group-title:after{display:none!important;content:none!important}
+.menu-panel .menu-group a:not(.menu-group-title){font-size:11.5px;color:#405a76;padding:7px 10px;position:relative;transition:color .18s ease,background .18s ease,padding-left .18s ease}
+.menu-panel .menu-group a:not(.menu-group-title):hover,.menu-panel .menu-group a:not(.menu-group-title):focus{background:#f7f9fc;color:var(--navy);padding-left:14px}
+.menu-panel .menu-group a:not(.menu-group-title):hover:before,.menu-panel .menu-group a:not(.menu-group-title):focus:before{content:"";position:absolute;left:6px;top:50%;width:3px;height:3px;border-radius:50%;background:var(--gold);transform:translateY(-50%)}
 .mobile-panel .mobile-group-title{margin-top:7px!important;color:var(--navy)!important;font-weight:800!important;border-top:1px solid #edf1f5!important;padding-top:13px!important}
 .mobile-panel details .mobile-group-title:first-of-type{border-top:0!important;margin-top:0!important}
 @media(max-width:1180px){.acumen-product-nav>a,.menu-trigger{padding-inline:10px;font-size:12.5px}.nav-actions .btn{padding-inline:14px}}
+
+
+.menu-panel{border-top:2px solid var(--gold);box-shadow:0 24px 56px rgba(7,31,63,.18);border-radius:0 0 12px 12px}
+.menu-panel-mega{padding-top:18px}
 
 </style>
 </head>
@@ -405,26 +412,26 @@ main{position:relative;isolation:isolate}
 <div class="topbar"><div class="container inner"><div class="top-item"><svg class="icon"><use href="#i-shield"/></svg>Trusted Since 1995</div><div class="top-item"><svg class="icon"><use href="#i-headset"/></svg>US-Based Support</div><div class="top-item"><svg class="icon"><use href="#i-bank"/></svg>Government & Education PO Accepted</div><div class="top-item"><svg class="icon"><use href="#i-lock"/></svg>Secure Data Erase</div></div></div>
 <header class="header"><div class="container nav"><a class="brand" href="/" aria-label="Acumen Disc home"><span class="brand-logo" role="img" aria-label="Acumen Disc"></span></a><nav class="menu acumen-product-nav" aria-label="Primary product navigation">
 <a class="menu-home is-active" href="/">Home</a>
-<div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">NVMe <span aria-hidden="true">⌄</span></button><div class="menu-panel"><a href="/collections/nvme-cyclone-pro">M.2 NVMe &amp; SATA HDD</a><a href="/collections/nvme">M.2 NVMe</a><a href="/products/soho-nvme-mkii">Touchscreen</a><a href="/products/dm-he0-5m04b">Compact Autostarter</a></div></div>
-<div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">HDD <span aria-hidden="true">⌄</span></button><div class="menu-panel menu-panel-mega menu-panel-hdd">
+<div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">NVMe <span class="menu-caret" aria-hidden="true"></span></button><div class="menu-panel"><a href="/collections/nvme-cyclone-pro">M.2 NVMe &amp; SATA HDD</a><a href="/collections/nvme">M.2 NVMe</a><a href="/products/soho-nvme-mkii">Touchscreen</a><a href="/products/dm-he0-5m04b">Compact Autostarter</a></div></div>
+<div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">HDD <span class="menu-caret" aria-hidden="true"></span></button><div class="menu-panel menu-panel-mega menu-panel-hdd">
 <div class="menu-group"><a class="menu-group-title" href="/collections/hdd">Hard Drive Towers</a><a href="/collections/sata-iii-hard-drive-duplicators">SATA III (600mbps) Towers</a><a href="/collections/sata-ii-hdd">SATA II (300mbps) Towers</a><a href="/collections/sata-i-hdd-duplicators">SATA I (150mbps) Towers</a><a href="/collections/hard-drive-mini">Hard Drive Mini Clone</a></div>
 <div class="menu-group"><a class="menu-group-title" href="/collections/flatbed-hdd-duplicators">Hard Drive Flatbed</a><a href="/collections/sata-iii-flatbed">SATA III (600mbps) Flatbed</a><a href="/collections/sata-ii-flatbed">SATA II (300mbps) Flatbed</a></div>
 <div class="menu-group"><a class="menu-group-title" href="/products/forensic-3hdd">Forensic</a><a href="/products/forensic-3hdd">1 to 3 (up to 300mb/sec)</a></div>
 </div></div>
-<div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">Flash Media <span aria-hidden="true">⌄</span></button><div class="menu-panel menu-panel-mega menu-panel-flash">
+<div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">Flash Media <span class="menu-caret" aria-hidden="true"></span></button><div class="menu-panel menu-panel-mega menu-panel-flash">
 <div class="menu-group"><a class="menu-group-title" href="/pages/usb-duplicators">USB Duplicators</a><a href="/collections/usb-duplicator">USB Towers</a><a href="/collections/usb-compact">Compact Duplicators</a></div>
 <div class="menu-group"><a class="menu-group-title" href="/pages/sd-duplicators">SD Card Duplicators</a><a href="/collections/secure-digital-sd-3-0-flash-memory-cards-duplicators-copy">SD 3.0 Towers (300MB/sec)</a><a href="/collections/secure-digital-flash-memory-cards-duplicators">SD Towers (35MB/sec)</a><a href="/products/sd-trident">SD Trident</a></div>
 <div class="menu-group"><a class="menu-group-title" href="/collections/cf-card-duplicators">CF Card Duplicators</a><a href="/collections/cf-card-duplicators">CF Towers</a></div>
 <div class="menu-group"><a class="menu-group-title" href="/collections/cfast-card-duplicators">CFAST Memory Duplicators</a><a href="/collections/cfast-card-duplicators">CFAST Towers</a></div>
 <div class="menu-group"><a class="menu-group-title" href="/collections/eusb-tower">eUSB Duplicators</a><a href="/collections/eusb-tower">eUSB Towers</a></div>
 </div></div>
-<div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">DVD/BD <span aria-hidden="true">⌄</span></button><div class="menu-panel menu-panel-mega menu-panel-disc">
+<div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">DVD/BD <span class="menu-caret" aria-hidden="true"></span></button><div class="menu-panel menu-panel-mega menu-panel-disc">
 <div class="menu-group"><a class="menu-group-title" href="/pages/optical-disc-duplicators">Disc to Disc Duplicators</a><a href="/collections/blu-ray-disc-duplicators">Blu-ray</a><a href="/collections/dvd-cd">DVD / CD</a></div>
 <div class="menu-group"><a class="menu-group-title" href="/pages/mm-disc-chart">The Crossovers</a><a href="/collections/crossover-bd">Bi-Directional Media / Blu-Ray</a><a href="/collections/crossover-dvd">Bi-Directional Media / DVD</a></div>
 <div class="menu-group"><a class="menu-group-title" href="/pages/multimedia-to-disc-duplicators">Multimedia to Disc Duplicators</a><a href="/collections/multimedia-to-blu-ray-duplicators">Media / BD to Blu-Ray Discs</a><a href="/collections/multimedia-backup-duplicators">Media / DVD to DVD</a></div>
 <div class="menu-group"><a class="menu-group-title" href="/pages/usb-to-disc-duplicators">USB to Disc Duplicators</a><a href="/collections/usb-to-disc-duplicator">USB to DVD / CD</a></div>
 </div></div>
-<div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">Others <span aria-hidden="true">⌄</span></button><div class="menu-panel menu-panel-mega menu-panel-others">
+<div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">Others <span class="menu-caret" aria-hidden="true"></span></button><div class="menu-panel menu-panel-mega menu-panel-others">
 <div class="menu-group"><a class="menu-group-title" href="/search">Replacement Parts</a><a href="/collections/controllers-for-duplicators">Controllers</a><a href="/collections/optical-drives">Optical Drives</a></div>
 <div class="menu-group"><a class="menu-group-title" href="/collections/work-at-home">Work at Home Products</a><a href="/products/face-mask-3-ply-with-ear-loops">Disposable Masks</a><a href="/products/disposable-folding-mask-for-face-cover-with-ear-loops-box-of-50">KN95 Masks</a></div>
 <div class="menu-group"><a class="menu-group-title" href="/collections/accessories">Accessories</a><a href="/products/12-sata-cables">Cables</a><a href="/products/marker-pens">Stationery</a></div>
