@@ -516,6 +516,35 @@ main{position:relative;isolation:isolate}
 .footer-newsletter{padding:32px 0!important;min-height:0!important}
 .newsletter{display:none!important}
 
+
+/* === Unified footer: newsletter is part of the same footer block === */
+.footer{margin-top:0!important;background:#061a33!important;color:#fff!important}
+#quote{padding-bottom:64px!important}
+.footer-main{padding:58px 0 34px!important;display:grid!important;grid-template-columns:1.35fr repeat(4,1fr)!important;gap:44px!important;align-items:start!important}
+.footer-newsletter{grid-column:1/-1!important;margin-top:10px!important;padding:28px 0 0!important;border-top:1px solid rgba(255,255,255,.11)!important;background:transparent!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(340px,500px)!important;gap:42px!important;align-items:center!important;min-height:0!important;border-radius:0!important;box-shadow:none!important}
+.footer-newsletter-copy{display:flex!important;align-items:center!important;gap:18px!important;min-width:0!important}
+.footer-newsletter-icon{width:46px!important;height:46px!important;border:1px solid rgba(255,181,40,.28)!important;background:rgba(255,181,40,.08)!important;border-radius:10px!important;display:grid!important;place-items:center!important;flex:none!important;color:var(--gold2)!important}
+.footer-newsletter-icon .icon{width:22px!important;height:22px!important}
+.footer-newsletter-eyebrow{margin:0 0 4px!important;color:var(--gold2)!important;font-size:10px!important;font-weight:900!important;letter-spacing:.14em!important;text-transform:uppercase!important}
+.footer-newsletter h3{margin:0 0 4px!important;font-size:21px!important;line-height:1.18!important;color:#fff!important;letter-spacing:-.02em!important}
+.footer-newsletter-copy p{margin:0!important;color:#aebed0!important;font-size:12px!important;max-width:620px!important}
+.footer-newsletter-form{display:flex!important;width:100%!important;min-width:0!important}
+.footer-newsletter-form input{height:46px!important;flex:1!important;min-width:0!important;border:1px solid rgba(255,255,255,.22)!important;border-right:0!important;background:#fff!important;color:var(--ink)!important;border-radius:8px 0 0 8px!important;padding:0 15px!important;outline:0!important}
+.footer-newsletter-form input:focus{border-color:var(--gold2)!important;box-shadow:0 0 0 3px rgba(255,181,40,.12)!important}
+.footer-newsletter-form .btn{height:46px!important;min-height:46px!important;border-radius:0 8px 8px 0!important;min-width:116px!important}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1)!important;padding:18px 0!important}
+.footer-newsletter-wrap{display:none!important}
+.newsletter{display:none!important}
+@media(max-width:1080px){.footer-main{grid-template-columns:2fr repeat(2,1fr)!important}.footer-main>div:nth-child(n+4):not(.footer-newsletter){margin-top:15px}.footer-newsletter{grid-template-columns:1fr!important;gap:20px!important}.footer-newsletter-form{max-width:620px!important}}
+@media(max-width:760px){.footer-main{grid-template-columns:1fr 1fr!important;gap:30px!important}.footer-about{grid-column:1/-1!important}.footer-newsletter{grid-column:1/-1!important;margin-top:4px!important;padding-top:24px!important}.footer-newsletter-copy{align-items:flex-start!important}.footer-newsletter-form{display:grid!important;grid-template-columns:1fr!important}.footer-newsletter-form input{border-right:1px solid rgba(255,255,255,.22)!important;border-radius:8px!important}.footer-newsletter-form .btn{margin-top:10px!important;width:100%!important;border-radius:8px!important}.footer-bottom{flex-direction:column!important;gap:7px!important}}
+
+
+/* === Footer order refinement: newsletter first inside the footer === */
+.footer-newsletter-wrap{background:#061a33!important;border-top:0!important;border-bottom:1px solid rgba(255,255,255,.1)!important}
+.footer-newsletter{padding:34px 0!important;min-height:0!important}
+.footer-main{padding-top:42px!important}
+@media(max-width:760px){.footer-newsletter{padding:28px 0!important}.footer-main{padding-top:34px!important}}
+
 </style>
 </head>
 <body>
@@ -686,7 +715,22 @@ main{position:relative;isolation:isolate}
 <section class="section faq-section" id="faq"><div class="container"><div class="faq-heading"><p class="eyebrow">Frequently Asked Questions</p><h2>Clear answers before you choose a system.</h2><p>Find quick guidance on media compatibility, standalone operation, secure erase capabilities, purchase orders and selecting the right Acumen Disc duplicator.</p></div><div class="faq-shell"><div class="faq-wrap" id="faqList"></div></div></div></section>
 <section class="section compact" id="quote"><div class="container"><div class="final-cta"><div><h2>Need help finding the right system?</h2><p>Tell the team what you need to duplicate and how many copies you need to make.</p></div><div class="final-actions"><a class="btn btn-primary" href="tel:+15622793988">Talk to an Expert</a><a class="btn btn-outline-light" href="mailto:info@acumendisc.com?subject=Acumen%20Disc%20Quote%20Request">Request a Quote</a></div></div></div></section>
 </main>
-<footer class="footer"><div class="container footer-main"><div class="footer-about"><span class="footer-logo brand-logo" role="img" aria-label="Acumen Disc"></span><p>Professional duplication and media-management solutions for technical teams, organizations and multimedia workflows.</p></div><div><h4>Products</h4><div class="footer-links"><a href="#categories">USB Duplicators</a><a href="#categories">SD / microSD</a><a href="#categories">NVMe / M.2</a><a href="#categories">HDD / SSD</a><a href="#categories">Disc Duplicators</a></div></div><div><h4>Solutions</h4><div class="footer-links"><a href="#industries">Government</a><a href="#industries">Education</a><a href="#industries">IT & Enterprise</a><a href="#industries">Forensics</a></div></div><div><h4>Resources</h4><div class="footer-links"><a href="#resources">Buying Guides</a><a href="#resources">Support & Downloads</a><a href="#faq">FAQ</a><a href="#about">About Us</a></div></div><div><h4>Contact</h4><div class="footer-links"><a href="tel:+15622793988">(562) 279-3898</a><a href="tel:+18887425459">(888) 742-5459</a><a href="mailto:info@acumendisc.com">info@acumendisc.com</a></div></div></div><div class="footer-newsletter-wrap"><div class="container"><div class="footer-newsletter"><div class="footer-newsletter-copy"><span class="footer-newsletter-icon"><svg class="icon"><use href="#i-mail"/></svg></span><div><p class="footer-newsletter-eyebrow">Acumen Disc Updates</p><h3>Stay informed without the clutter.</h3><p>Product releases, buying guides and useful technical resources for professional duplication workflows.</p></div></div><form class="footer-newsletter-form" id="newsletterForm"><label class="sr-only" for="email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label><input id="email" type="email" placeholder="Enter your email address" required><button class="btn btn-primary" type="submit">Subscribe</button></form></div></div></div><div class="container footer-bottom"><span>© 2026 Acumen Disc. Prototype redesign.</span><span>Privacy · Terms · Returns · Sitemap</span></div></footer>
+<footer class="footer">
+  <div class="footer-newsletter-wrap">
+    <div class="container footer-newsletter">
+      <div class="footer-newsletter-copy"><span class="footer-newsletter-icon"><svg class="icon"><use href="#i-mail"/></svg></span><div><p class="footer-newsletter-eyebrow">Acumen Disc Updates</p><h3>Stay informed without the clutter.</h3><p>Product releases, buying guides and useful technical resources for professional duplication workflows.</p></div></div>
+      <form class="footer-newsletter-form" id="newsletterForm"><label class="sr-only" for="email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label><input id="email" type="email" placeholder="Enter your email address" required><button class="btn btn-primary" type="submit">Subscribe</button></form>
+    </div>
+  </div>
+  <div class="container footer-main">
+    <div class="footer-about"><span class="footer-logo brand-logo" role="img" aria-label="Acumen Disc"></span><p>Professional duplication and media-management solutions for technical teams, organizations and multimedia workflows.</p></div>
+    <div><h4>Products</h4><div class="footer-links"><a href="#categories">USB Duplicators</a><a href="#categories">SD / microSD</a><a href="#categories">NVMe / M.2</a><a href="#categories">HDD / SSD</a><a href="#categories">Disc Duplicators</a></div></div>
+    <div><h4>Solutions</h4><div class="footer-links"><a href="#industries">Government</a><a href="#industries">Education</a><a href="#industries">IT & Enterprise</a><a href="#industries">Forensics</a></div></div>
+    <div><h4>Resources</h4><div class="footer-links"><a href="#resources">Buying Guides</a><a href="#resources">Support & Downloads</a><a href="#faq">FAQ</a><a href="#about">About Us</a></div></div>
+    <div><h4>Contact</h4><div class="footer-links"><a href="tel:+15622793988">(562) 279-3898</a><a href="tel:+18887425459">(888) 742-5459</a><a href="mailto:info@acumendisc.com">info@acumendisc.com</a></div></div>
+  </div>
+  <div class="container footer-bottom"><span>© 2026 Acumen Disc. Prototype redesign.</span><span>Privacy · Terms · Returns · Sitemap</span></div>
+</footer>
 <div class="toast" id="toast"><svg class="icon"><use href="#i-check"/></svg><span id="toastText">Added to cart</span></div>
 <div class="modal" id="systemModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-card"><h3 id="modalTitle">Recommended starting point</h3><p>Based on your selections, start with this system family and compare target counts before purchasing.</p><div class="recommendation" id="recommendation"></div><div class="modal-actions"><button class="btn btn-secondary" id="closeModal">Close</button><a class="btn btn-primary" href="#products" id="viewRecommendation">View Systems</a></div></div></div>
 <script>
