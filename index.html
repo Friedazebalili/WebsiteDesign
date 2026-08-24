@@ -336,6 +336,33 @@ main{position:relative;isolation:isolate}
   .about-feature-points span+span{border-left:0!important;border-top:1px solid #dfe7f0!important}
 }
 
+
+/* === Product-category navigation refinement === */
+.nav{grid-template-columns:150px minmax(0,1fr) auto;gap:22px;height:74px}
+.brand-logo{width:136px;height:48px}
+.acumen-product-nav{display:flex;justify-content:center;align-items:stretch;gap:6px;height:100%;min-width:0}
+.acumen-product-nav>a,.menu-trigger{position:relative;display:flex;align-items:center;gap:7px;height:100%;padding:0 11px;border:0;background:transparent;color:#172a43;font-size:13px;font-weight:600;letter-spacing:.01em;white-space:nowrap;cursor:pointer}
+.acumen-product-nav>a:after,.menu-trigger:after{content:"";position:absolute;left:11px;right:11px;bottom:17px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
+.acumen-product-nav>a:hover:after,.acumen-product-nav>a.is-active:after,.menu-dropdown:hover>.menu-trigger:after,.menu-dropdown:focus-within>.menu-trigger:after{transform:scaleX(1)}
+.menu-trigger span{font-size:14px;line-height:1;transform:translateY(-1px);transition:transform .2s ease;color:#425875}
+.menu-dropdown:hover>.menu-trigger span,.menu-dropdown:focus-within>.menu-trigger span{transform:rotate(180deg)}
+.menu-dropdown{position:relative;height:100%;display:flex;align-items:stretch}
+.menu-panel{position:absolute;left:0;top:calc(100% - 1px);z-index:90;width:260px;padding:10px;background:#fff;border:1px solid #dfe7ef;border-top:2px solid var(--gold);box-shadow:0 20px 50px rgba(7,31,63,.16);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .18s ease,transform .18s ease,visibility .18s;border-radius:0 0 10px 10px}
+.menu-panel-wide{width:310px;max-height:520px;overflow:auto}
+.menu-dropdown:hover>.menu-panel,.menu-dropdown:focus-within>.menu-panel,.menu-dropdown.is-open>.menu-panel{opacity:1;visibility:visible;transform:none}
+.menu-panel a{display:block;padding:10px 12px;border-radius:6px;color:#263a53;font-size:12px;font-weight:600;line-height:1.35}
+.menu-panel a:hover,.menu-panel a:focus{background:#f7f9fc;color:var(--navy);outline:none}
+.menu-panel a:first-child{font-weight:800;color:var(--navy)}
+.mobile-panel details{border-bottom:1px solid var(--line)}
+.mobile-panel summary{list-style:none;padding:15px 0;font-weight:800;cursor:pointer;color:var(--navy);position:relative;padding-right:24px}
+.mobile-panel summary::-webkit-details-marker{display:none}
+.mobile-panel summary:after{content:"+";position:absolute;right:2px;top:14px;color:var(--gold);font-size:19px;font-weight:500}
+.mobile-panel details[open] summary:after{content:"−"}
+.mobile-panel details a{padding:10px 10px 10px 14px!important;border-bottom:0!important;font-size:12px!important;font-weight:600!important;color:#52667e!important}
+.mobile-panel .mobile-home{color:var(--navy);text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+@media(max-width:1320px){.acumen-product-nav>a,.menu-trigger{font-size:12px;padding-inline:8px}.acumen-product-nav>a:after,.menu-trigger:after{left:8px;right:8px}.nav-actions .icon-btn:not(.menu-toggle){display:none}}
+@media(max-width:1080px){.acumen-product-nav{display:none}.nav{grid-template-columns:160px 1fr auto}.nav-actions .icon-btn:not(.menu-toggle){display:grid}}
+
 </style>
 </head>
 <body>
@@ -357,8 +384,8 @@ main{position:relative;isolation:isolate}
 <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3M3 12h18"/></symbol>
 </defs></svg>
 <div class="topbar"><div class="container inner"><div class="top-item"><svg class="icon"><use href="#i-shield"/></svg>Trusted Since 1995</div><div class="top-item"><svg class="icon"><use href="#i-headset"/></svg>US-Based Support</div><div class="top-item"><svg class="icon"><use href="#i-bank"/></svg>Government & Education PO Accepted</div><div class="top-item"><svg class="icon"><use href="#i-lock"/></svg>Secure Data Erase</div></div></div>
-<header class="header"><div class="container nav"><a class="brand" href="#top" aria-label="Acumen Disc home"><span class="brand-logo" role="img" aria-label="Acumen Disc"></span></a><nav class="menu" aria-label="Primary"><a href="#categories">Products</a><a href="#industries">Solutions</a><a href="#industries">Industries</a><a href="#resources">Resources</a><a href="#faq">Support</a><a href="#about">About</a></nav><div class="nav-actions"><button class="icon-btn" aria-label="Search"><svg class="icon"><use href="#i-search"/></svg></button><button class="icon-btn" aria-label="Account"><svg class="icon"><use href="#i-user"/></svg></button><button class="icon-btn" aria-label="Cart"><svg class="icon"><use href="#i-cart"/></svg><span class="cart-count" id="cartCount">0</span></button><a class="btn btn-primary" href="#quote">Get a Quote</a><button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu"><svg class="icon"><use href="#i-menu"/></svg></button></div></div></header>
-<div class="mobile-panel" id="mobilePanel"><a href="#categories">Products</a><a href="#industries">Solutions</a><a href="#industries">Industries</a><a href="#resources">Resources</a><a href="#faq">Support</a><a href="#about">About</a><a href="#quote">Get a Quote</a></div>
+<header class="header"><div class="container nav"><a class="brand" href="#top" aria-label="Acumen Disc home"><span class="brand-logo" role="img" aria-label="Acumen Disc"></span></a><nav class="menu acumen-product-nav" aria-label="Primary product navigation"><a class="menu-home is-active" href="#top">Home</a><div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">M.2 NVMe &amp; SATA HDD <span aria-hidden="true">⌄</span></button><div class="menu-panel"><a href="#categories">M.2 NVMe &amp; SATA HDD</a><a href="#categories">M.2 NVMe</a><a href="#categories">Touchscreen</a><a href="#categories">Compact Autostarter</a></div></div><div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">Hard Drive Towers <span aria-hidden="true">⌄</span></button><div class="menu-panel menu-panel-wide"><a href="#categories">Hard Drive Towers</a><a href="#categories">SATA III (600mbps) Towers</a><a href="#categories">SATA II (300mbps) Towers</a><a href="#categories">SATA I (150mbps) Towers</a><a href="#categories">Hard Drive Mini Clone</a><a href="#categories">Hard Drive Flatbed</a><a href="#categories">SATA III (600mbps) Flatbed</a><a href="#categories">SATA II (300mbps) Flatbed</a><a href="#categories">Forensic</a><a href="#categories">1 to 3 (up to 300mb/sec)</a></div></div><div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">USB Duplicators <span aria-hidden="true">⌄</span></button><div class="menu-panel menu-panel-wide"><a href="#categories">USB Duplicators</a><a href="#categories">USB Towers</a><a href="#categories">Compact Duplicators</a><a href="#categories">SD Card Duplicators</a><a href="#categories">SD 3.0 Towers (300MB/sec)</a><a href="#categories">SD Towers (35MB/sec)</a><a href="#categories">SD Trident</a><a href="#categories">CF Card Duplicators</a><a href="#categories">CF Towers</a><a href="#categories">CFAST Memory Duplicators</a><a href="#categories">CFAST Towers</a><a href="#categories">eUSB Duplicators</a><a href="#categories">eUSB Towers</a></div></div><div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">Disc to Disc Duplicators <span aria-hidden="true">⌄</span></button><div class="menu-panel menu-panel-wide"><a href="#categories">Disc to Disc Duplicators</a><a href="#categories">Blu-ray</a><a href="#categories">DVD / CD</a><a href="#categories">The Crossovers</a><a href="#categories">Bi-Directional Media / Blu-Ray</a><a href="#categories">Bi-Directional Media / DVD</a><a href="#categories">Multimedia to Disc Duplicators</a><a href="#categories">Media / BD to Blu-Ray Discs</a><a href="#categories">Media / DVD to DVD</a><a href="#categories">USB to Disc Duplicators</a><a href="#categories">USB to DVD / CD</a></div></div><div class="menu-dropdown"><button class="menu-trigger" type="button" aria-expanded="false">Replacement Parts <span aria-hidden="true">⌄</span></button><div class="menu-panel"><a href="#resources">Replacement Parts</a><a href="#resources">Controllers</a><a href="#resources">Optical Drives</a><a href="#resources">Work at Home Products</a><a href="#resources">Disposable Masks</a><a href="#resources">KN95 Masks</a><a href="#resources">Accessories</a><a href="#resources">Cables</a><a href="#resources">Stationery</a></div></div></nav><div class="nav-actions"><button class="icon-btn" aria-label="Search"><svg class="icon"><use href="#i-search"/></svg></button><button class="icon-btn" aria-label="Account"><svg class="icon"><use href="#i-user"/></svg></button><button class="icon-btn" aria-label="Cart"><svg class="icon"><use href="#i-cart"/></svg><span class="cart-count" id="cartCount">0</span></button><a class="btn btn-primary" href="#quote">Get a Quote</a><button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu"><svg class="icon"><use href="#i-menu"/></svg></button></div></div></header>
+<div class="mobile-panel" id="mobilePanel"><a class="mobile-home" href="#top">Home</a><details><summary>M.2 NVMe &amp; SATA HDD</summary><a href="#categories">M.2 NVMe &amp; SATA HDD</a><a href="#categories">M.2 NVMe</a><a href="#categories">Touchscreen</a><a href="#categories">Compact Autostarter</a></details><details><summary>Hard Drive Towers</summary><a href="#categories">Hard Drive Towers</a><a href="#categories">SATA III (600mbps) Towers</a><a href="#categories">SATA II (300mbps) Towers</a><a href="#categories">SATA I (150mbps) Towers</a><a href="#categories">Hard Drive Mini Clone</a><a href="#categories">Hard Drive Flatbed</a><a href="#categories">SATA III (600mbps) Flatbed</a><a href="#categories">SATA II (300mbps) Flatbed</a><a href="#categories">Forensic</a><a href="#categories">1 to 3 (up to 300mb/sec)</a></details><details><summary>USB Duplicators</summary><a href="#categories">USB Duplicators</a><a href="#categories">USB Towers</a><a href="#categories">Compact Duplicators</a><a href="#categories">SD Card Duplicators</a><a href="#categories">SD 3.0 Towers (300MB/sec)</a><a href="#categories">SD Towers (35MB/sec)</a><a href="#categories">SD Trident</a><a href="#categories">CF Card Duplicators</a><a href="#categories">CF Towers</a><a href="#categories">CFAST Memory Duplicators</a><a href="#categories">CFAST Towers</a><a href="#categories">eUSB Duplicators</a><a href="#categories">eUSB Towers</a></details><details><summary>Disc to Disc Duplicators</summary><a href="#categories">Disc to Disc Duplicators</a><a href="#categories">Blu-ray</a><a href="#categories">DVD / CD</a><a href="#categories">The Crossovers</a><a href="#categories">Bi-Directional Media / Blu-Ray</a><a href="#categories">Bi-Directional Media / DVD</a><a href="#categories">Multimedia to Disc Duplicators</a><a href="#categories">Media / BD to Blu-Ray Discs</a><a href="#categories">Media / DVD to DVD</a><a href="#categories">USB to Disc Duplicators</a><a href="#categories">USB to DVD / CD</a></details><details><summary>Replacement Parts</summary><a href="#resources">Replacement Parts</a><a href="#resources">Controllers</a><a href="#resources">Optical Drives</a><a href="#resources">Work at Home Products</a><a href="#resources">Disposable Masks</a><a href="#resources">KN95 Masks</a><a href="#resources">Accessories</a><a href="#resources">Cables</a><a href="#resources">Stationery</a></details><a href="#quote">Get a Quote</a></div>
 <main id="top">
 <section class="hero hero-slider" id="hero" aria-roledescription="carousel" aria-label="Acumen Disc featured solutions">
   <div class="hero-slides" id="heroSlides">
@@ -603,6 +630,21 @@ if(!reduceMotion){
 }else{
   document.querySelectorAll('.reveal,.reveal-stagger').forEach(el=>el.classList.add('is-visible'));
 }
+
+
+const productNavDropdowns=[...document.querySelectorAll('.menu-dropdown')];
+productNavDropdowns.forEach(drop=>{
+  const trigger=drop.querySelector('.menu-trigger');
+  trigger?.addEventListener('click',e=>{
+    e.preventDefault();
+    const willOpen=!drop.classList.contains('is-open');
+    productNavDropdowns.forEach(d=>{d.classList.remove('is-open');d.querySelector('.menu-trigger')?.setAttribute('aria-expanded','false')});
+    if(willOpen){drop.classList.add('is-open');trigger.setAttribute('aria-expanded','true')}
+  });
+});
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.menu-dropdown')) productNavDropdowns.forEach(d=>{d.classList.remove('is-open');d.querySelector('.menu-trigger')?.setAttribute('aria-expanded','false')});
+});
 
 </script>
 </body></html>
