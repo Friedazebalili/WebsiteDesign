@@ -625,11 +625,11 @@ main{position:relative;isolation:isolate}
 .pdp-related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .pdp-related-card{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;display:flex;flex-direction:column;transition:.22s}
 .pdp-related-card:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
-.pdp-related-media{height:250px;background:linear-gradient(180deg,#fbfcfd,#f3f6f9);display:grid;place-items:center;padding:25px;position:relative}
-.pdp-related-media img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;filter:drop-shadow(0 14px 18px rgba(17,36,62,.13));transition:transform .35s cubic-bezier(.2,.7,.2,1),filter .35s ease}
+.pdp-related-media{height:205px;background:linear-gradient(180deg,#fbfcfd,#f3f6f9);display:grid;place-items:center;padding:20px;position:relative;overflow:hidden}
+.pdp-related-media img{width:auto;height:auto;max-width:88%;max-height:155px;object-fit:contain;object-position:center;display:block;filter:drop-shadow(0 12px 14px rgba(17,36,62,.11));transition:transform .35s cubic-bezier(.2,.7,.2,1),filter .35s ease}
 .pdp-related-card:hover .pdp-related-media img{transform:translateY(-5px) scale(1.035);filter:drop-shadow(0 20px 20px rgba(17,36,62,.17))}
 .pdp-related-badge{position:absolute;left:14px;top:14px;background:#fff0d3;color:#8c5600;border:1px solid #ffd88e;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;padding:6px 9px;border-radius:999px}
-.pdp-related-body{padding:18px;display:flex;flex:1;flex-direction:column}.pdp-related-body h3{font-size:14px;line-height:1.35;margin:0 0 7px}.pdp-related-meta{font-size:10px;color:var(--muted);margin-bottom:14px}.pdp-related-price{font-size:19px;font-weight:900;margin-top:auto;color:var(--navy)}
+.pdp-related-body{padding:16px;display:flex;flex:1;flex-direction:column}.pdp-related-body h3{font-size:14px;line-height:1.35;margin:0 0 7px}.pdp-related-meta{font-size:10px;color:var(--muted);margin-bottom:13px}.pdp-related-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:12px;border-top:1px solid #edf1f5}.pdp-related-price{font-size:18px;font-weight:900;color:var(--navy)}.pdp-related-cart{width:38px;height:38px;border-radius:8px;border:1px solid #d8e1ea;background:#fff;color:var(--navy);display:grid;place-items:center;cursor:pointer;transition:.2s}.pdp-related-cart:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-1px)}.pdp-related-cart .icon{width:16px;height:16px}
 
 .pdp-toast{position:fixed;right:22px;bottom:22px;z-index:120;background:var(--navy);color:#fff;padding:13px 16px;border-radius:10px;box-shadow:0 18px 48px rgba(5,24,47,.25);display:flex;align-items:center;gap:9px;font-size:11px;font-weight:800;transform:translateY(100px);opacity:0;transition:.25s}
 .pdp-toast.show{transform:none;opacity:1}.pdp-toast .icon{width:16px;height:16px;color:var(--gold2)}
@@ -649,7 +649,7 @@ main{position:relative;isolation:isolate}
   .pdp-qty-row{grid-template-columns:92px minmax(0,1fr)}.pdp-po{align-items:flex-start;flex-direction:column;gap:7px}
   .pdp-panel{padding:35px 0 40px}.pdp-tabs{gap:25px}.pdp-tab{font-size:11px;padding:18px 0 16px}
   .pdp-copy h2,.pdp-specs h2,.pdp-reviews h2{font-size:25px}.pdp-spec-table th{width:40%}
-  .pdp-related{padding:55px 0 62px}.pdp-related-grid{grid-template-columns:1fr 1fr;gap:12px}.pdp-related-media{height:170px;padding:18px}.pdp-related-body{padding:13px}.pdp-related-body h3{font-size:11px}.pdp-related-price{font-size:15px}
+  .pdp-related{padding:55px 0 62px}.pdp-related-grid{grid-template-columns:1fr 1fr;gap:12px}.pdp-related-media{height:150px;padding:14px}.pdp-related-media img{max-height:112px;max-width:90%}.pdp-related-body{padding:13px}.pdp-related-body h3{font-size:11px}.pdp-related-price{font-size:15px}.pdp-related-cart{width:34px;height:34px}
 }
 @media(max-width:380px){.pdp-qty-row{grid-template-columns:1fr}.pdp-qty{width:104px}.pdp-related-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.pdp-related-card,.pdp-related-media img,.pdp-toast{transition:none!important}}
@@ -853,19 +853,19 @@ main{position:relative;isolation:isolate}
       <div class="pdp-related-grid">
         <a class="pdp-related-card" href="#">
           <div class="pdp-related-media"><span class="pdp-related-badge">USB</span><img data-index-product="usb" alt="Acumen Disc USB duplicator"></div>
-          <div class="pdp-related-body"><h3>Compact USB Duplicator</h3><div class="pdp-related-meta">USB Compact · Standalone</div><div class="pdp-related-price">$429.00</div></div>
+          <div class="pdp-related-body"><h3>Compact USB Duplicator</h3><div class="pdp-related-meta">USB Compact · Standalone</div><div class="pdp-related-bottom"><div class="pdp-related-price">$429.00</div><button class="pdp-related-cart" type="button" aria-label="Add product to cart" data-related-cart><svg class="icon"><use href="#i-cart"/></svg></button></div></div>
         </a>
         <a class="pdp-related-card" href="#">
           <div class="pdp-related-media"><img data-index-product="sd" alt="Acumen Disc SD duplicator"></div>
-          <div class="pdp-related-body"><h3>Acumen Disc 1 to 7 SD Duplicator</h3><div class="pdp-related-meta">SD Card Duplicators</div><div class="pdp-related-price">$600.00</div></div>
+          <div class="pdp-related-body"><h3>Acumen Disc 1 to 7 SD Duplicator</h3><div class="pdp-related-meta">SD Card Duplicators</div><div class="pdp-related-bottom"><div class="pdp-related-price">$600.00</div><button class="pdp-related-cart" type="button" aria-label="Add product to cart" data-related-cart><svg class="icon"><use href="#i-cart"/></svg></button></div></div>
         </a>
         <a class="pdp-related-card" href="#">
           <div class="pdp-related-media"><img data-index-product="nvme" alt="Acumen Disc NVMe duplicator"></div>
-          <div class="pdp-related-body"><h3>1 to 4 M.2 NVMe Compact Duplicator</h3><div class="pdp-related-meta">NVMe / M.2 · Compact</div><div class="pdp-related-price">$799.00</div></div>
+          <div class="pdp-related-body"><h3>1 to 4 M.2 NVMe Compact Duplicator</h3><div class="pdp-related-meta">NVMe / M.2 · Compact</div><div class="pdp-related-bottom"><div class="pdp-related-price">$799.00</div><button class="pdp-related-cart" type="button" aria-label="Add product to cart" data-related-cart><svg class="icon"><use href="#i-cart"/></svg></button></div></div>
         </a>
         <a class="pdp-related-card" href="#">
           <div class="pdp-related-media"><img data-index-product="hdd" alt="Acumen Disc forensic HDD duplicator"></div>
-          <div class="pdp-related-body"><h3>Forensic 1 to 3 SATA II HDD Duplicator</h3><div class="pdp-related-meta">Forensic · HDD / SSD</div><div class="pdp-related-price">$3,295.00</div></div>
+          <div class="pdp-related-body"><h3>Forensic 1 to 3 SATA II HDD Duplicator</h3><div class="pdp-related-meta">Forensic · HDD / SSD</div><div class="pdp-related-bottom"><div class="pdp-related-price">$3,295.00</div><button class="pdp-related-cart" type="button" aria-label="Add product to cart" data-related-cart><svg class="icon"><use href="#i-cart"/></svg></button></div></div>
         </a>
       </div>
     </div>
@@ -912,6 +912,20 @@ document.getElementById('pdpAdd')?.addEventListener('click',()=>{
   toast.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
+});
+
+
+document.querySelectorAll('[data-related-cart]').forEach(button=>{
+  button.addEventListener('click',e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    const count=document.getElementById('cartCount');
+    if(count) count.textContent=Number(count.textContent||0)+1;
+    document.getElementById('pdpToastText').textContent='Product added to cart';
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
+  });
 });
 
 const tabs=[...document.querySelectorAll('.pdp-tab')];
