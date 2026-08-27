@@ -560,10 +560,6 @@ main{position:relative;isolation:isolate}
 .pdp-stage:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(7,31,63,.017) 1px,transparent 1px),linear-gradient(90deg,rgba(7,31,63,.017) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(135deg,transparent,#000 45%,transparent 100%);pointer-events:none}
 .pdp-stage img{position:relative;z-index:1;display:block;width:auto;height:auto;max-width:78%;max-height:475px;object-fit:contain;object-position:center}
 .pdp-stage-label{position:absolute;left:18px;top:18px;z-index:2;font-size:9px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:#915900;background:#fff2d8;border:1px solid #ffd98e;border-radius:999px;padding:6px 9px}
-.pdp-image-note{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 2px 0;color:#7c8a9c;font-size:10px}
-.pdp-image-note strong{color:#415970;font-weight:800}
-.pdp-image-note span:last-child{white-space:nowrap}
-
 .pdp-info{padding:9px 0 0}
 .pdp-kicker{display:flex;align-items:center;gap:9px;color:#a76400;font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:900;margin:0 0 13px}
 .pdp-kicker:before{content:"";width:27px;height:2px;background:var(--gold)}
@@ -644,8 +640,7 @@ main{position:relative;isolation:isolate}
   .pdp-copy-list{grid-template-columns:1fr}.pdp-review-top{grid-template-columns:1fr;gap:25px}.pdp-review-empty{border-left:0;border-top:1px solid var(--line);padding:24px 0 0}
 }
 @media(max-width:560px){
-  .pdp-breadcrumb{padding-top:15px}.pdp-main{padding-top:20px}.pdp-stage{height:345px}.pdp-stage img{max-width:84%;max-height:280px}.pdp-image-note{font-size:9px}
-  .pdp-info h1{font-size:36px}.pdp-intro{font-size:13px}.pdp-price{font-size:29px}.pdp-keyline{gap:10px 14px}
+  .pdp-breadcrumb{padding-top:15px}.pdp-main{padding-top:20px}.pdp-stage{height:345px}.pdp-stage img{max-width:84%;max-height:280px}.pdp-info h1{font-size:36px}.pdp-intro{font-size:13px}.pdp-price{font-size:29px}.pdp-keyline{gap:10px 14px}
   .pdp-qty-row{grid-template-columns:92px minmax(0,1fr)}.pdp-po{align-items:flex-start;flex-direction:column;gap:7px}
   .pdp-panel{padding:35px 0 40px}.pdp-tabs{gap:25px}.pdp-tab{font-size:11px;padding:18px 0 16px}
   .pdp-copy h2,.pdp-specs h2,.pdp-reviews h2{font-size:25px}.pdp-spec-table th{width:40%}
@@ -653,6 +648,27 @@ main{position:relative;isolation:isolate}
 }
 @media(max-width:380px){.pdp-qty-row{grid-template-columns:1fr}.pdp-qty{width:104px}.pdp-related-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.pdp-related-card,.pdp-related-media img,.pdp-toast{transition:none!important}}
+
+
+
+.pdp-thumbnails{display:grid;grid-template-columns:repeat(5,72px);gap:9px;margin-top:12px}
+.pdp-thumb{height:72px;border:1px solid #dfe6ee;background:#f8fafc;border-radius:8px;display:grid;place-items:center;padding:7px;overflow:hidden;cursor:pointer;transition:border-color .2s,box-shadow .2s,background .2s}
+.pdp-thumb:hover{border-color:#c7d3df;background:#fff}
+.pdp-thumb.is-active{border-color:#d89a32;background:#fff;box-shadow:0 0 0 2px rgba(232,154,7,.08)}
+.pdp-thumb img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;pointer-events:none}
+.pdp-thumb[data-view="close"] img{transform:scale(1.18)}
+.pdp-thumb[data-view="left"] img{transform:scale(1.12) translateX(7%)}
+.pdp-thumb[data-view="right"] img{transform:scale(1.12) translateX(-7%)}
+.pdp-thumb[data-view="detail"] img{transform:scale(1.28) translateY(4%)}
+.pdp-stage img[data-view="full"]{max-width:78%;max-height:475px;transform:none}
+.pdp-stage img[data-view="close"]{max-width:88%;max-height:510px;transform:scale(1.08)}
+.pdp-stage img[data-view="left"]{max-width:88%;max-height:510px;transform:scale(1.06) translateX(5%)}
+.pdp-stage img[data-view="right"]{max-width:88%;max-height:510px;transform:scale(1.06) translateX(-5%)}
+.pdp-stage img[data-view="detail"]{max-width:92%;max-height:525px;transform:scale(1.15) translateY(2%)}
+@media(max-width:560px){
+  .pdp-thumbnails{grid-template-columns:repeat(5,minmax(54px,1fr));gap:6px}
+  .pdp-thumb{height:58px;padding:5px}
+}
 
 </style>
 </head>
@@ -721,11 +737,25 @@ main{position:relative;isolation:isolate}
       <div class="pdp-gallery">
         <div class="pdp-stage">
           <span class="pdp-stage-label">Best seller</span>
-          <img data-index-product="usb" alt="Acumen Disc 1 to 7 USB duplicator tower">
+          <img id="pdpMainProductImage" data-index-product="usb" data-view="full" alt="Acumen Disc 1 to 7 USB duplicator tower">
         </div>
-        <div class="pdp-image-note">
-          <strong>Acumen Disc USB duplicator</strong>
-          <span>Product image from the homepage catalog</span>
+
+        <div class="pdp-thumbnails" aria-label="Product images">
+          <button class="pdp-thumb is-active" type="button" data-gallery-view="full" aria-label="View full product image">
+            <img data-index-product="usb" data-view="full" alt="">
+          </button>
+          <button class="pdp-thumb" type="button" data-gallery-view="close" aria-label="View closer product image">
+            <img data-index-product="usb" data-view="close" alt="">
+          </button>
+          <button class="pdp-thumb" type="button" data-gallery-view="left" aria-label="View left product detail">
+            <img data-index-product="usb" data-view="left" alt="">
+          </button>
+          <button class="pdp-thumb" type="button" data-gallery-view="right" aria-label="View right product detail">
+            <img data-index-product="usb" data-view="right" alt="">
+          </button>
+          <button class="pdp-thumb" type="button" data-gallery-view="detail" aria-label="View product detail">
+            <img data-index-product="usb" data-view="detail" alt="">
+          </button>
         </div>
       </div>
 
@@ -895,6 +925,18 @@ const productImages={"usb": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAIAA
 document.querySelectorAll('[data-index-product]').forEach(img=>{
   const key=img.dataset.indexProduct;
   if(productImages[key]) img.src=productImages[key];
+});
+
+
+const pdpMainProductImage=document.getElementById('pdpMainProductImage');
+document.querySelectorAll('[data-gallery-view]').forEach(button=>{
+  button.addEventListener('click',()=>{
+    document.querySelectorAll('[data-gallery-view]').forEach(x=>x.classList.remove('is-active'));
+    button.classList.add('is-active');
+    if(pdpMainProductImage){
+      pdpMainProductImage.dataset.view=button.dataset.galleryView;
+    }
+  });
 });
 
 const qty=document.getElementById('pdpQty');
