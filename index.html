@@ -2202,6 +2202,98 @@ body{background:#fff}
 }
 </style>
 
+
+
+
+
+
+
+
+
+
+
+<style id="ezdupe-one-by-one-card-animation">
+/* Keep the approved EZ Dupe blue buttons */
+.ez-header .ez-contact,
+.hero .hero-actions .btn-primary{
+  background:#4f9bca !important;
+  border-color:#4f9bca !important;
+  color:#fff !important;
+  box-shadow:0 8px 20px rgba(79,155,202,.16);
+  transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease !important;
+}
+.ez-header .ez-contact:hover,
+.hero .hero-actions .btn-primary:hover{
+  background:#3f89b5 !important;
+  border-color:#3f89b5 !important;
+  transform:translateY(-2px);
+  box-shadow:0 12px 26px rgba(79,155,202,.22);
+}
+
+/* Each individual card waits for its turn */
+.ez-card-sequence{
+  opacity:0;
+  transform:translateY(34px);
+  transition:
+    opacity .58s cubic-bezier(.22,.72,.22,1),
+    transform .58s cubic-bezier(.22,.72,.22,1);
+  will-change:opacity,transform;
+}
+
+.ez-card-sequence.ez-card-show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Alternate direction slightly so the sequence feels natural */
+.ez-card-sequence.ez-slide-left{
+  transform:translateX(-34px);
+}
+.ez-card-sequence.ez-slide-right{
+  transform:translateX(34px);
+}
+.ez-card-sequence.ez-slide-left.ez-card-show,
+.ez-card-sequence.ez-slide-right.ez-card-show{
+  transform:translateX(0);
+}
+
+/* Hover happens only after entrance */
+.product-card,
+.series-card,
+.media-link,
+.workflow-card,
+.resource-card,
+.trust-item,
+.proc-panel{
+  transition:
+    transform .24s ease,
+    box-shadow .24s ease,
+    border-color .24s ease,
+    opacity .58s cubic-bezier(.22,.72,.22,1);
+}
+.product-card:hover,
+.series-card:hover,
+.workflow-card:hover,
+.resource-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 34px rgba(22,28,33,.07);
+}
+.media-link:hover,
+.proc-panel:hover{
+  transform:translateY(-3px);
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ez-card-sequence,
+  .ez-card-sequence.ez-slide-left,
+  .ez-card-sequence.ez-slide-right{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="utility"><div class="container utility-inner"><div class="utility-left"><span>Professional data duplication systems since 1995</span><a href="page.html#government">Government &amp; School Orders</a></div><div class="utility-right"><a href="page.html#manuals">Manuals</a><a href="page.html#support">Support</a><span>Sales: 1-626-322-3852</span></div></div></div>
@@ -2302,8 +2394,9 @@ body{background:#fff}
 </div>
 
 <main>
-<section class="hero"><div class="container hero-grid"><div class="hero-copy"><div class="kicker">Professional duplication hardware</div><h1>Built for the <span class="text-accent">media</span> you work with.</h1><p>EZ Dupe designs standalone duplication systems for USB, SD and microSD, NVMe, HDD and SSD, CompactFlash, CFast and optical media — from compact desktop units to high-volume production systems.</p><div class="hero-actions"><a class="btn btn-primary" href="collection.html">Browse all products</a><a class="btn btn-secondary" href="#finder">Find the right duplicator</a></div><div class="hero-proof">
-        <div><strong>30 years</strong><span>Duplicator development experience</span></div>
+<section class="hero"><div class="container hero-grid"><div class="hero-copy"><div class="kicker">Professional duplication hardware</div><h1>Built for the <span class="text-accent">media</span> you work with.</h1><p>EZ Dupe designs standalone duplication systems for USB, SD and microSD, NVMe, HDD and SSD, CompactFlash, CFast and optical media — from compact desktop units to high-volume production systems.</p><div class="hero-actions"><a class="btn btn-primary" href="collection.html">Browse all products</a><a class="btn btn-secondary" href="#finder">Find the right duplicator</a></div>
+        <div class="hero-proof">
+        <div><strong>30 years</strong><span>Duplicator experience</span></div>
         <div><strong>5 continents</strong><span>Global reach</span></div>
         <div><strong>112 countries</strong><span>Customers worldwide</span></div>
       </div>
@@ -2821,5 +2914,85 @@ document.getElementById('heroNext')?.addEventListener('click',()=>showHeroSlide(
 
 
 </script>
+
+
+
+
+
+
+
+
+
+
+<script id="ezdupe-one-by-one-card-animation">
+document.addEventListener('DOMContentLoaded',()=>{
+  const cardSelector = [
+    '.media-link',
+    '.series-card',
+    '.product-card',
+    '.workflow-card',
+    '.resource-card',
+    '.trust-item',
+    '.proc-panel'
+  ].join(',');
+
+  const allCards = [...document.querySelectorAll(cardSelector)];
+
+  // Prepare every card, but do not reveal it yet.
+  allCards.forEach(card=>{
+    card.classList.add('ez-card-sequence');
+  });
+
+  // Group cards by their direct parent so each row/grid animates in sequence.
+  const groups = new Map();
+
+  allCards.forEach(card=>{
+    const parent = card.parentElement;
+    if(!groups.has(parent)) groups.set(parent, []);
+    groups.get(parent).push(card);
+  });
+
+  // Apply a subtle alternating slide direction within each group.
+  groups.forEach(cards=>{
+    cards.forEach((card,index)=>{
+      if(index % 3 === 1) card.classList.add('ez-slide-left');
+      if(index % 3 === 2) card.classList.add('ez-slide-right');
+    });
+  });
+
+  const revealGroup = cards=>{
+    cards.forEach((card,index)=>{
+      // Clearly one-by-one instead of nearly simultaneous.
+      window.setTimeout(()=>{
+        card.classList.add('ez-card-show');
+      }, index * 180);
+    });
+  };
+
+  if('IntersectionObserver' in window){
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+
+        const cards = groups.get(entry.target);
+        if(cards){
+          revealGroup(cards);
+          observer.unobserve(entry.target);
+        }
+      });
+    },{
+      threshold:0.12,
+      rootMargin:'0px 0px -45px 0px'
+    });
+
+    groups.forEach((cards,parent)=>{
+      observer.observe(parent);
+    });
+  }else{
+    groups.forEach(cards=>revealGroup(cards));
+  }
+});
+</script>
+
 </body>
 </html>
