@@ -35,7 +35,7 @@ h2{font-size:clamp(32px,3.6vw,56px);line-height:.95}
 h3{font-family:var(--display);font-stretch:108%;font-weight:800;margin:0;line-height:1.1}
 p{margin:0;color:var(--muted)}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--brand-hi)}
-.eyebrow:before{content:"";width:26px;height:2px;border-radius:2px;background:var(--grad-btn)}
+.eyebrow:before{display:none}
 .eyebrow.plain:before{display:none}
 .grad{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
 .lead{font-size:18px;color:#aeb7c6;max-width:560px}
