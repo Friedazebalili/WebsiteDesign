@@ -534,3 +534,4 @@ body:after{content:"";position:fixed;inset:0;z-index:100;pointer-events:none;opa
 .btn-primary:hover:before{left:120%}
 /* scroll progress */
 .progress{position:fixed;left:0;top:0;height:2px;width:100%;transform-origin:left;transform:scaleX(var(--p,0));background:var(--grad-btn);z-index:90;box-shadow:0 0 12px var(--brand)}
+.finder-intro h2{font-size:clamp(30px,2.9vw,46px)}
