@@ -54,6 +54,12 @@
     io ? io.observe(el) : el.classList.add('in');
   });
 
+  /* reveal anything already on screen at load (don't wait for a scroll) */
+  requestAnimationFrame(() => $$('[data-reveal],[data-split]').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < innerHeight && r.bottom > 0) el.classList.add('in');
+  }));
+
   /* count-up numbers */
   const counters = $$('[data-count]');
   const cio = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
