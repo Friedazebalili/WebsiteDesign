@@ -229,6 +229,15 @@
     sublinks.forEach(a => { const t = $(a.getAttribute('href')); t && sio.observe(t); });
   }
 
+  /* product gallery: thumbnails swap the main image */
+  const mainImg = $('[data-main]'), stage = mainImg && mainImg.closest('.pd-stage');
+  $$('.thumb').forEach(t => t.addEventListener('click', () => {
+    if (t.classList.contains('active')) return;
+    $$('.thumb').forEach(x => x.classList.remove('active')); t.classList.add('active');
+    stage.classList.add('swap');
+    setTimeout(() => { mainImg.src = t.dataset.src; stage.classList.remove('swap'); }, 200);
+  }));
+
   /* demo-only buttons */
   $$('[data-demo]').forEach(b => b.addEventListener('click', e => {
     e.preventDefault();
