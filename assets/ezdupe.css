@@ -636,3 +636,13 @@ body:after{content:"";position:fixed;inset:0;z-index:100;pointer-events:none;opa
   .slide .wrap{padding:22px 0 34px}
   .slide-word{bottom:0}
 }
+
+/* product features — compact cards */
+.fgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.fcard{position:relative;padding:28px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(175deg,var(--s2),var(--s1));display:grid;gap:12px;align-content:start;transition:transform .3s,box-shadow .3s,border-color .3s}
+.fcard:hover{transform:translateY(-5px);border-color:transparent;box-shadow:var(--glow)}
+.fnum{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:44px;line-height:.9;color:transparent;-webkit-text-stroke:1px rgba(124,196,236,.55)}
+.fcard h3{font-size:19px;text-transform:uppercase;font-weight:900;font-stretch:112%}
+.fcard p{font-size:14px}
+@media (max-width:1180px){.fgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.fgrid{grid-template-columns:minmax(0,1fr)}}
