@@ -244,3 +244,36 @@
     const old = b.innerHTML; b.innerHTML = b.dataset.demo; setTimeout(() => b.innerHTML = old, 1600);
   }));
 })();
+
+/* ---- queued image loader: esystor throttles parallel hotlinks ---- */
+(function(){
+  var q=[],active=0,MAX=3;
+  function pump(){
+    while(active<MAX&&q.length){
+      (function(job){
+        active++;
+        var im=new Image();
+        im.onload=function(){job.el.src=job.url;job.el.removeAttribute('data-img');job.el.classList.add('img-in');active--;pump()};
+        im.onerror=function(){
+          active--;
+          if(job.tries<4){job.tries++;setTimeout(function(){q.push(job);pump()},300*job.tries)}
+          else pump();
+        };
+        im.src=job.url;
+      })(q.shift());
+    }
+  }
+  function enqueue(el){
+    if(el.dataset.queued)return; el.dataset.queued='1';
+    q.push({el:el,url:el.dataset.img,tries:0}); pump();
+  }
+  function init(){
+    var els=[].slice.call(document.querySelectorAll('img[data-img]'));
+    if(!('IntersectionObserver' in window)){els.forEach(enqueue);return}
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);enqueue(e.target)}})
+    },{rootMargin:'600px 0px'});
+    els.forEach(function(el){io.observe(el)});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
