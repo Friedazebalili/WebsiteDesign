@@ -162,6 +162,38 @@ details.q:hover{border-color:rgba(242,112,29,.5)}
 .ft a:hover{color:var(--brand-hi)}
 .ftb{border-top:1px solid rgba(255,255,255,.1);margin-top:34px;padding-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px}
 
+/* ---- real logo, badges, search, sitemap ---- */
+.brand img{height:46px;width:auto;display:block}
+.flogo{height:52px;width:auto;margin-bottom:4px;filter:brightness(1.12)}
+.util-sep{width:1px;height:14px;background:rgba(255,255,255,.22)}
+.xlate{display:inline-flex;align-items:center;min-height:22px}
+.goog-te-gadget{font-size:0!important;color:transparent!important}
+.goog-te-gadget .goog-te-combo{margin:0!important;font:600 12px var(--body)!important;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:7px;padding:3px 6px}
+.goog-te-gadget-icon{display:none!important}
+body{top:0!important}
+.badgebar{background:var(--paper);border-bottom:1px solid var(--rule)}
+.badgebar .wrap{display:flex;align-items:center;gap:22px;padding:13px 0;flex-wrap:wrap}
+.bdg{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--muted);font-size:11.5px;line-height:1.35}
+.bdg img{height:34px;width:auto}
+.bdg b{color:var(--text);font-weight:700;font-size:12.5px}
+.bdg:hover b{color:var(--brand-hi)}
+.bdg-eu{margin-left:auto;text-align:right}
+.srch{flex:1 1 300px;display:flex;max-width:460px;border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:#fff}
+.srch input{flex:1;min-width:0;border:0;outline:0;padding:11px 14px;font:500 13.5px var(--body);color:var(--text);background:transparent}
+.srch button{border:0;background:var(--brand);color:#fff;font:800 11.5px var(--body);letter-spacing:.09em;text-transform:uppercase;padding:0 18px;cursor:pointer}
+.srch button:hover{background:var(--brand-hi)}
+.sitemap{background:var(--paper);border-top:1px solid var(--rule);padding:clamp(40px,5vw,64px) 0}
+.sm-head{margin-bottom:28px}
+.sm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.sm-grid h4{font:800 11.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid var(--rule)}
+.sm-grid a{display:block;padding:5px 0;font-size:13.5px;color:var(--muted);text-decoration:none}
+.sm-grid a:hover{color:var(--brand-hi)}
+.ftbadges{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1)}
+.ftbadges img{height:36px;width:auto;background:#fff;border-radius:6px;padding:3px}
+.ftbadges img[alt*="IDDA"]{height:54px}
+@media (max-width:900px){.sm-grid{grid-template-columns:repeat(2,1fr)}.bdg-eu{margin-left:0}}
+@media (max-width:560px){.sm-grid{grid-template-columns:1fr}.brand img{height:38px}}
+
 /* ---- reveal ---- */
 .rv{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
@@ -188,12 +220,26 @@ details.q:hover{border-color:rgba(242,112,29,.5)}
 
 <div class="util"><div class="wrap">
   <span><b>Free shipping</b> on US orders</span>
-  <span><b>GSA GS-35F-333BA</b></span>
-  <span class="r"><a href="page.html#manuals">Manuals</a><a href="page.html#support">Support</a><a href="tel:18664441876">866.444.1876</a></span>
+  <span class="util-sep"></span>
+  <span><b>866.444.1876</b> · Mon to Fri, 8:00 to 16:00 Pacific</span>
+  <span class="r">
+    <span class="xlate" id="google_translate_element" title="Translate this site"></span>
+    <a href="page.html#manuals">Manuals</a><a href="page.html#support">Support</a>
+    <a href="page.html#contact">Sign in</a>
+  </span>
+</div></div>
+
+<div class="badgebar"><div class="wrap">
+  <a class="bdg" href="page.html#government"><img src="https://www.esystor.com/images/government_orders.png" alt="GSA government orders, contract GS-35F-333BA" width="250" height="40"><span>Government &amp; school orders<br><b>GSA GS-35F-333BA</b></span></a>
+  <form class="srch" role="search" onsubmit="event.preventDefault();location.href='collection.html'">
+    <input type="search" aria-label="Search products" placeholder="Search by model, media or target count">
+    <button type="submit" aria-label="Search">Search</button>
+  </form>
+  <a class="bdg bdg-eu" href="https://www.duplicators4all.com" rel="noopener"><span>European buyers<br><b>duplicators4all.com</b></span><img src="https://www.esystor.com/images/duplicator4all.png" alt="Duplicators4All, European distributor" width="200" height="40"></a>
 </div></div>
 
 <header class="hd"><div class="wrap">
-  <a href="index.html" aria-label="Systor home"><span class="mark">Sys<b>TOR</b></span></a>
+  <a class="brand" href="index.html" aria-label="Systor home"><img src="https://www.esystor.com/images/systor_logo.png" alt="Systor Systems" width="350" height="120"></a>
   <nav>
     <a href="collection.html">Duplicators</a>
     <a href="collection.html">Sanitizers</a>
@@ -460,18 +506,28 @@ details.q:hover{border-color:rgba(242,112,29,.5)}
   </div>
 </section>
 
+
+<section class="sitemap"><div class="wrap">
+  <div class="sm-head"><span class="eyebrow2">Full product index</span><h2 class="h2">Every duplicator family.</h2></div>
+  <div class="sm-grid"><div><h4>M.2 NVMe PCIe</h4><a href="collection.html">All M.2 NVMe systems</a><a href="collection.html">NX Series</a><a href="collection.html">YL Series</a><a href="collection.html">M2 Series</a><a href="collection.html">HC Series</a><a href="collection.html">XW Series</a><a href="collection.html">SF Series</a></div><div><h4>Hard drive &amp; SSD</h4><a href="collection.html">All hard drive systems</a><a href="collection.html">Dual-port SATA</a><a href="collection.html">Flatbed SATA</a><a href="collection.html">Rackmount SATA</a><a href="collection.html">USB to hard drive</a><a href="collection.html">Portable SATA</a></div><div><h4>Flash media</h4><a href="collection.html">All memory card systems</a><a href="collection.html">USB flash</a><a href="collection.html">SD / microSD</a><a href="collection.html">CompactFlash</a><a href="collection.html">CFast</a><a href="collection.html">eUSB drive</a><a href="collection.html">MultiMedia Center</a><a href="collection.html">MultiMedia Center Plus</a><a href="collection.html">All-in-one USB/SD/CF/BD</a></div><div><h4>CD, DVD &amp; Blu-ray</h4><a href="collection.html">All optical systems</a><a href="collection.html">Tower DVD / CD</a><a href="collection.html">Blu-ray</a><a href="collection.html">Daisy chain</a><a href="collection.html">Rackmount optical</a><a href="collection.html">USB backup DVD</a><a href="collection.html">M-Disc media</a><a href="collection.html">LightScribe media</a></div></div>
+</div></section>
 </main>
 
 <footer class="ft"><div class="wrap">
   <div class="ftg">
     <div>
-      <span class="mark">Sys<b>TOR</b></span>
+      <img class="flogo" src="https://www.esystor.com/images/systor_logo.png" alt="Systor Systems" width="350" height="120">
       <p style="margin:14px 0 0;max-width:32ch">Systor Systems, Inc. Standalone duplication and sanitization hardware, built and supported in the United States since 1997.</p>
       <p style="margin-top:14px"><a href="tel:18664441876" style="display:inline;color:#fff;font-weight:600">866.444.1876</a> · Mon to Fri, 8:00 to 16:00 Pacific</p>
     </div>
     <div><h4>Shop</h4><a href="collection.html">SATA HDD / SSD</a><a href="collection.html">M.2 NVMe</a><a href="collection.html">USB &amp; flash</a><a href="collection.html">SD / microSD</a><a href="collection.html">CD, DVD &amp; Blu-ray</a></div>
     <div><h4>Support</h4><a href="#faq">FAQ</a><a href="page.html#manuals">Manuals &amp; firmware</a><a href="page.html#warranty">Warranty</a><a href="page.html#contact">Contact support</a></div>
     <div><h4>Company</h4><a href="page.html">About Systor</a><a href="page.html#government">Government &amp; education</a><a href="#range">Models &amp; pricing</a><a href="product-configurator.html">Build a system</a></div>
+  </div>
+  <div class="ftbadges">
+    <a href="page.html#government"><img src="https://www.esystor.com/images/government_orders.png" alt="GSA government orders" width="250" height="40"></a>
+    <img src="https://www.esystor.com/mm5/graphics/0002/footer/IDDA-logo.jpg" alt="International Disc Duplicating Association member" width="100" height="100">
+    <a href="https://www.duplicators4all.com" rel="noopener"><img src="https://www.esystor.com/images/duplicator4all.png" alt="Duplicators4All European buyers" width="200" height="40"></a>
   </div>
   <div class="ftb"><span>© 1997 to 2026 Systor Systems, Inc. All rights reserved.</span><span>Privacy · Store policy · Terms of service</span></div>
 </div></footer>
@@ -503,5 +559,9 @@ details.q:hover{border-color:rgba(242,112,29,.5)}
   } else rv.forEach(function(el){el.classList.add('in')});
 })();
 </script>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',autoDisplay:false},'google_translate_element')}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
