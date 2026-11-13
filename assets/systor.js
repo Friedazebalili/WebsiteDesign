@@ -54,6 +54,9 @@
     io ? io.observe(el) : el.classList.add('in');
   });
 
+  /* safety net: never leave content invisible if the observer never fires */
+  setTimeout(() => $$('[data-reveal],[data-split]').forEach(el => el.classList.add('in')), 4000);
+
   /* reveal anything already on screen at load (don't wait for a scroll) */
   requestAnimationFrame(() => $$('[data-reveal],[data-split]').forEach(el => {
     const r = el.getBoundingClientRect();
