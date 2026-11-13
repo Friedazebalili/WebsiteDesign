@@ -268,12 +268,10 @@
     q.push({el:el,url:el.dataset.img,tries:0}); pump();
   }
   function init(){
-    var els=[].slice.call(document.querySelectorAll('img[data-img]'));
-    if(!('IntersectionObserver' in window)){els.forEach(enqueue);return}
-    var io=new IntersectionObserver(function(en){
-      en.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);enqueue(e.target)}})
-    },{rootMargin:'600px 0px'});
-    els.forEach(function(el){io.observe(el)});
+    /* Queue every image straight away, in document order: three at a time is
+       gentle enough for the source server, and it does not depend on the tab
+       being painted the way an IntersectionObserver would. */
+    [].slice.call(document.querySelectorAll('img[data-img]')).forEach(enqueue);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
