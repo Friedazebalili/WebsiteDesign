@@ -55,8 +55,7 @@ p{margin:0}
 :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
 
 .sec{padding:clamp(58px,7vw,108px) 0}
-.label{display:inline-flex;align-items:center;gap:9px;font:600 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
-.label i{width:5px;height:5px;border-radius:50%;background:var(--amber);box-shadow:0 0 12px var(--amber)}
+.label{display:inline-block;font:600 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
 h2.t{font-size:clamp(30px,3.9vw,54px)}
 .intro{font-size:17px;line-height:1.62;color:var(--dim);max-width:56ch;margin-top:15px}
 .hrow{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:40px}
@@ -78,61 +77,76 @@ h2.t{font-size:clamp(30px,3.9vw,54px)}
 .lnk svg{width:15px;height:15px;transition:transform .2s}
 .lnk:hover svg{transform:translateX(4px)}
 
-/* utility */
-.util{background:rgba(0,0,0,.5);border-bottom:1px solid var(--edge);color:var(--dim);font-size:12.5px}
-.util .wrap{display:flex;align-items:center;gap:16px;min-height:38px;flex-wrap:wrap}
-.util b{color:#fff;font-weight:600}
-.util .r{margin-left:auto;display:flex;align-items:center;gap:16px}
-.util a{color:var(--dim);text-decoration:none}.util a:hover{color:var(--amber)}
-.util .pipe{width:1px;height:13px;background:var(--edge-2)}
-.goog-te-gadget{font-size:0!important;color:transparent!important}
-.goog-te-gadget .goog-te-combo{margin:0!important;font:500 12px var(--body)!important;background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--edge-2);border-radius:7px;padding:3px 5px}
-.goog-te-gadget-icon{display:none!important}
+/* utility strip */
+.util{background:rgba(0,0,0,.55);border-bottom:1px solid var(--edge);color:var(--dim-2);font-size:12px}
+.util .wrap{display:flex;align-items:center;gap:18px;min-height:40px;flex-wrap:wrap}
+.util b{color:var(--ice);font-weight:600}
+.u-chip{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--dim-2);white-space:nowrap}
+.u-chip img{height:19px;width:auto;background:#fff;border-radius:4px;padding:1px 3px;opacity:.8;transition:.18s}
+.u-chip:hover img{opacity:1}
+.u-chip:hover span,.u-chip:hover b{color:var(--amber)}
+.u-chip b{font-family:var(--mono);font-weight:500}
+.u-r{margin-left:auto;display:flex;align-items:center;gap:16px}
+.util a{color:var(--dim-2);text-decoration:none}
+.util .u-r a:hover{color:var(--amber)}
+.lang{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--edge-2);border-radius:8px;padding:4px 8px 4px 9px;background:var(--lift);transition:.18s}
+.lang:hover{border-color:rgba(255,255,255,.32)}
+.lang svg{width:14px;height:14px;color:var(--dim);flex:0 0 auto}
+.lang select{appearance:none;-webkit-appearance:none;border:0;background-color:transparent;color:var(--ice);font:500 12px var(--body);padding:2px 15px 2px 2px;cursor:pointer;outline:0;background-repeat:no-repeat;background-position:right 1px center;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='7'><path d='M1 1l4 4 4-4' stroke='%239aa1ae' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>")}
+.lang select option{background:#0b0d11;color:var(--ice)}
+#google_translate_element{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
+.goog-te-banner-frame,.skiptranslate iframe{display:none!important}
 body{top:0!important}
 
-.srv{border-bottom:1px solid var(--edge)}
-.srv .wrap{display:flex;align-items:center;gap:24px;padding:13px 0;flex-wrap:wrap}
-.bdg{display:flex;align-items:center;gap:11px;text-decoration:none;font-size:11.5px;line-height:1.35;color:var(--dim-2)}
-.bdg img{height:32px;width:auto;background:#fff;border-radius:5px;padding:2px 4px}
-.bdg b{display:block;color:var(--ice);font:500 12.5px var(--mono)}
-.bdg:hover b{color:var(--amber)}
-.bdg-eu{margin-left:auto;text-align:right}
-.srch{flex:1 1 280px;display:flex;max-width:440px;border:1px solid var(--edge);border-radius:11px;background:var(--lift);overflow:hidden}
-.srch input{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:11px 14px;font:400 13.5px var(--body);color:var(--ice)}
-.srch input::placeholder{color:var(--dim-2)}
-.srch button{border:0;background:transparent;color:var(--dim);padding:0 14px;cursor:pointer;display:grid;place-items:center}
-.srch button:hover{color:var(--amber)}
-.srch svg{width:17px;height:17px}
-
 /* header */
-.hd{position:sticky;top:0;z-index:70;background:rgba(7,8,11,.72);backdrop-filter:blur(16px);border-bottom:1px solid var(--edge)}
-.hd .wrap{display:flex;align-items:center;gap:26px;min-height:72px}
-.brand img{height:42px;width:auto}
-.hd nav{display:flex;gap:2px;margin-left:8px}
-.hd nav a{font:500 14px/1 var(--body);color:var(--dim);text-decoration:none;padding:10px 13px;border-radius:9px;transition:.18s}
+.hd{position:sticky;top:0;z-index:70;background:rgba(7,8,11,.74);backdrop-filter:blur(16px);border-bottom:1px solid var(--edge)}
+.hd .wrap{display:flex;align-items:center;gap:18px;min-height:76px}
+.brand img{height:44px;width:auto}
+.hd nav{display:flex;gap:1px;margin-left:6px;margin-right:auto}
+.hd nav a{font:500 13.5px/1 var(--body);color:var(--dim);text-decoration:none;padding:10px 12px;border-radius:9px;transition:.18s}
 .hd nav a:hover{background:var(--lift-2);color:#fff}
-.hd .r{margin-left:auto;display:flex;align-items:center;gap:15px}
+.hd .r{display:flex;align-items:center;gap:14px}
+.srch{display:flex;align-items:center;width:186px;border:1px solid var(--edge);border-radius:10px;background:var(--lift);overflow:hidden;transition:width .22s,border-color .22s}
+.srch:focus-within{width:248px;border-color:var(--edge-2)}
+.srch input{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:9px 12px 9px 0;font:400 13px var(--body);color:var(--ice)}
+.srch input::placeholder{color:var(--dim-2)}
+.srch button{border:0;background:transparent;color:var(--dim-2);padding:0 8px 0 11px;cursor:pointer;display:grid;place-items:center}
+.srch button:hover{color:var(--amber)}
+.srch svg{width:16px;height:16px}
 .tel{text-decoration:none;text-align:right}
-.tel b{display:block;font:500 16px/1.1 var(--mono);color:#fff}
+.tel b{display:block;font:500 15.5px/1.1 var(--mono);color:#fff}
 .tel small{display:block;font:400 11px/1.4 var(--body);color:var(--dim-2)}
 
 /* ---------- bento hero ---------- */
-.hero{padding:clamp(34px,4.6vw,62px) 0 0}
-.bento{display:grid;grid-template-columns:1.32fr .88fr;grid-template-rows:auto auto;gap:14px}
-.b-main{grid-row:1/3;padding:clamp(30px,3.6vw,52px)}
+.hero{padding:clamp(28px,4vw,54px) 0 0}
+.bento{display:grid;grid-template-columns:1.06fr .94fr;gap:16px;align-items:stretch}
+.b-main{padding:clamp(30px,3.6vw,54px);display:flex;flex-direction:column;justify-content:center}
 .b-main h1{font-size:clamp(38px,5.3vw,70px)}
 .b-main h1 .o{background:linear-gradient(100deg,#ffb27a,#ff6b1a 55%,#e8540a);-webkit-background-clip:text;background-clip:text;color:transparent}
 .b-main .cta{display:flex;gap:11px;flex-wrap:wrap;margin-top:30px}
 .b-main .ship{display:flex;align-items:center;gap:9px;margin-top:22px;font-size:13px;color:var(--dim-2)}
 .b-main .ship svg{width:15px;height:15px;color:var(--cyan)}
-.b-shot{padding:20px;display:grid;place-items:center;min-height:270px}
-.tile{background:var(--tile);border-radius:14px;width:100%;height:100%;display:grid;place-items:center;padding:24px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}
-.tile img{max-height:220px;max-width:88%;object-fit:contain;mix-blend-mode:multiply}
-.b-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.b-stat{padding:20px 18px}
-.b-stat b{display:block;font:600 19px/1 var(--mono);color:#fff}
-.b-stat b .u{font-size:12px;color:var(--cyan);margin-left:2px}
-.b-stat span{display:block;font-size:11.5px;color:var(--dim-2);margin-top:8px;line-height:1.4}
+
+/* the product gets a lit stage of its own */
+.stage{position:relative;display:grid;place-items:center;min-height:clamp(380px,41vw,520px);padding:28px}
+.halo{position:absolute;inset:7% 5% 15%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,107,26,.5),rgba(255,107,26,.13) 56%,transparent 73%);filter:blur(26px);animation:breathe 7s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.07);opacity:1}}
+.podium{position:relative;z-index:1;display:grid;place-items:center;width:min(100%,424px);aspect-ratio:1/.98;border-radius:26px;padding:34px;background:linear-gradient(168deg,#fff,#eceef3);box-shadow:0 2px 0 rgba(255,255,255,.7) inset,0 50px 92px -42px rgba(0,0,0,.88),0 0 0 1px rgba(255,255,255,.1)}
+.podium img{max-height:296px;max-width:88%;object-fit:contain;mix-blend-mode:multiply;filter:drop-shadow(0 24px 26px rgba(0,0,0,.26));transition:transform .5s cubic-bezier(.22,.7,.2,1)}
+.stage:hover .podium img{transform:translateY(-7px) scale(1.035)}
+.cast{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:62%;height:18px;border-radius:50%;background:radial-gradient(closest-side,rgba(8,10,14,.32),transparent 72%);filter:blur(7px)}
+.fchip{position:absolute;z-index:2;padding:12px 15px;border-radius:13px;background:rgba(9,11,15,.85)}
+.fchip b{display:block;font:500 14px/1.15 var(--mono);color:#fff}
+.fchip span{font-size:11.5px;color:var(--dim-2)}
+.fchip-a{left:0;top:12%}
+.fchip-b{right:0;bottom:12%}
+.fchip-b b{color:var(--amber)}
+
+.b-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
+.b-stat{padding:20px 20px 22px}
+.b-stat b{display:block;font:600 21px/1 var(--mono);color:#fff}
+.b-stat b .u{display:inline;font-size:12px;color:var(--cyan);margin-left:4px}
+.b-stat>span{display:block;font-size:11.5px;color:var(--dim-2);margin-top:8px;line-height:1.4}
 
 /* ---------- categories ---------- */
 .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -280,9 +294,12 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}*{transition:none!important}}
 
+@media (max-width:1190px){.hd nav{display:none}.srch{width:152px}}
 @media (max-width:1040px){
   .burger{display:grid}
   .bento{grid-template-columns:1fr}
+  .srch{display:none}
+  .b-stats{grid-template-columns:repeat(2,1fr)}
   .b-main{grid-row:auto}
   .cats,.prods,.vals,.auds,.certs{grid-template-columns:repeat(2,1fr)}
   .cmp,.close{grid-template-columns:1fr}
@@ -292,14 +309,19 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
 }
 @media (max-width:860px){
   /* keep the top of a phone screen for the product, not the furniture */
-  .util .wrap{min-height:34px;font-size:11.5px;gap:10px;flex-wrap:nowrap;overflow:hidden}
-  .util .r a,.util .pipe,.util span[style]{display:none}
-  .util .r{gap:10px}
-  .srv .wrap{gap:12px;padding:10px 0}
-  .bdg{display:none}
-  .srch{flex:1 1 auto;max-width:none}
+  .util .wrap{min-height:36px;font-size:11.5px;gap:13px;flex-wrap:nowrap;overflow:hidden}
+  .u-ship,.u-chip span,.u-r a{display:none}
+  .u-chip img{height:17px}
   .hd .wrap{min-height:64px;gap:12px}
-  .brand img{height:36px}
+  .brand img{height:34px}
+  .stage{min-height:330px;padding:12px}
+  .podium{width:min(100%,322px);padding:24px;border-radius:22px}
+  .podium img{max-height:224px}
+  .fchip{padding:10px 12px;border-radius:11px}
+  .fchip b{font-size:12.5px}
+  .fchip span{font-size:10.5px}
+  .fchip-a{left:-6px;top:7%}
+  .fchip-b{right:-6px;bottom:7%}
 }
 @media (max-width:640px){
   .wrap{width:calc(100% - 32px)}
@@ -323,6 +345,7 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
 <symbol id="i-school" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 9 12 14l9.5-5z"/><path d="M6.5 11.5V16c0 1.4 2.5 2.6 5.5 2.6s5.5-1.2 5.5-2.6v-4.5"/></symbol>
 <symbol id="i-gov" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9.5 12 4.5l8.5 5"/><path d="M5.5 9.5v9M10 9.5v9M14 9.5v9M18.5 9.5v9"/><path d="M3 19h18"/></symbol>
 <symbol id="i-print" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c2.5 2 2.5 5 1 7.5-1.2 2-1.2 3.6 0 5"/><path d="M8 7c1.6 1.6 1.6 4 .6 5.8-.8 1.4-.8 2.7 0 4"/><path d="M16 7c-1.6 1.6-1.6 4-.6 5.8.8 1.4.8 2.7 0 4"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M3.6 12h16.8"/><path d="M12 3.6c2.2 2.4 3.3 5.3 3.3 8.4S14.2 18 12 20.4C9.8 18 8.7 15.1 8.7 12S9.8 6 12 3.6z"/></symbol>
 <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-4.3-4.3"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
 <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.2"/><path d="m3.6 7 8.4 5.6L20.4 7"/></symbol>
@@ -330,24 +353,20 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
 </svg>
 
 <div class="util"><div class="wrap">
-  <span><b>Free shipping</b> on US orders</span>
-  <span class="pipe"></span>
-  <span class="mono" style="font-size:12px;color:#fff">866.444.1876</span>
-  <span style="color:var(--dim-2)">Mon to Fri, 8:00 to 16:00 Pacific</span>
-  <span class="r">
-    <span id="google_translate_element" title="Translate this site"></span>
+  <span class="u-ship"><b>Free shipping</b> on US orders</span>
+  <a class="u-chip" href="page.html#government"><img src="https://www.esystor.com/images/government_orders.png" alt="" width="250" height="40"><span>GSA <b>GS-35F-333BA</b></span></a>
+  <a class="u-chip" href="https://www.duplicators4all.com" rel="noopener"><img src="https://www.esystor.com/images/duplicator4all.png" alt="" width="200" height="40"><span>European buyers</span></a>
+  <span class="u-r">
+    <span class="lang"><svg aria-hidden="true"><use href="#i-globe"/></svg>
+      <select id="langSel" aria-label="Choose language">
+        <option value="">English</option><option value="es">Espanol</option><option value="fr">Francais</option>
+        <option value="de">Deutsch</option><option value="it">Italiano</option><option value="pt">Portugues</option>
+        <option value="ja">Japanese</option><option value="ko">Korean</option><option value="zh-CN">Chinese</option>
+      </select></span>
     <a href="page.html#manuals">Manuals</a><a href="page.html#support">Support</a><a href="page.html#contact">Sign in</a>
   </span>
 </div></div>
-
-<div class="srv"><div class="wrap">
-  <a class="bdg" href="page.html#government"><img src="https://www.esystor.com/images/government_orders.png" alt="GSA government orders, contract GS-35F-333BA" width="250" height="40"><span>Government &amp; school orders<br><b>GS-35F-333BA</b></span></a>
-  <form class="srch" role="search" onsubmit="event.preventDefault();location.href='collection.html'">
-    <input type="search" aria-label="Search products" placeholder="Search by model, media or target count">
-    <button type="submit" aria-label="Search"><svg><use href="#i-search"/></svg></button>
-  </form>
-  <a class="bdg bdg-eu" href="https://www.duplicators4all.com" rel="noopener"><span>European buyers<br><b>duplicators4all.com</b></span><img src="https://www.esystor.com/images/duplicator4all.png" alt="Duplicators4All, European distributor" width="200" height="40"></a>
-</div></div>
+<div id="google_translate_element" aria-hidden="true"></div>
 
 <header class="hd"><div class="wrap">
   <a class="brand" href="index.html" aria-label="Systor Systems home"><img src="https://www.esystor.com/images/systor_logo.png" alt="Systor Systems" width="350" height="120"></a>
@@ -356,6 +375,10 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
     <a href="product-configurator.html">Build a system</a><a href="#range">Models &amp; pricing</a>
     <a href="#faq">FAQ</a><a href="page.html#government">Government</a>
   </nav>
+  <form class="srch" role="search" onsubmit="event.preventDefault();location.href='collection.html'">
+    <button type="submit" aria-label="Search"><svg><use href="#i-search"/></svg></button>
+    <input type="search" aria-label="Search products" placeholder="Search models">
+  </form>
   <div class="r">
     <a class="tel" href="tel:18664441876"><b>866.444.1876</b><small>Mon to Fri, 8 to 4 Pacific</small></a>
     <a class="btn btn-a btn-s" href="page.html#contact">Request a quote</a>
@@ -391,7 +414,7 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
   <div class="wrap">
     <div class="bento">
       <div class="gl b-main rv">
-        <div class="label"><i></i>Standalone duplication &amp; sanitization</div>
+        <div class="label">Standalone duplication &amp; sanitization</div>
         <h1>Copy and erase drives.<br><span class="o">No computer.</span></h1>
         <p class="intro">Systor builds standalone duplicators and sanitizers for IT departments, forensic labs, schools and production floors. Front panel in, verified copy out, with a pass or fail result recorded for every drive.</p>
         <div class="cta">
@@ -400,14 +423,21 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
         </div>
         <div class="ship"><svg><use href="#i-check"/></svg> In stock units ship within 24 hours, tested before they leave</div>
       </div>
-      <div class="gl b-shot rv">
-        <span class="tile"><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E" data-img="https://www.esystor.com/mm5/graphics/00000001/HDD/5R-HDD-DP.jpg" alt="Systor 1:5 dual-port SATA duplicator and sanitizer"></span>
+      <div class="stage rv">
+        <span class="halo" aria-hidden="true"></span>
+        <span class="podium">
+          <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E" data-img="https://www.esystor.com/mm5/graphics/00000001/HDD/5R-HDD-DP.jpg" alt="Systor 1:5 dual-port SATA duplicator and sanitizer">
+          <span class="cast" aria-hidden="true"></span>
+        </span>
+        <span class="gl fchip fchip-a"><b>SYS105HS-DP</b><span>1:5 dual-port SATA</span></span>
+        <span class="gl fchip fchip-b"><b>$805.00</b><span>In stock, ships in 24h</span></span>
       </div>
-      <div class="b-stats">
-        <div class="gl b-stat rv"><b>36<span class="u">GB/min</span></b><span>Top sustained speed</span></div>
-        <div class="gl b-stat rv"><b>1:23</b><span>Targets from one source</span></div>
-        <div class="gl b-stat rv"><b>800-88</b><span>NIST verified erasure</span></div>
-      </div>
+    </div>
+    <div class="b-stats rv">
+      <div class="gl b-stat"><b>36<span class="u">GB/min</span></b><span>Top sustained speed</span></div>
+      <div class="gl b-stat"><b>1:23</b><span>Targets from one source</span></div>
+      <div class="gl b-stat"><b>800-88</b><span>NIST verified erasure</span></div>
+      <div class="gl b-stat"><b>1997</b><span>Building in the United States</span></div>
     </div>
   </div>
 </section>
@@ -415,7 +445,7 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
 <section class="sec">
   <div class="wrap">
     <div class="hrow rv">
-      <div><div class="label"><i></i>Shop by media</div><h2 class="t">Start with what you<br>need to copy.</h2></div>
+      <div><div class="label">Shop by media</div><h2 class="t">Start with what you<br>need to copy.</h2></div>
       <p class="intro">Every family copies and securely erases. Choose the media, then the number of targets and the speed.</p>
     </div>
     <div class="cats rv">
@@ -432,7 +462,7 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
 <section class="sec">
   <div class="wrap">
     <div class="rv" style="max-width:48ch;margin-bottom:38px">
-      <div class="label"><i></i>Why Systor</div>
+      <div class="label">Why Systor</div>
       <h2 class="t">Hardware you can put in a compliance report.</h2>
     </div>
     <div class="vals rv">
@@ -447,7 +477,7 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
 <section class="sec">
   <div class="wrap">
     <div class="hrow rv">
-      <div><div class="label"><i></i>Who specifies Systor</div><h2 class="t">Four buyers, one machine,<br>four reasons.</h2></div>
+      <div><div class="label">Who specifies Systor</div><h2 class="t">Four buyers, one machine,<br>four reasons.</h2></div>
       <p class="intro">The same hardware, specified very differently depending on what the job has to prove.</p>
     </div>
     <div class="auds rv">
@@ -462,7 +492,7 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
 <section class="sec">
   <div class="wrap">
     <div class="hrow rv">
-      <div><div class="label"><i></i>Featured</div><h2 class="t">Most specified this year.</h2></div>
+      <div><div class="label">Featured</div><h2 class="t">Most specified this year.</h2></div>
       <a class="lnk" href="collection.html">View all products <svg><use href="#i-arrow"/></svg></a>
     </div>
     <div class="prods rv">
@@ -477,7 +507,7 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
 <section class="sec" id="range">
   <div class="wrap">
     <div class="hrow rv">
-      <div><div class="label"><i></i>Models &amp; pricing</div><h2 class="t">The whole SATA range,<br>one table.</h2></div>
+      <div><div class="label">Models &amp; pricing</div><h2 class="t">The whole SATA range,<br>one table.</h2></div>
       <p class="intro">Targets increase down the table, speed across it. Nothing else changes: same firmware, same erasure modes, same warranty.</p>
     </div>
     <div class="gl mx rv">
@@ -500,7 +530,7 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
   <div class="wrap">
     <div class="cmp">
       <div class="rv">
-        <div class="label"><i></i>Secure erasure</div>
+        <div class="label">Secure erasure</div>
         <h2 class="t">Wiping a drive is easy.<br>Proving it isn't.</h2>
         <p class="intro">Every Systor sanitizer runs the erasure standard you are asked to meet, verifies the result, and reports it per drive so it can go straight into an audit file.</p>
         <div class="modes">
@@ -524,7 +554,7 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
 <section class="sec">
   <div class="wrap">
     <div class="rv" style="max-width:46ch;margin-bottom:34px">
-      <div class="label"><i></i>Procurement</div>
+      <div class="label">Procurement</div>
       <h2 class="t">Set up for how organizations actually buy.</h2>
     </div>
     <div class="certs rv">
@@ -539,7 +569,7 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
 <section class="sec" id="faq">
   <div class="wrap">
     <div class="hrow rv">
-      <div><div class="label"><i></i>Questions</div><h2 class="t">Before you order.</h2></div>
+      <div><div class="label">Questions</div><h2 class="t">Before you order.</h2></div>
       <p class="intro">The things buyers ask most often. If yours is not here, call and ask.</p>
     </div>
     <div class="faq rv">
@@ -561,7 +591,7 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
   <div class="wrap">
     <div class="gl close rv">
       <div>
-        <div class="label"><i></i>Talk to a person</div>
+        <div class="label">Talk to a person</div>
         <h2 class="t">Tell us the job,<br>we'll size the machine.</h2>
         <p class="intro">Give us the drive size, how many you run in a shift and whether you need certified erasure. We will point you at the model that fits, and say so when a cheaper one does the same work.</p>
       </div>
@@ -577,7 +607,7 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
 
 <section class="idx">
   <div class="wrap">
-    <div class="rv"><div class="label"><i></i>Full product index</div><h2 class="t" style="font-size:clamp(24px,2.6vw,34px)">Every duplicator family.</h2></div>
+    <div class="rv"><div class="label">Full product index</div><h2 class="t" style="font-size:clamp(24px,2.6vw,34px)">Every duplicator family.</h2></div>
     <div class="idx-g rv">
       <div><h4>M.2 NVMe PCIe</h4><a href="collection.html">All M.2 NVMe systems</a><a href="collection.html">NX Series</a><a href="collection.html">YL Series</a><a href="collection.html">M2 Series</a><a href="collection.html">HC Series</a><a href="collection.html">XW Series</a><a href="collection.html">SF Series</a></div>
       <div><h4>Hard drive &amp; SSD</h4><a href="collection.html">All hard drive systems</a><a href="collection.html">Dual-port SATA</a><a href="collection.html">Flatbed SATA</a><a href="collection.html">Rackmount SATA</a><a href="collection.html">USB to hard drive</a><a href="collection.html">Portable SATA</a></div>
@@ -645,6 +675,22 @@ details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--
   d.addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.classList.contains('on'))set(false)});
   addEventListener('resize',function(){if(innerWidth>1040&&d.classList.contains('on'))set(false)});
+})();
+(function(){
+  var sel=document.getElementById('langSel');
+  if(!sel)return;
+  function combo(){return document.querySelector('.goog-te-combo')}
+  sel.addEventListener('change',function(){
+    var n=0;(function go(){
+      var c=combo();
+      if(c){c.value=sel.value;c.dispatchEvent(new Event('change'));return}
+      if(n++<25)setTimeout(go,180);
+    })();
+  });
+  setTimeout(function(){
+    var c=combo();
+    if(c&&c.value&&[].some.call(sel.options,function(o){return o.value===c.value}))sel.value=c.value;
+  },1200);
 })();
 function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',autoDisplay:false},'google_translate_element')}
 </script>
