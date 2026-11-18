@@ -1,699 +1,258 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Systor | Standalone Duplicators &amp; Sanitizers</title>
-<meta name="description" content="Standalone duplicators and sanitizers for SATA HDD/SSD, M.2 NVMe, USB, SD/microSD, CF/CFast and optical media. GSA contract holder. Built and supported in the United States since 1997.">
-<meta name="theme-color" content="#07080b">
-<link rel="icon" href="https://www.esystor.com/images/systor_logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DVD Duplicator, Blu-ray DVD Duplicators, Hard Drive Duplicator, DVD Duplicators : eSystor</title>
+<meta name="description" content="Systor Systems builds standalone M.2 NVMe, hard drive, flash media and CD DVD Blu-ray duplicators and sanitizers. Since 1997.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-/* ======================================================================
-   SYSTOR — dark, layered, high contrast.
-   Product shots sit on light tiles so white backgrounds read as
-   deliberate. Orange is the only saturated colour; cyan carries data.
-   ====================================================================== */
-:root{
-  --void:#07080b;
-  --lift:rgba(255,255,255,.035);
-  --lift-2:rgba(255,255,255,.06);
-  --edge:rgba(255,255,255,.09);
-  --edge-2:rgba(255,255,255,.17);
-  --ice:#f2f4f8;
-  --dim:#9aa1ae;
-  --dim-2:#6b7280;
-  --amber:#ff6b1a;
-  --amber-soft:rgba(255,107,26,.13);
-  --cyan:#2ad4e8;
-  --tile:#f7f8fa;
-  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --body:"Inter",-apple-system,"Segoe UI",Arial,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--void);color:var(--ice);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
-/* atmosphere */
-body:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(760px 520px at 78% -6%,rgba(255,107,26,.16),transparent 62%),
-             radial-gradient(620px 460px at 4% 18%,rgba(42,212,232,.07),transparent 60%),
-             radial-gradient(900px 600px at 50% 108%,rgba(255,107,26,.07),transparent 62%)}
-body:after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
-  background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
-  background-size:72px 72px;mask-image:radial-gradient(90% 70% at 50% 0,#000,transparent)}
-main,header,footer,.util,.srv{position:relative;z-index:1}
-img,svg{display:block;max-width:100%}
-a{color:inherit}
-h1,h2,h3,h4{margin:0;font-family:var(--display);letter-spacing:-.035em;line-height:1.02;font-weight:800;text-wrap:balance}
-p{margin:0}
-.wrap{width:min(1260px,calc(100% - 44px));margin-inline:auto}
-.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
-:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
-
-.sec{padding:clamp(58px,7vw,108px) 0}
-.label{display:inline-block;font:600 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
-h2.t{font-size:clamp(30px,3.9vw,54px)}
-.intro{font-size:17px;line-height:1.62;color:var(--dim);max-width:56ch;margin-top:15px}
-.hrow{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:40px}
-.hrow .intro{margin:0;max-width:38ch}
-
-/* glass surface */
-.gl{background:var(--lift);border:1px solid var(--edge);border-radius:18px;backdrop-filter:blur(10px);position:relative;overflow:hidden}
-.gl:before{content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent)}
-
-/* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font:600 14px/1 var(--body);border-radius:11px;padding:14px 22px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.2s}
-.btn svg{width:16px;height:16px}
-.btn-a{background:linear-gradient(135deg,#ff8a3d,#f2600c);color:#140800;box-shadow:0 8px 30px -8px rgba(255,107,26,.6)}
-.btn-a:hover{transform:translateY(-2px);box-shadow:0 14px 40px -10px rgba(255,107,26,.8)}
-.btn-b{background:var(--lift-2);border-color:var(--edge-2);color:var(--ice)}
-.btn-b:hover{border-color:rgba(255,255,255,.4);transform:translateY(-2px)}
-.btn-s{padding:10px 16px;font-size:13px}
-.lnk{display:inline-flex;align-items:center;gap:7px;font:600 13.5px/1 var(--body);color:var(--amber);text-decoration:none}
-.lnk svg{width:15px;height:15px;transition:transform .2s}
-.lnk:hover svg{transform:translateX(4px)}
-
-/* utility strip */
-.util{background:rgba(0,0,0,.55);border-bottom:1px solid var(--edge);color:var(--dim-2);font-size:12px}
-.util .wrap{display:flex;align-items:center;gap:18px;min-height:40px;flex-wrap:wrap}
-.util b{color:var(--ice);font-weight:600}
-.u-chip{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--dim-2);white-space:nowrap}
-.u-chip img{height:19px;width:auto;background:#fff;border-radius:4px;padding:1px 3px;opacity:.8;transition:.18s}
-.u-chip:hover img{opacity:1}
-.u-chip:hover span,.u-chip:hover b{color:var(--amber)}
-.u-chip b{font-family:var(--mono);font-weight:500}
-.u-r{margin-left:auto;display:flex;align-items:center;gap:16px}
-.util a{color:var(--dim-2);text-decoration:none}
-.util .u-r a:hover{color:var(--amber)}
-.lang{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--edge-2);border-radius:8px;padding:4px 8px 4px 9px;background:var(--lift);transition:.18s}
-.lang:hover{border-color:rgba(255,255,255,.32)}
-.lang svg{width:14px;height:14px;color:var(--dim);flex:0 0 auto}
-.lang select{appearance:none;-webkit-appearance:none;border:0;background-color:transparent;color:var(--ice);font:500 12px var(--body);padding:2px 15px 2px 2px;cursor:pointer;outline:0;background-repeat:no-repeat;background-position:right 1px center;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='7'><path d='M1 1l4 4 4-4' stroke='%239aa1ae' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>")}
-.lang select option{background:#0b0d11;color:var(--ice)}
-#google_translate_element{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
-.goog-te-banner-frame,.skiptranslate iframe{display:none!important}
-body{top:0!important}
-
-/* header */
-.hd{position:sticky;top:0;z-index:70;background:rgba(7,8,11,.74);backdrop-filter:blur(16px);border-bottom:1px solid var(--edge)}
-.hd .wrap{display:flex;align-items:center;gap:18px;min-height:76px}
-.brand img{height:44px;width:auto}
-.hd nav{display:flex;gap:1px;margin-left:6px;margin-right:auto}
-.hd nav a{font:500 13.5px/1 var(--body);color:var(--dim);text-decoration:none;padding:10px 12px;border-radius:9px;transition:.18s}
-.hd nav a:hover{background:var(--lift-2);color:#fff}
-.hd .r{display:flex;align-items:center;gap:14px}
-.srch{display:flex;align-items:center;width:186px;border:1px solid var(--edge);border-radius:10px;background:var(--lift);overflow:hidden;transition:width .22s,border-color .22s}
-.srch:focus-within{width:248px;border-color:var(--edge-2)}
-.srch input{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:9px 12px 9px 0;font:400 13px var(--body);color:var(--ice)}
-.srch input::placeholder{color:var(--dim-2)}
-.srch button{border:0;background:transparent;color:var(--dim-2);padding:0 8px 0 11px;cursor:pointer;display:grid;place-items:center}
-.srch button:hover{color:var(--amber)}
-.srch svg{width:16px;height:16px}
-.tel{text-decoration:none;text-align:right}
-.tel b{display:block;font:500 15.5px/1.1 var(--mono);color:#fff}
-.tel small{display:block;font:400 11px/1.4 var(--body);color:var(--dim-2)}
-
-/* ---------- bento hero ---------- */
-.hero{padding:clamp(28px,4vw,54px) 0 0}
-.bento{display:grid;grid-template-columns:1.06fr .94fr;gap:16px;align-items:stretch}
-.b-main{padding:clamp(30px,3.6vw,54px);display:flex;flex-direction:column;justify-content:center}
-.b-main h1{font-size:clamp(38px,5.3vw,70px)}
-.b-main h1 .o{background:linear-gradient(100deg,#ffb27a,#ff6b1a 55%,#e8540a);-webkit-background-clip:text;background-clip:text;color:transparent}
-.b-main .cta{display:flex;gap:11px;flex-wrap:wrap;margin-top:30px}
-.b-main .ship{display:flex;align-items:center;gap:9px;margin-top:22px;font-size:13px;color:var(--dim-2)}
-.b-main .ship svg{width:15px;height:15px;color:var(--cyan)}
-
-/* the product gets a lit stage of its own */
-.stage{position:relative;display:grid;place-items:center;min-height:clamp(380px,41vw,520px);padding:28px}
-.halo{position:absolute;inset:7% 5% 15%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,107,26,.5),rgba(255,107,26,.13) 56%,transparent 73%);filter:blur(26px);animation:breathe 7s ease-in-out infinite}
-@keyframes breathe{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.07);opacity:1}}
-.podium{position:relative;z-index:1;display:grid;place-items:center;width:min(100%,424px);aspect-ratio:1/.98;border-radius:26px;padding:34px;background:linear-gradient(168deg,#fff,#eceef3);box-shadow:0 2px 0 rgba(255,255,255,.7) inset,0 50px 92px -42px rgba(0,0,0,.88),0 0 0 1px rgba(255,255,255,.1)}
-.podium img{max-height:296px;max-width:88%;object-fit:contain;mix-blend-mode:multiply;filter:drop-shadow(0 24px 26px rgba(0,0,0,.26));transition:transform .5s cubic-bezier(.22,.7,.2,1)}
-.stage:hover .podium img{transform:translateY(-7px) scale(1.035)}
-.cast{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:62%;height:18px;border-radius:50%;background:radial-gradient(closest-side,rgba(8,10,14,.32),transparent 72%);filter:blur(7px)}
-.fchip{position:absolute;z-index:2;padding:12px 15px;border-radius:13px;background:rgba(9,11,15,.85)}
-.fchip b{display:block;font:500 14px/1.15 var(--mono);color:#fff}
-.fchip span{font-size:11.5px;color:var(--dim-2)}
-.fchip-a{left:0;top:12%}
-.fchip-b{right:0;bottom:12%}
-.fchip-b b{color:var(--amber)}
-
-.b-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
-.b-stat{padding:20px 20px 22px}
-.b-stat b{display:block;font:600 21px/1 var(--mono);color:#fff}
-.b-stat b .u{display:inline;font-size:12px;color:var(--cyan);margin-left:4px}
-.b-stat>span{display:block;font-size:11.5px;color:var(--dim-2);margin-top:8px;line-height:1.4}
-
-/* ---------- categories ---------- */
-.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.cat{text-decoration:none;display:flex;flex-direction:column;transition:transform .25s,border-color .25s,box-shadow .25s}
-.cat:hover{transform:translateY(-5px);border-color:rgba(255,107,26,.55);box-shadow:0 26px 60px -30px rgba(255,107,26,.5)}
-.cat .ph{margin:14px 14px 0;background:var(--tile);border-radius:12px;height:160px;display:grid;place-items:center;padding:18px}
-.cat .ph img{max-height:124px;max-width:90%;object-fit:contain;mix-blend-mode:multiply}
-.cat .cx{padding:18px}
-.cat h3{font-size:17.5px}
-.cat p{font-size:13.5px;color:var(--dim);margin-top:7px;line-height:1.5}
-.cat .n{display:block;margin-top:11px;font:500 11.5px/1 var(--mono);color:var(--amber)}
-
-/* ---------- value strip ---------- */
-.vals{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.val{padding:26px 22px 28px}
-.val .ib{width:40px;height:40px;border-radius:11px;background:var(--amber-soft);border:1px solid rgba(255,107,26,.3);display:grid;place-items:center;color:var(--amber);margin-bottom:16px}
-.val .ib svg{width:20px;height:20px}
-.val h3{font-size:16.5px}
-.val p{font-size:13.5px;color:var(--dim);margin-top:9px;line-height:1.58}
-
-/* ---------- audiences ---------- */
-.auds{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.aud{padding:24px 22px 26px}
-.aud svg.hd-i{width:22px;height:22px;color:var(--cyan);margin-bottom:14px}
-.aud h3{font-size:16.5px}
-.aud p{font-size:13.5px;color:var(--dim);margin:8px 0 14px;line-height:1.55}
-.aud ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
-.aud li{display:flex;gap:9px;font-size:13px;color:var(--dim);line-height:1.45}
-.aud li svg{width:14px;height:14px;color:var(--cyan);margin-top:3px;flex:0 0 auto}
-
-/* ---------- products ---------- */
-.prods{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.pc{text-decoration:none;display:flex;flex-direction:column;transition:transform .25s,border-color .25s,box-shadow .25s}
-.pc:hover{transform:translateY(-5px);border-color:rgba(255,107,26,.5);box-shadow:0 26px 60px -32px rgba(255,107,26,.45)}
-.pc .ph{position:relative;margin:14px 14px 0;background:var(--tile);border-radius:12px;height:172px;display:grid;place-items:center;padding:18px}
-.pc .ph img{max-height:136px;max-width:90%;object-fit:contain;mix-blend-mode:multiply}
-.tag{position:absolute;top:10px;left:10px;font:500 10px/1 var(--mono);color:#140800;background:var(--amber);padding:5px 8px;border-radius:6px}
-.pc .cx{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
-.pc .sku{font:500 10.5px/1 var(--mono);color:var(--dim-2);letter-spacing:.03em}
-.pc h3{font:600 15px/1.38 var(--body);letter-spacing:0;margin-top:8px;color:#fff}
-.pc .sp{display:flex;gap:16px;margin-top:13px}
-.pc .sp i{font-style:normal;font:500 14px/1 var(--mono);color:var(--cyan)}
-.pc .sp i small{display:block;font:400 9.5px/1 var(--body);letter-spacing:.11em;text-transform:uppercase;color:var(--dim-2);margin-top:5px}
-.pc .bt{margin-top:auto;padding-top:14px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--edge)}
-.pc .pr{font:600 19px/1 var(--mono);color:#fff}
-.pc .go{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;border:1px solid var(--edge-2);color:var(--dim)}
-.pc:hover .go{background:var(--amber);border-color:var(--amber);color:#140800}
-.pc .go svg{width:14px;height:14px}
-
-/* ---------- matrix ---------- */
-.mx{overflow:hidden}
-.mxs{overflow-x:auto}
-table.g{width:100%;border-collapse:collapse;min-width:640px}
-table.g th,table.g td{padding:15px 16px;text-align:center;border-bottom:1px solid var(--edge)}
-table.g thead th{background:rgba(255,255,255,.04);font:500 11px/1.3 var(--mono);color:var(--dim-2);letter-spacing:.05em}
-table.g tbody th{text-align:left;background:rgba(255,255,255,.04);font:600 15px/1 var(--mono);color:#fff;white-space:nowrap}
-table.g td{font:500 15px/1 var(--mono);color:var(--ice);transition:.15s}
-table.g td small{display:block;font:400 10.5px/1.3 var(--mono);color:var(--dim-2);margin-top:5px}
-table.g tbody tr:last-child th,table.g tbody tr:last-child td{border-bottom:0}
-table.g td:hover{background:var(--amber-soft);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,107,26,.45)}
-.mxf{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;background:rgba(255,255,255,.04);border-top:1px solid var(--edge);flex-wrap:wrap;font-size:13px;color:var(--dim-2)}
-
-/* ---------- compliance ---------- */
-.cmp{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,4vw,56px);align-items:center}
-.modes{display:grid;gap:9px;margin-top:26px}
-.mode{display:flex;gap:13px;align-items:flex-start;padding:14px 16px}
-.mode svg{width:17px;height:17px;color:var(--amber);margin-top:1px;flex:0 0 auto}
-.mode b{display:block;color:#fff;font:600 14px/1.35 var(--body)}
-.mode span{font-size:12.5px;color:var(--dim-2)}
-.spec .l{display:flex;justify-content:space-between;gap:14px;padding:14px 18px;border-bottom:1px solid var(--edge);font-size:13.5px}
-.spec .l:last-child{border-bottom:0}
-.spec .l span{color:var(--dim-2)}
-.spec .l b{color:var(--cyan);font:500 13.5px var(--mono)}
-
-/* ---------- certs ---------- */
-.certs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.cert{padding:26px 22px}
-.cert b{display:block;font:600 13px/1 var(--mono);color:var(--amber);letter-spacing:.05em}
-.cert strong{display:block;font:800 16.5px/1.25 var(--display);letter-spacing:-.025em;margin:12px 0 8px;color:#fff}
-.cert span{font-size:13px;color:var(--dim);line-height:1.55}
-
-/* ---------- faq ---------- */
-.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
-details.q{border-radius:14px;transition:border-color .2s}
-details.q:hover{border-color:var(--edge-2)}
-details.q summary{cursor:pointer;list-style:none;padding:18px 48px 18px 20px;font:600 15px/1.45 var(--body);position:relative;color:#fff}
-details.q summary::-webkit-details-marker{display:none}
-details.q summary:after,details.q summary:before{content:"";position:absolute;right:21px;top:50%;width:11px;height:1.6px;background:var(--amber);transition:transform .25s}
-details.q summary:before{transform:rotate(90deg)}
-details.q[open] summary:before{transform:rotate(0)}
-details.q[open] summary{border-bottom:1px solid var(--edge)}
-details.q .a{padding:16px 20px 20px;font-size:14px;line-height:1.66;color:var(--dim)}
-
-/* ---------- closing ---------- */
-.close{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(24px,4vw,52px);align-items:center;padding:clamp(28px,4vw,50px)}
-.crow{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--edge);text-decoration:none}
-.crow:last-of-type{border-bottom:0}
-.crow .i{width:38px;height:38px;border-radius:10px;background:var(--amber-soft);border:1px solid rgba(255,107,26,.28);display:grid;place-items:center;color:var(--amber);flex:0 0 auto}
-.crow .i svg{width:17px;height:17px}
-.crow small{display:block;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim-2)}
-.crow b{font:500 16px/1.3 var(--mono);color:#fff}
-
-/* ---------- index ---------- */
-.idx{border-top:1px solid var(--edge);padding:clamp(44px,5vw,72px) 0}
-.idx-g{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:30px}
-.idx-g h4{font:600 11px/1 var(--body);letter-spacing:.17em;text-transform:uppercase;color:#fff;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--edge)}
-.idx-g a{display:block;padding:5px 0;font-size:13.5px;color:var(--dim-2);text-decoration:none}
-.idx-g a:hover{color:var(--amber)}
-
-/* ---------- footer ---------- */
-.ft{border-top:1px solid var(--edge);background:rgba(0,0,0,.4);color:var(--dim-2);padding:56px 0 26px;font-size:14px}
-.ftg{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:34px}
-.ft h4{color:#fff;font:600 11px/1 var(--body);letter-spacing:.17em;text-transform:uppercase;margin:0 0 15px}
-.ft a{color:var(--dim-2);text-decoration:none;display:block;padding:5px 0}
-.ft a:hover{color:var(--amber)}
-.flogo{height:48px;width:auto;margin-bottom:14px}
-.ftb-badges{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid var(--edge)}
-.ftb-badges img{height:32px;width:auto;background:#fff;border-radius:5px;padding:3px}
-.ftb-badges img[alt*="IDDA"]{height:48px}
-.ftb{border-top:1px solid var(--edge);margin-top:26px;padding-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px}
-
-/* ---------- mobile nav ---------- */
-.burger{display:none;width:42px;height:42px;border:1px solid var(--edge-2);border-radius:11px;background:var(--lift);cursor:pointer;place-items:center}
-.burger span{display:block;width:17px;height:1.6px;background:var(--ice);margin:3.6px auto;transition:.25s}
-.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(5.2px) rotate(45deg)}
-.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
-.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-5.2px) rotate(-45deg)}
-.scrim{position:fixed;inset:0;z-index:78;background:rgba(0,0,0,.6);backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:.25s}
-.scrim.on{opacity:1;visibility:visible}
-.drawer{position:fixed;top:0;right:0;bottom:0;width:min(86vw,340px);z-index:79;background:#0b0d11;border-left:1px solid var(--edge);transform:translateX(100%);transition:transform .3s cubic-bezier(.22,.7,.2,1);display:flex;flex-direction:column;overflow-y:auto}
-.drawer.on{transform:none}
-.drawer-top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;border-bottom:1px solid var(--edge)}
-.drawer-top img{height:36px;width:auto}
-.drawer-x{width:38px;height:38px;border:1px solid var(--edge-2);border-radius:10px;background:transparent;color:var(--ice);cursor:pointer;display:grid;place-items:center;font-size:20px;line-height:1}
-.drawer nav{display:flex;flex-direction:column;padding:10px 12px}
-.drawer nav a{padding:14px 12px;font:600 16px/1 var(--body);color:var(--ice);text-decoration:none;border-radius:10px}
-.drawer nav a:hover,.drawer nav a:focus-visible{background:var(--lift-2);color:var(--amber)}
-.drawer-foot{margin-top:auto;padding:18px 20px 24px;border-top:1px solid var(--edge);display:grid;gap:12px}
-.drawer-foot .tel2{text-decoration:none}
-.drawer-foot .tel2 b{display:block;font:500 18px/1.2 var(--mono);color:#fff}
-.drawer-foot .tel2 small{color:var(--dim-2);font-size:12px}
-
-/* ---------- motion ---------- */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}*{transition:none!important}}
-
-@media (max-width:1190px){.hd nav{display:none}.srch{width:152px}}
-@media (max-width:1040px){
-  .burger{display:grid}
-  .bento{grid-template-columns:1fr}
-  .srch{display:none}
-  .b-stats{grid-template-columns:repeat(2,1fr)}
-  .b-main{grid-row:auto}
-  .cats,.prods,.vals,.auds,.certs{grid-template-columns:repeat(2,1fr)}
-  .cmp,.close{grid-template-columns:1fr}
-  .faq,.idx-g{grid-template-columns:1fr 1fr}
-  .hd nav{display:none}
-  .ftg{grid-template-columns:1fr 1fr}
-}
-@media (max-width:860px){
-  /* keep the top of a phone screen for the product, not the furniture */
-  .util .wrap{min-height:36px;font-size:11.5px;gap:13px;flex-wrap:nowrap;overflow:hidden}
-  .u-ship,.u-chip span,.u-r a{display:none}
-  .u-chip img{height:17px}
-  .hd .wrap{min-height:64px;gap:12px}
-  .brand img{height:34px}
-  .stage{min-height:330px;padding:12px}
-  .podium{width:min(100%,322px);padding:24px;border-radius:22px}
-  .podium img{max-height:224px}
-  .fchip{padding:10px 12px;border-radius:11px}
-  .fchip b{font-size:12.5px}
-  .fchip span{font-size:10.5px}
-  .fchip-a{left:-6px;top:7%}
-  .fchip-b{right:-6px;bottom:7%}
-}
-@media (max-width:640px){
-  .wrap{width:calc(100% - 32px)}
-  .cats,.prods,.vals,.auds,.certs,.faq,.idx-g,.ftg{grid-template-columns:1fr}
-  .b-stats{grid-template-columns:1fr}
-  .tel{display:none}
-  .bdg-eu{margin-left:0}
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Saira+Semi+Condensed:wght@500;600;700;800&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/esystor.css?v=1">
 </head>
 <body>
-
-<svg style="display:none" aria-hidden="true">
-<symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5.5 18.5 12 12 18.5"/></symbol>
-<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol>
-<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2 19 6v5.5c0 4.8-2.9 7.9-7 9.3-4.1-1.4-7-4.5-7-9.3V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
-<symbol id="i-gauge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="m12 13 4-3.2"/><circle cx="12" cy="17" r="1.3"/></symbol>
-<symbol id="i-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3v3M14 3v3M10 18v3M14 18v3M3 10h3M3 14h3M18 10h3M18 14h3"/></symbol>
-<symbol id="i-support" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13v-1a7 7 0 0 1 14 0v1"/><rect x="3" y="13" width="4.5" height="6.5" rx="1.6"/><rect x="16.5" y="13" width="4.5" height="6.5" rx="1.6"/></symbol>
-<symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="6" rx="1.7"/><rect x="3.5" y="13.5" width="17" height="6" rx="1.7"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
-<symbol id="i-school" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 9 12 14l9.5-5z"/><path d="M6.5 11.5V16c0 1.4 2.5 2.6 5.5 2.6s5.5-1.2 5.5-2.6v-4.5"/></symbol>
-<symbol id="i-gov" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9.5 12 4.5l8.5 5"/><path d="M5.5 9.5v9M10 9.5v9M14 9.5v9M18.5 9.5v9"/><path d="M3 19h18"/></symbol>
-<symbol id="i-print" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c2.5 2 2.5 5 1 7.5-1.2 2-1.2 3.6 0 5"/><path d="M8 7c1.6 1.6 1.6 4 .6 5.8-.8 1.4-.8 2.7 0 4"/><path d="M16 7c-1.6 1.6-1.6 4-.6 5.8.8 1.4.8 2.7 0 4"/></symbol>
-<symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M3.6 12h16.8"/><path d="M12 3.6c2.2 2.4 3.3 5.3 3.3 8.4S14.2 18 12 20.4C9.8 18 8.7 15.1 8.7 12S9.8 6 12 3.6z"/></symbol>
-<symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.4"/><path d="m20 20-4.3-4.3"/></symbol>
-<symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
-<symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.2"/><path d="m3.6 7 8.4 5.6L20.4 7"/></symbol>
-<symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3.5v2.2M12 18.3v2.2M20.5 12h-2.2M5.7 12H3.5M18 6l-1.6 1.6M7.6 16.4 6 18M18 18l-1.6-1.6M7.6 7.6 6 6"/></symbol>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.3 2.4 3.4 5.3 3.4 8.5S14.3 18.1 12 20.5C9.7 18.1 8.6 15.2 8.6 12S9.7 5.9 12 3.5z"/></symbol>
+<symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></symbol>
+<symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></symbol>
+<symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.5l2.2 11h10.6l2-7.5H6.6"/><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
 </svg>
 
-<div class="util"><div class="wrap">
-  <span class="u-ship"><b>Free shipping</b> on US orders</span>
-  <a class="u-chip" href="page.html#government"><img src="https://www.esystor.com/images/government_orders.png" alt="" width="250" height="40"><span>GSA <b>GS-35F-333BA</b></span></a>
-  <a class="u-chip" href="https://www.duplicators4all.com" rel="noopener"><img src="https://www.esystor.com/images/duplicator4all.png" alt="" width="200" height="40"><span>European buyers</span></a>
-  <span class="u-r">
-    <span class="lang"><svg aria-hidden="true"><use href="#i-globe"/></svg>
-      <select id="langSel" aria-label="Choose language">
-        <option value="">English</option><option value="es">Espanol</option><option value="fr">Francais</option>
-        <option value="de">Deutsch</option><option value="it">Italiano</option><option value="pt">Portugues</option>
-        <option value="ja">Japanese</option><option value="ko">Korean</option><option value="zh-CN">Chinese</option>
-      </select></span>
-    <a href="page.html#manuals">Manuals</a><a href="page.html#support">Support</a><a href="page.html#contact">Sign in</a>
-  </span>
-</div></div>
-<div id="google_translate_element" aria-hidden="true"></div>
+<div class="util">
+  <div class="wrap util-in">
+    <p class="hours"><a href="tel:18664441876">866.444.1876</a> <span>Mon - Fri 8:00AM - 4:00PM PST</span></p>
+    <nav class="toplinks" aria-label="Account"><a href="https://esystor.com/page/LOGN.html">Sign in</a><a href="https://esystor.com/page/ACAD.html">Register</a><a href="https://esystor.com/page/BASK.html">Shopping cart</a><a href="https://esystor.com/page/OCST.html">Checkout</a><a href="page.html#contact">Contact us</a></nav>
+    <label class="lang"><svg aria-hidden="true"><use href="#i-globe"/></svg><span class="sr">Select language</span>
+      <select class="js-lang"><option value="">English</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="pt">Português</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="zh-CN">中文</option><option value="tl">Filipino</option><option value="ar">العربية</option></select></label>
+  </div>
+</div>
+<div id="google_translate_element" hidden></div>
 
-<header class="hd"><div class="wrap">
-  <a class="brand" href="index.html" aria-label="Systor Systems home"><img src="https://www.esystor.com/images/systor_logo.png" alt="Systor Systems" width="350" height="120"></a>
-  <nav>
-    <a href="collection.html">Duplicators</a><a href="collection.html">Sanitizers</a>
-    <a href="product-configurator.html">Build a system</a><a href="#range">Models &amp; pricing</a>
-    <a href="#faq">FAQ</a><a href="page.html#government">Government</a>
-  </nav>
-  <form class="srch" role="search" onsubmit="event.preventDefault();location.href='collection.html'">
-    <button type="submit" aria-label="Search"><svg><use href="#i-search"/></svg></button>
-    <input type="search" aria-label="Search products" placeholder="Search models">
-  </form>
-  <div class="r">
-    <a class="tel" href="tel:18664441876"><b>866.444.1876</b><small>Mon to Fri, 8 to 4 Pacific</small></a>
-    <a class="btn btn-a btn-s" href="page.html#contact">Request a quote</a>
+<header class="mast">
+  <div class="wrap mast-in">
     <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
+    <a class="logo" href="index.html"><img src="https://www.esystor.com/images/systor_logo.png" alt="Systor, your ultimate source of digital storage" width="350" height="120"></a>
+    <form class="search" role="search" action="https://esystor.com/mm5/merchant.mvc" method="get">
+      <input type="hidden" name="Screen" value="SRCH"><input type="hidden" name="Store_Code" value="duplicator">
+      <label class="sr" for="q">Search items</label>
+      <input id="q" name="Search" type="search" placeholder="Search item or model code">
+      <button type="submit">Search</button>
+    </form>
+    <div class="badges">
+      <a href="page.html#government" class="badge-gov"><img src="https://www.esystor.com/images/government_orders.png" alt="Government orders, GSA contract GS-35F-333BA" width="250" height="40"></a>
+      <a href="https://duplicators4all.com" class="badge-eu" rel="noopener"><img src="https://www.esystor.com/images/duplicator4all.png" alt="European buyers: duplicators4all.com" width="200" height="40"></a>
+    </div>
+    <a class="cart" href="https://esystor.com/page/BASK.html" aria-label="Shopping cart"><svg aria-hidden="true"><use href="#i-cart"/></svg></a>
   </div>
-</div></header>
-
-<div class="scrim" id="scrim" hidden></div>
-<aside class="drawer" id="drawer" aria-label="Menu" aria-hidden="true">
-  <div class="drawer-top">
-    <img src="https://www.esystor.com/images/systor_logo.png" alt="Systor Systems">
-    <button class="drawer-x" type="button" aria-label="Close menu">&times;</button>
-  </div>
-  <nav>
-    <a href="collection.html">Duplicators</a>
-    <a href="collection.html">Sanitizers</a>
-    <a href="product-configurator.html">Build a system</a>
-    <a href="#range">Models &amp; pricing</a>
-    <a href="#faq">FAQ</a>
-    <a href="page.html#government">Government &amp; education</a>
-    <a href="page.html#manuals">Manuals &amp; support</a>
-    <a href="page.html">About Systor</a>
+  <nav class="cats" aria-label="Product categories">
+    <ul class="wrap cats-in"><li class="cat">
+      <button type="button" class="cat-btn" aria-expanded="false" aria-controls="mm0">M.2 NVMe PCIe Duplicator / Sanitizer<svg aria-hidden="true"><use href="#i-chev"/></svg></button>
+      <div class="mm" id="mm0">
+        <div class="mm-in">
+          <div class="mm-list"><a class="mm-all" href="https://esystor.com/page/category/Systor_NVMe_Duplicators.html">Shop all M.2 NVMe PCIe duplicators</a><ul><li><a href="https://esystor.com/page/category/Systor_NVMe_NX_Duplicators.html"><span>NX Series</span><small>Supports M.2</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_YL_Duplicators.html"><span>YL Series</span><small>Supports M.2 & SATA SSD/HDD</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_M2_Duplicators.html"><span>M2 Series</span><small>Supports M.2</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_HC_Duplicators.html"><span>HC Series</span><small>Supports M.2 & SATA SSD/HDD</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_XW_Duplicators.html"><span>XW Series</span><small>Supports M.2 & SATA SSD/HDD</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_SF_Duplicators.html"><span>SF Series</span><small>Supports M.2 & SATA SSD/HDD</small></a></li></ul></div>
+          <a class="mm-pic" href="https://esystor.com/page/category/Systor_NVMe_Duplicators.html" tabindex="-1" aria-hidden="true"><img src="https://esystor.com/images/Miva-Popular-NVME.jpg" alt="" loading="lazy"></a>
+        </div>
+      </div>
+    </li><li class="cat">
+      <button type="button" class="cat-btn" aria-expanded="false" aria-controls="mm1">Hard Drive Duplicator / Sanitizer<svg aria-hidden="true"><use href="#i-chev"/></svg></button>
+      <div class="mm" id="mm1">
+        <div class="mm-in">
+          <div class="mm-list"><a class="mm-all" href="https://esystor.com/page/category/HARD_DISK_DUPLICATORS.html">Shop all Hard Drive duplicators</a><ul><li><a href="collection.html"><span>Tower SATA HDD/SSD Duplicator</span></a></li><li><a href="https://esystor.com/page/category/Systor_Flatbed_Duplicators.html"><span>Flatbed SATA HDD/SSD Duplicator</span></a></li><li><a href="https://esystor.com/page/category/Systor_Rackmount_Duplicators.html"><span>Rackmount SATA HDD/SSD Duplicator</span></a></li><li><a href="https://esystor.com/page/category/usb-to-hdd-duplicators.html"><span>External USB-Powered HDD/SSD Duplicator</span></a></li><li><a href="https://esystor.com/page/category/PORTABLE_HDD_DUPLICATORS.html"><span>Portable SATA HDD/SSD Duplicator</span></a></li></ul></div>
+          <a class="mm-pic" href="https://esystor.com/page/category/HARD_DISK_DUPLICATORS.html" tabindex="-1" aria-hidden="true"><img src="https://esystor.com/images/Miva-Popular-HDD-Tower.jpg" alt="" loading="lazy"></a>
+        </div>
+      </div>
+    </li><li class="cat">
+      <button type="button" class="cat-btn" aria-expanded="false" aria-controls="mm2">Flash Media Duplicator<svg aria-hidden="true"><use href="#i-chev"/></svg></button>
+      <div class="mm" id="mm2">
+        <div class="mm-in">
+          <div class="mm-list"><a class="mm-all" href="https://esystor.com/page/category/MEMORY_CARD_DUPLICATORS.html">Shop all Flash Media duplicators</a><ul><li><a href="https://esystor.com/page/category/USB_DUPLICATOR.html"><span>USB Duplicator</span></a></li><li><a href="https://esystor.com/page/category/SD_CARD_DUPLICATOR.html"><span>SD MicroSD Card Duplicator</span></a></li><li><a href="https://esystor.com/page/category/CF_CARD_DUPLICATORS.html"><span>CF Card Duplicator</span></a></li><li><a href="https://esystor.com/page/category/usb-to-hdd-duplicators.html"><span>External USB-Powered HDD/SSD Duplicator</span></a></li><li><a href="https://esystor.com/page/category/USB_BACK_UP_DVD_DUPLICATOR.html"><span>USB to CD DVD Duplicator</span></a></li><li><a href="https://esystor.com/page/category/MULTIMEDIA_DUPLICATORS.html"><span>MultiMedia Center Duplicator</span></a></li><li><a href="https://esystor.com/page/category/MULTIMEDIA_CENTER_PLUS.html"><span>MultiMedia Center Plus Duplicator</span></a></li><li><a href="https://esystor.com/page/category/ALL-IN-ONE-USB-SD-CF-MMC-DVD-BD.html"><span>All-In-One USB/SD/CF Combo Disc Duplicator</span></a></li><li><a href="https://esystor.com/page/category/EUSB_DUPLICATORS.html"><span>eUSB Drive Duplicator</span></a></li><li><a href="https://esystor.com/page/category/CFAST_DUPLICATORS.html"><span>CFast Card Duplicator</span></a></li></ul></div>
+          <a class="mm-pic" href="https://esystor.com/page/category/MEMORY_CARD_DUPLICATORS.html" tabindex="-1" aria-hidden="true"><img src="https://esystor.com/images/Miva-Popular-Flash.jpg" alt="" loading="lazy"></a>
+        </div>
+      </div>
+    </li><li class="cat">
+      <button type="button" class="cat-btn" aria-expanded="false" aria-controls="mm3">CD DVD BD Blu-ray Duplicator<svg aria-hidden="true"><use href="#i-chev"/></svg></button>
+      <div class="mm" id="mm3">
+        <div class="mm-in">
+          <div class="mm-list"><a class="mm-all" href="https://esystor.com/page/category/CD_DVD_DUPLICATORS.html">Shop all CD DVD BD Blu-ray duplicators</a><ul><li><a href="https://esystor.com/page/category/TOWER_DVD_CD_DUPLICATORS.html"><span>CD/DVD Duplicators</span></a></li><li><a href="https://esystor.com/page/category/BLU_RAY_DUPLICATORS.html"><span>Blu-Ray Duplicators</span></a></li><li><a href="https://esystor.com/page/category/USB_BACK_UP_DVD_DUPLICATOR.html"><span>USB to CD DVD Duplicator</span></a></li><li><a href="https://esystor.com/page/category/MULTIMEDIA_DUPLICATORS.html"><span>MultiMedia Center Duplicator</span></a></li><li><a href="https://esystor.com/page/category/MULTIMEDIA_CENTER_PLUS.html"><span>MultiMedia Center Plus Duplicator</span></a></li><li><a href="https://esystor.com/page/category/ALL-IN-ONE-USB-SD-CF-MMC-DVD-BD.html"><span>All-In-One USB/SD/CF Combo Disc Duplicator</span></a></li><li><a href="https://esystor.com/page/category/DAISY_CHAIN_DVD_CD_DUPLICATORS.html"><span>Daisy Chain Duplicators</span></a></li><li><a href="https://esystor.com/page/category/RACKMOUNT_DUPLICATORS.html"><span>Rackmount Duplicators</span></a></li><li><a href="https://esystor.com/page/category/M_Disc_CD_DVD.html"><span>M-Disc DVD Blank Media</span></a></li><li><a href="https://esystor.com/page/category/LIGHTSCRIBE_BLANK_MEDIA.html"><span>LightScribe Blank Media</span></a></li></ul></div>
+          <a class="mm-pic" href="https://esystor.com/page/category/CD_DVD_DUPLICATORS.html" tabindex="-1" aria-hidden="true"><img src="https://www.esystor.com/mm5/graphics/00000001/3_12X_Burner_Blu-Ray_Disc_Duplicator.jpg" alt="" loading="lazy"></a>
+        </div>
+      </div>
+    </li></ul>
   </nav>
-  <div class="drawer-foot">
-    <a class="tel2" href="tel:18664441876"><b>866.444.1876</b><small>Mon to Fri, 8:00 to 16:00 Pacific</small></a>
-    <a class="btn btn-a" href="page.html#contact">Request a quote</a>
-  </div>
+</header>
+
+<div class="scrim" hidden></div>
+<aside class="drawer" id="drawer" aria-label="Menu" hidden>
+  <div class="drawer-top"><img src="https://www.esystor.com/images/systor_logo.png" alt="Systor"><button type="button" class="drawer-x" aria-label="Close menu">&times;</button></div>
+  <form class="search search-m" role="search" action="https://esystor.com/mm5/merchant.mvc" method="get">
+    <input type="hidden" name="Screen" value="SRCH"><input type="hidden" name="Store_Code" value="duplicator">
+    <input name="Search" type="search" aria-label="Search items" placeholder="Search item or model code"><button type="submit">Search</button>
+  </form>
+  <div class="drawer-cats"><details><summary>M.2 NVMe PCIe Duplicator / Sanitizer<svg aria-hidden="true"><use href="#i-chev"/></svg></summary><ul><li><a href="https://esystor.com/page/category/Systor_NVMe_Duplicators.html"><b>Shop all</b></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_NX_Duplicators.html">NX Series <small>Supports M.2</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_YL_Duplicators.html">YL Series <small>Supports M.2 & SATA SSD/HDD</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_M2_Duplicators.html">M2 Series <small>Supports M.2</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_HC_Duplicators.html">HC Series <small>Supports M.2 & SATA SSD/HDD</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_XW_Duplicators.html">XW Series <small>Supports M.2 & SATA SSD/HDD</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_SF_Duplicators.html">SF Series <small>Supports M.2 & SATA SSD/HDD</small></a></li></ul></details><details><summary>Hard Drive Duplicator / Sanitizer<svg aria-hidden="true"><use href="#i-chev"/></svg></summary><ul><li><a href="https://esystor.com/page/category/HARD_DISK_DUPLICATORS.html"><b>Shop all</b></a></li><li><a href="collection.html">Tower SATA HDD/SSD Duplicator</a></li><li><a href="https://esystor.com/page/category/Systor_Flatbed_Duplicators.html">Flatbed SATA HDD/SSD Duplicator</a></li><li><a href="https://esystor.com/page/category/Systor_Rackmount_Duplicators.html">Rackmount SATA HDD/SSD Duplicator</a></li><li><a href="https://esystor.com/page/category/usb-to-hdd-duplicators.html">External USB-Powered HDD/SSD Duplicator</a></li><li><a href="https://esystor.com/page/category/PORTABLE_HDD_DUPLICATORS.html">Portable SATA HDD/SSD Duplicator</a></li></ul></details><details><summary>Flash Media Duplicator<svg aria-hidden="true"><use href="#i-chev"/></svg></summary><ul><li><a href="https://esystor.com/page/category/MEMORY_CARD_DUPLICATORS.html"><b>Shop all</b></a></li><li><a href="https://esystor.com/page/category/USB_DUPLICATOR.html">USB Duplicator</a></li><li><a href="https://esystor.com/page/category/SD_CARD_DUPLICATOR.html">SD MicroSD Card Duplicator</a></li><li><a href="https://esystor.com/page/category/CF_CARD_DUPLICATORS.html">CF Card Duplicator</a></li><li><a href="https://esystor.com/page/category/usb-to-hdd-duplicators.html">External USB-Powered HDD/SSD Duplicator</a></li><li><a href="https://esystor.com/page/category/USB_BACK_UP_DVD_DUPLICATOR.html">USB to CD DVD Duplicator</a></li><li><a href="https://esystor.com/page/category/MULTIMEDIA_DUPLICATORS.html">MultiMedia Center Duplicator</a></li><li><a href="https://esystor.com/page/category/MULTIMEDIA_CENTER_PLUS.html">MultiMedia Center Plus Duplicator</a></li><li><a href="https://esystor.com/page/category/ALL-IN-ONE-USB-SD-CF-MMC-DVD-BD.html">All-In-One USB/SD/CF Combo Disc Duplicator</a></li><li><a href="https://esystor.com/page/category/EUSB_DUPLICATORS.html">eUSB Drive Duplicator</a></li><li><a href="https://esystor.com/page/category/CFAST_DUPLICATORS.html">CFast Card Duplicator</a></li></ul></details><details><summary>CD DVD BD Blu-ray Duplicator<svg aria-hidden="true"><use href="#i-chev"/></svg></summary><ul><li><a href="https://esystor.com/page/category/CD_DVD_DUPLICATORS.html"><b>Shop all</b></a></li><li><a href="https://esystor.com/page/category/TOWER_DVD_CD_DUPLICATORS.html">CD/DVD Duplicators</a></li><li><a href="https://esystor.com/page/category/BLU_RAY_DUPLICATORS.html">Blu-Ray Duplicators</a></li><li><a href="https://esystor.com/page/category/USB_BACK_UP_DVD_DUPLICATOR.html">USB to CD DVD Duplicator</a></li><li><a href="https://esystor.com/page/category/MULTIMEDIA_DUPLICATORS.html">MultiMedia Center Duplicator</a></li><li><a href="https://esystor.com/page/category/MULTIMEDIA_CENTER_PLUS.html">MultiMedia Center Plus Duplicator</a></li><li><a href="https://esystor.com/page/category/ALL-IN-ONE-USB-SD-CF-MMC-DVD-BD.html">All-In-One USB/SD/CF Combo Disc Duplicator</a></li><li><a href="https://esystor.com/page/category/DAISY_CHAIN_DVD_CD_DUPLICATORS.html">Daisy Chain Duplicators</a></li><li><a href="https://esystor.com/page/category/RACKMOUNT_DUPLICATORS.html">Rackmount Duplicators</a></li><li><a href="https://esystor.com/page/category/M_Disc_CD_DVD.html">M-Disc DVD Blank Media</a></li><li><a href="https://esystor.com/page/category/LIGHTSCRIBE_BLANK_MEDIA.html">LightScribe Blank Media</a></li></ul></details></div>
+  <nav class="drawer-links"><a href="https://esystor.com/page/LOGN.html">Sign in</a><a href="https://esystor.com/page/ACAD.html">Register</a><a href="https://esystor.com/page/BASK.html">Shopping cart</a><a href="https://esystor.com/page/OCST.html">Checkout</a><a href="page.html#contact">Contact us</a><a href="page.html">About Systor</a></nav>
+  <a class="drawer-tel" href="tel:18664441876">866.444.1876<small>Mon - Fri 8:00AM - 4:00PM PST</small></a>
 </aside>
 
-<main>
+<main id="main">
 
 <section class="hero">
-  <div class="wrap">
-    <div class="bento">
-      <div class="gl b-main rv">
-        <div class="label">Standalone duplication &amp; sanitization</div>
-        <h1>Copy and erase drives.<br><span class="o">No computer.</span></h1>
-        <p class="intro">Systor builds standalone duplicators and sanitizers for IT departments, forensic labs, schools and production floors. Front panel in, verified copy out, with a pass or fail result recorded for every drive.</p>
-        <div class="cta">
-          <a class="btn btn-a" href="collection.html">Shop duplicators <svg><use href="#i-arrow"/></svg></a>
-          <a class="btn btn-b" href="product-configurator.html">Build a system</a>
-        </div>
-        <div class="ship"><svg><use href="#i-check"/></svg> In stock units ship within 24 hours, tested before they leave</div>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <h1>Press OK.<br>Every drive in the tower gets a perfect copy.</h1>
+      <p class="lede">Systor builds standalone duplicators and sanitizers for hard drives, SSDs, M.2 NVMe, USB, SD, CF, CD, DVD and Blu-ray. No computer and no software. Load the drives, pick a mode on the front panel, and walk away.</p>
+      <div class="cta">
+        <a class="btn btn-o" href="collection.html">Shop hard drive duplicators</a>
+        <a class="btn btn-l" href="https://esystor.com/page/category/Systor_NVMe_Duplicators.html">Shop M.2 NVMe duplicators</a>
       </div>
-      <div class="stage rv">
-        <span class="halo" aria-hidden="true"></span>
-        <span class="podium">
-          <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E" data-img="https://www.esystor.com/mm5/graphics/00000001/HDD/5R-HDD-DP.jpg" alt="Systor 1:5 dual-port SATA duplicator and sanitizer">
-          <span class="cast" aria-hidden="true"></span>
-        </span>
-        <span class="gl fchip fchip-a"><b>SYS105HS-DP</b><span>1:5 dual-port SATA</span></span>
-        <span class="gl fchip fchip-b"><b>$805.00</b><span>In stock, ships in 24h</span></span>
-      </div>
+      <dl class="facts">
+        <div><dt>Since</dt><dd>1997</dd></div>
+        <div><dt>Assembled and tested</dt><dd>In the USA</dd></div>
+        <div><dt>GSA contract</dt><dd>GS-35F-333BA</dd></div>
+      </dl>
     </div>
-    <div class="b-stats rv">
-      <div class="gl b-stat"><b>36<span class="u">GB/min</span></b><span>Top sustained speed</span></div>
-      <div class="gl b-stat"><b>1:23</b><span>Targets from one source</span></div>
-      <div class="gl b-stat"><b>800-88</b><span>NIST verified erasure</span></div>
-      <div class="gl b-stat"><b>1997</b><span>Building in the United States</span></div>
+    <div class="hero-unit">
+      <figure class="unit-photo"><img src="https://www.esystor.com/mm5/graphics/00000001/HDD/3R-HDD-DP.jpg" alt="Systor 1:3 tower SATA hard drive duplicator" width="400" height="400"></figure>
+      <div class="panel" data-lcd>
+  <div class="panel-top"><span class="led" aria-hidden="true"></span><span class="panel-brand">SySTOR</span><span class="panel-model">SYS103HS-DP</span></div>
+  <div class="lcd" role="status" aria-live="polite"><div class="lcd-l1">1.Copy</div><div class="lcd-l2">&nbsp;</div></div>
+  <div class="keys" role="group" aria-label="Front panel buttons">
+    <button type="button" data-k="up" aria-label="Up">&#9650;</button>
+    <button type="button" data-k="down" aria-label="Down">&#9660;</button>
+    <button type="button" data-k="ok">OK</button>
+    <button type="button" data-k="esc">ESC</button>
+  </div>
+  <p class="lcd-help"></p>
+</div>
+      <p class="unit-cap">This is the panel on every Systor tower. Use the buttons to try it.</p>
     </div>
   </div>
 </section>
 
-<section class="sec">
+<section class="sec feat" aria-labelledby="feat-h">
   <div class="wrap">
-    <div class="hrow rv">
-      <div><div class="label">Shop by media</div><h2 class="t">Start with what you<br>need to copy.</h2></div>
-      <p class="intro">Every family copies and securely erases. Choose the media, then the number of targets and the speed.</p>
+    <div class="sec-head"><h2 id="feat-h">Featured duplicators</h2>
+      <div class="car-nav"><button type="button" class="car-prev" aria-label="Previous slide"><svg><use href="#i-left"/></svg></button><button type="button" class="car-next" aria-label="Next slide"><svg><use href="#i-right"/></svg></button></div></div>
+    <div class="car" data-car>
+      <ul class="car-track"><li class="slide"><a href="https://esystor.com/page/category/Systor_NVMe_Duplicators.html"><img src="https://esystor.com/images/Miva-Slide-NVME.jpg" alt="M.2 NVMe PCIe duplicators and sanitizers" width="980" height="360"></a></li><li class="slide"><a href="https://esystor.com/page/category/Systor_Flatbed_Duplicators.html"><img src="https://esystor.com/images/Miva-Slide-HDD-Flatbed.jpg" alt="Flatbed HDD and SSD SATA duplicators and sanitizers" width="980" height="360" loading=lazy></a></li><li class="slide"><a href="collection.html"><img src="https://esystor.com/images/Miva-Slide-HDD-Tower.jpg" alt="Tower HDD and SSD SATA duplicators and sanitizers" width="980" height="360" loading=lazy></a></li><li class="slide"><a href="https://esystor.com/page/category/USB_DUPLICATOR.html"><img src="https://esystor.com/images/Miva-Slide-USB.jpg" alt="USB flash drive duplicators" width="980" height="360" loading=lazy></a></li><li class="slide"><a href="https://esystor.com/page/category/SD_CARD_DUPLICATOR.html"><img src="https://esystor.com/images/Miva-Slide-SD.jpg" alt="SD and microSD card duplicators" width="980" height="360" loading=lazy></a></li></ul>
+      <div class="car-dots"><button type="button" aria-label="Show slide 1" aria-current=true></button><button type="button" aria-label="Show slide 2"></button><button type="button" aria-label="Show slide 3"></button><button type="button" aria-label="Show slide 4"></button><button type="button" aria-label="Show slide 5"></button></div>
     </div>
-    <div class="cats rv">
-      <a class="gl cat" href="collection.html"><span class="ph"><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E" data-img="https://www.esystor.com/mm5/graphics/00000001/HDD/1R-HDD-DP.jpg" alt="SATA hard drive duplicator"></span><span class="cx"><h3>Hard drive &amp; SSD</h3><p>Dual-port SATA towers for 2.5 inch SSD, 2.5 inch HDD and 3.5 inch disks.</p><span class="n">1:1 to 1:9 · from $275</span></span></a>
-      <a class="gl cat" href="collection.html"><span class="ph"><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E" data-img="https://www.esystor.com/mm5/graphics/00000001/1/ES%2001%20Main%20Image%20-%20400%20x%20400.jpg" alt="M.2 NVMe duplicator"></span><span class="cx"><h3>M.2 NVMe PCIe</h3><p>The NX series copies up to 23 M.2 drives across PCIe NVMe and M.2 SATA.</p><span class="n">24 GB/min · from $2,775</span></span></a>
-      <a class="gl cat" href="collection.html"><span class="ph"><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E" data-img="https://www.esystor.com/mm5/graphics/00000001/7-USB+HDD.jpg" alt="USB drive duplicator"></span><span class="cx"><h3>USB flash &amp; powered</h3><p>Copy to USB flash and USB-powered drives from a single source.</p><span class="n">1:7 and 1:15 · from $555</span></span></a>
-      <a class="gl cat" href="collection.html"><span class="ph"><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E" data-img="https://www.esystor.com/mm5/graphics/00000001/SD-7L-300px%5B1%5D.jpg" alt="SD and microSD card duplicator"></span><span class="cx"><h3>SD &amp; microSD</h3><p>SD 3.0 towers for seven, fifteen or twenty-three cards at a time.</p><span class="n">6 GB/min · from $1,780</span></span></a>
-      <a class="gl cat" href="collection.html"><span class="ph"><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E" data-img="https://www.esystor.com/mm5/graphics/00000001/7F-CF.jpg" alt="CompactFlash card duplicator"></span><span class="cx"><h3>CompactFlash &amp; CFast</h3><p>Professional flash duplication for broadcast and camera workflows.</p><span class="n">1:7 and 1:15 · from $785</span></span></a>
-      <a class="gl cat" href="collection.html"><span class="ph"><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E" data-img="https://www.esystor.com/mm5/graphics/00000001/3_12X_Burner_Blu-Ray_Disc_Duplicator.jpg" alt="Blu-ray CD DVD duplicator"></span><span class="cx"><h3>CD, DVD &amp; Blu-ray</h3><p>Optical towers, daisy chain systems and all-in-one disc and flash units.</p><span class="n">1:3 and up · from $450</span></span></a>
+    <h2 class="sub-h">Popular categories</h2>
+    <ul class="pop"><li><a href="https://esystor.com/page/category/Systor_NVMe_Duplicators.html"><img src="https://esystor.com/images/Miva-Popular-NVME.jpg" alt="M.2 PCIe duplicator sanitizer" loading="lazy"></a></li><li><a href="https://esystor.com/page/category/Systor_Flatbed_Duplicators.html"><img src="https://esystor.com/images/Miva-Popular-HDD-Flatbed.jpg" alt="Flatbed HDD SSD SATA duplicator sanitizer" loading="lazy"></a></li><li><a href="collection.html"><img src="https://esystor.com/images/Miva-Popular-HDD-Tower.jpg" alt="Tower HDD SSD SATA duplicator sanitizer" loading="lazy"></a></li><li><a href="https://esystor.com/page/category/MEMORY_CARD_DUPLICATORS.html"><img src="https://esystor.com/images/Miva-Popular-Flash.jpg" alt="Flash memory duplicator sanitizer" loading="lazy"></a></li></ul>
+  </div>
+</section>
+
+<section class="sec fams-sec" aria-labelledby="fams-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="fams-h">Shop by the media you copy</h2></div>
+    <div class="fams"><div class="fam"><h3><a href="https://esystor.com/page/category/Systor_NVMe_Duplicators.html">M.2 NVMe PCIe Duplicator / Sanitizer</a></h3><p class="fam-n">6 lines</p><ul><li><a href="https://esystor.com/page/category/Systor_NVMe_NX_Duplicators.html">NX Series <small>Supports M.2</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_YL_Duplicators.html">YL Series <small>Supports M.2 & SATA SSD/HDD</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_M2_Duplicators.html">M2 Series <small>Supports M.2</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_HC_Duplicators.html">HC Series <small>Supports M.2 & SATA SSD/HDD</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_XW_Duplicators.html">XW Series <small>Supports M.2 & SATA SSD/HDD</small></a></li><li><a href="https://esystor.com/page/category/Systor_NVMe_SF_Duplicators.html">SF Series <small>Supports M.2 & SATA SSD/HDD</small></a></li></ul></div><div class="fam"><h3><a href="https://esystor.com/page/category/HARD_DISK_DUPLICATORS.html">Hard Drive Duplicator / Sanitizer</a></h3><p class="fam-n">5 lines</p><ul><li><a href="collection.html">Tower SATA HDD/SSD Duplicator</a></li><li><a href="https://esystor.com/page/category/Systor_Flatbed_Duplicators.html">Flatbed SATA HDD/SSD Duplicator</a></li><li><a href="https://esystor.com/page/category/Systor_Rackmount_Duplicators.html">Rackmount SATA HDD/SSD Duplicator</a></li><li><a href="https://esystor.com/page/category/usb-to-hdd-duplicators.html">External USB-Powered HDD/SSD Duplicator</a></li><li><a href="https://esystor.com/page/category/PORTABLE_HDD_DUPLICATORS.html">Portable SATA HDD/SSD Duplicator</a></li></ul></div><div class="fam"><h3><a href="https://esystor.com/page/category/MEMORY_CARD_DUPLICATORS.html">Flash Media Duplicator</a></h3><p class="fam-n">10 lines</p><ul><li><a href="https://esystor.com/page/category/USB_DUPLICATOR.html">USB Duplicator</a></li><li><a href="https://esystor.com/page/category/SD_CARD_DUPLICATOR.html">SD MicroSD Card Duplicator</a></li><li><a href="https://esystor.com/page/category/CF_CARD_DUPLICATORS.html">CF Card Duplicator</a></li><li><a href="https://esystor.com/page/category/usb-to-hdd-duplicators.html">External USB-Powered HDD/SSD Duplicator</a></li><li><a href="https://esystor.com/page/category/USB_BACK_UP_DVD_DUPLICATOR.html">USB to CD DVD Duplicator</a></li><li><a href="https://esystor.com/page/category/MULTIMEDIA_DUPLICATORS.html">MultiMedia Center Duplicator</a></li><li><a href="https://esystor.com/page/category/MULTIMEDIA_CENTER_PLUS.html">MultiMedia Center Plus Duplicator</a></li><li><a href="https://esystor.com/page/category/ALL-IN-ONE-USB-SD-CF-MMC-DVD-BD.html">All-In-One USB/SD/CF Combo Disc Duplicator</a></li><li><a href="https://esystor.com/page/category/EUSB_DUPLICATORS.html">eUSB Drive Duplicator</a></li><li><a href="https://esystor.com/page/category/CFAST_DUPLICATORS.html">CFast Card Duplicator</a></li></ul></div><div class="fam"><h3><a href="https://esystor.com/page/category/CD_DVD_DUPLICATORS.html">CD DVD BD Blu-ray Duplicator</a></h3><p class="fam-n">10 lines</p><ul><li><a href="https://esystor.com/page/category/TOWER_DVD_CD_DUPLICATORS.html">CD/DVD Duplicators</a></li><li><a href="https://esystor.com/page/category/BLU_RAY_DUPLICATORS.html">Blu-Ray Duplicators</a></li><li><a href="https://esystor.com/page/category/USB_BACK_UP_DVD_DUPLICATOR.html">USB to CD DVD Duplicator</a></li><li><a href="https://esystor.com/page/category/MULTIMEDIA_DUPLICATORS.html">MultiMedia Center Duplicator</a></li><li><a href="https://esystor.com/page/category/MULTIMEDIA_CENTER_PLUS.html">MultiMedia Center Plus Duplicator</a></li><li><a href="https://esystor.com/page/category/ALL-IN-ONE-USB-SD-CF-MMC-DVD-BD.html">All-In-One USB/SD/CF Combo Disc Duplicator</a></li><li><a href="https://esystor.com/page/category/DAISY_CHAIN_DVD_CD_DUPLICATORS.html">Daisy Chain Duplicators</a></li><li><a href="https://esystor.com/page/category/RACKMOUNT_DUPLICATORS.html">Rackmount Duplicators</a></li><li><a href="https://esystor.com/page/category/M_Disc_CD_DVD.html">M-Disc DVD Blank Media</a></li><li><a href="https://esystor.com/page/category/LIGHTSCRIBE_BLANK_MEDIA.html">LightScribe Blank Media</a></li></ul></div></div>
+  </div>
+</section>
+
+<section class="sec picks-sec" aria-labelledby="picks-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="picks-h">Tower SATA HDD/SSD duplicators</h2><a class="more" href="collection.html">See all 33 models</a></div>
+    <ul class="grid g4"><li class="pc" data-t="1" data-s="90" data-p="275">
+  <a href="https://esystor.com/page/PROD/SYS101HS-DP.html" class="pc-a">
+    <span class="pc-img"><img src="https://www.esystor.com/mm5/graphics/00000001/HDD/1R-HDD-DP.jpg" alt="" loading="lazy"></span>
+    <span class="pc-ratio">1:1<small>90 MB/s</small></span>
+    <span class="pc-name">Systor 1:1 SATA Hard Drive Duplicator - 5.4GB/Min - Copy & Erase 2.5 SSD HDD & 3.5 Disks (90MB/Sec)</span>
+    <span class="pc-code">Code: SYS101HS-DP</span>
+    <span class="pc-row"><b class="pc-price">$275.00</b><span class="pc-stock">99 available</span></span>
+  </a>
+</li><li class="pc" data-t="3" data-s="90" data-p="555">
+  <a href="product.html" class="pc-a">
+    <span class="pc-img"><img src="https://www.esystor.com/mm5/graphics/00000001/HDD/3R-HDD-DP.jpg" alt="" loading="lazy"></span>
+    <span class="pc-ratio">1:3<small>90 MB/s</small></span>
+    <span class="pc-name">Systor 1:3 SATA Hard Drive Duplicator - 5.4GB/Min - Copy & Erase 2.5 SSD HDD & 3.5 Disks (90MB/Sec)</span>
+    <span class="pc-code">Code: SYS103HS-DP</span>
+    <span class="pc-row"><b class="pc-price">$555.00</b><span class="pc-stock">99 available</span></span>
+  </a>
+</li><li class="pc" data-t="5" data-s="150" data-p="1100">
+  <a href="https://esystor.com/page/PROD/SYS205HS-DP.html" class="pc-a">
+    <span class="pc-img"><img src="https://www.esystor.com/mm5/graphics/00000001/HDD/5R-HDD-DP.jpg" alt="" loading="lazy"></span>
+    <span class="pc-ratio">1:5<small>150 MB/s</small></span>
+    <span class="pc-name">Systor 1:5 SATA Hard Drive Duplicator - 9GB/Min - Copy & Erase 2.5 SSD HDD & 3.5 Disks (150MB/Sec)</span>
+    <span class="pc-code">Code: SYS205HS-DP</span>
+    <span class="pc-row"><b class="pc-price">$1,100.00</b><span class="pc-stock">98 available</span></span>
+  </a>
+</li><li class="pc" data-t="7" data-s="300" data-p="2520">
+  <a href="https://esystor.com/page/PROD/SYS307DP.html" class="pc-a">
+    <span class="pc-img"><img src="https://www.esystor.com/mm5/graphics/00000001/HDD/7R-HDD-DP.jpg" alt="" loading="lazy"></span>
+    <span class="pc-ratio">1:7<small>300 MB/s</small></span>
+    <span class="pc-name">Systor 1:7 SATA Hard Drive Duplicator - 18GB/Min - Copy & Erase 2.5 SSD HDD & 3.5 Disks (300MB/Sec)</span>
+    <span class="pc-code">Code: SYS307DP</span>
+    <span class="pc-row"><b class="pc-price">$2,520.00</b><span class="pc-stock">99 available</span></span>
+  </a>
+</li></ul>
+  </div>
+</section>
+
+<section class="sec co" aria-labelledby="co-h">
+  <div class="wrap co-in">
+    <h2 id="co-h">Quality products, competitive prices, and support you can count on.</h2>
+    <div class="co-txt">
+      <p>We provide a wide variety of products ranging from blank optical disc media, automated disc publishers and manual standalone duplicators that simultaneously reproduce multiple copies of today's most popular media including CD, DVD, hard drives, USB 2.0 drives and SD cards.</p>
+      <p>In the rapidly growing duplication industry, our company prides itself in providing quality products, competitive prices with customer service and technical support you can count on. As a leading manufacturer of standalone duplicators, Systor is committed to bringing the best product reliability with the latest technology to customers and producers involved in all types of media production.</p>
+      <a class="txt-link" href="page.html">About Systor Systems</a>
     </div>
   </div>
 </section>
 
-<section class="sec">
-  <div class="wrap">
-    <div class="rv" style="max-width:48ch;margin-bottom:38px">
-      <div class="label">Why Systor</div>
-      <h2 class="t">Hardware you can put in a compliance report.</h2>
-    </div>
-    <div class="vals rv">
-      <div class="gl val"><span class="ib"><svg><use href="#i-gauge"/></svg></span><h3>Sustained, not peak</h3><p>Published speeds are what the unit holds across a whole transfer, so a 1 TB job takes the time the spec says it will.</p></div>
-      <div class="gl val"><span class="ib"><svg><use href="#i-shield"/></svg></span><h3>Verified every time</h3><p>Byte-for-byte compare after the copy, with a pass or fail result for each target rather than one status for the job.</p></div>
-      <div class="gl val"><span class="ib"><svg><use href="#i-chip"/></svg></span><h3>No software to license</h3><p>Standalone operation means no host machine, no drivers and no per-seat licence to renew each year.</p></div>
-      <div class="gl val"><span class="ib"><svg><use href="#i-support"/></svg></span><h3>Support that answers</h3><p>US-based technical support, Monday to Friday, from the people who build and test the machines.</p></div>
-    </div>
+<section class="gov" aria-labelledby="gov-h">
+  <div class="wrap gov-in">
+    <div><h2 id="gov-h">Government and school purchase orders welcome</h2>
+    <p>We accept purchase orders from city, state and federal agencies, and from public and private schools. Order on GSA contract GS-35F-333BA.</p></div>
+    <a class="btn btn-w" href="page.html#government">How to order with a PO</a>
   </div>
 </section>
 
-<section class="sec">
+<section class="sec res" aria-labelledby="res-h">
   <div class="wrap">
-    <div class="hrow rv">
-      <div><div class="label">Who specifies Systor</div><h2 class="t">Four buyers, one machine,<br>four reasons.</h2></div>
-      <p class="intro">The same hardware, specified very differently depending on what the job has to prove.</p>
-    </div>
-    <div class="auds rv">
-      <div class="gl aud"><svg class="hd-i"><use href="#i-server"/></svg><h3>IT departments</h3><p>Imaging fleets and decommissioning drives on a schedule.</p><ul><li><svg><use href="#i-check"/></svg>Bulk deployment imaging</li><li><svg><use href="#i-check"/></svg>Certified erasure before disposal</li><li><svg><use href="#i-check"/></svg>Rackmount options</li></ul></div>
-      <div class="gl aud"><svg class="hd-i"><use href="#i-school"/></svg><h3>Education</h3><p>Lab rebuilds between terms, usually on a fixed budget.</p><ul><li><svg><use href="#i-check"/></svg>Purchase orders accepted</li><li><svg><use href="#i-check"/></svg>Entry models from $275</li><li><svg><use href="#i-check"/></svg>Simple for student staff</li></ul></div>
-      <div class="gl aud"><svg class="hd-i"><use href="#i-gov"/></svg><h3>Government</h3><p>Procurement through an existing federal contract.</p><ul><li><svg><use href="#i-check"/></svg>GSA GS-35F-333BA</li><li><svg><use href="#i-check"/></svg>NIST 800-88 and DoD modes</li><li><svg><use href="#i-check"/></svg>Documentation on request</li></ul></div>
-      <div class="gl aud"><svg class="hd-i"><use href="#i-print"/></svg><h3>Forensics &amp; media</h3><p>Acquisition where the chain of custody matters.</p><ul><li><svg><use href="#i-check"/></svg>Write-protected source handling</li><li><svg><use href="#i-check"/></svg>Per-drive verification logs</li><li><svg><use href="#i-check"/></svg>CF, CFast and SD workflows</li></ul></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="hrow rv">
-      <div><div class="label">Featured</div><h2 class="t">Most specified this year.</h2></div>
-      <a class="lnk" href="collection.html">View all products <svg><use href="#i-arrow"/></svg></a>
-    </div>
-    <div class="prods rv">
-      <a class="gl pc" href="product.html"><span class="ph"><span class="tag">Best seller</span><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E" data-img="https://www.esystor.com/mm5/graphics/00000001/HDD/1R-HDD-DP.jpg" alt="Systor 1:1 dual-port SATA duplicator"></span><span class="cx"><span class="sku">SYS101HS-DP</span><h3>1:1 Dual-Port SATA Duplicator &amp; Sanitizer</h3><span class="sp"><i>1:1<small>Targets</small></i><i>5.4<small>GB/min</small></i><i>90<small>MB/sec</small></i></span><span class="bt"><span class="pr">$275.00</span><span class="go"><svg><use href="#i-arrow"/></svg></span></span></span></a>
-      <a class="gl pc" href="product.html"><span class="ph"><span class="tag">3 targets</span><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E" data-img="https://www.esystor.com/mm5/graphics/00000001/HDD/3R-HDD-DP.jpg" alt="Systor 1:3 dual-port SATA duplicator"></span><span class="cx"><span class="sku">SYS103HS-DP</span><h3>1:3 Dual-Port SATA Duplicator &amp; Sanitizer</h3><span class="sp"><i>1:3<small>Targets</small></i><i>5.4<small>GB/min</small></i><i>90<small>MB/sec</small></i></span><span class="bt"><span class="pr">$555.00</span><span class="go"><svg><use href="#i-arrow"/></svg></span></span></span></a>
-      <a class="gl pc" href="product.html"><span class="ph"><span class="tag">Fastest</span><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E" data-img="https://www.esystor.com/mm5/graphics/00000001/1/ES%2001%20Main%20Image%20-%20400%20x%20400.jpg" alt="Systor 1:3 M.2 NVMe NX duplicator"></span><span class="cx"><span class="sku">SYSNVME-NX403</span><h3>1:3 M.2 NVMe NX Duplicator &amp; Sanitizer</h3><span class="sp"><i>1:3<small>Targets</small></i><i>24<small>GB/min</small></i><i>M.2<small>PCIe</small></i></span><span class="bt"><span class="pr">$2,775.00</span><span class="go"><svg><use href="#i-arrow"/></svg></span></span></span></a>
-      <a class="gl pc" href="product.html"><span class="ph"><span class="tag">SD 3.0</span><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E" data-img="https://www.esystor.com/mm5/graphics/00000001/SD-7L-300px%5B1%5D.jpg" alt="Systor 1:7 SD microSD duplicator"></span><span class="cx"><span class="sku">SD 3.0 tower</span><h3>1:7 SD / microSD 3.0 Duplicator</h3><span class="sp"><i>1:7<small>Targets</small></i><i>6<small>GB/min</small></i><i>SD<small>3.0</small></i></span><span class="bt"><span class="pr">$1,780.00</span><span class="go"><svg><use href="#i-arrow"/></svg></span></span></span></a>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="range">
-  <div class="wrap">
-    <div class="hrow rv">
-      <div><div class="label">Models &amp; pricing</div><h2 class="t">The whole SATA range,<br>one table.</h2></div>
-      <p class="intro">Targets increase down the table, speed across it. Nothing else changes: same firmware, same erasure modes, same warranty.</p>
-    </div>
-    <div class="gl mx rv">
-      <div class="mxs"><table class="g">
-        <thead><tr><th>Targets</th><th>5.4 GB/min</th><th>9 GB/min</th><th>18 GB/min</th><th>36 GB/min</th></tr></thead>
-        <tbody>
-          <tr><th>1:1</th><td>$275<small>SYS101HS-DP</small></td><td>$360<small>SYS201HS-DP</small></td><td>$485<small>SYS301DP</small></td><td>$895<small>SYS601DP</small></td></tr>
-          <tr><th>1:3</th><td>$555<small>SYS103HS-DP</small></td><td>$735<small>SYS203HS-DP</small></td><td>$1,350<small>SYS303DP</small></td><td>$1,650<small>SYS603DP</small></td></tr>
-          <tr><th>1:5</th><td>$805<small>SYS105HS-DP</small></td><td>$1,100<small>SYS205HS-DP</small></td><td>$1,825<small>SYS305DP</small></td><td>$2,500<small>SYS605DP</small></td></tr>
-          <tr><th>1:7</th><td>$1,050<small>SYS107HS-DP</small></td><td>$1,295<small>SYS207HS-DP</small></td><td>$2,520<small>SYS307DP</small></td><td>$3,325<small>SYS607DP</small></td></tr>
-          <tr><th>1:9</th><td>$1,225<small>SYS109HS-DP</small></td><td>$1,665<small>SYS209HS-DP</small></td><td>$2,880<small>SYS309DP</small></td><td>$4,275<small>SYS609DP</small></td></tr>
-        </tbody>
-      </table></div>
-      <div class="mxf"><span>Prices exclude shipping. Volume, education and government pricing on request.</span><a class="btn btn-b btn-s" href="product-configurator.html">Configure one</a></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="cmp">
-      <div class="rv">
-        <div class="label">Secure erasure</div>
-        <h2 class="t">Wiping a drive is easy.<br>Proving it isn't.</h2>
-        <p class="intro">Every Systor sanitizer runs the erasure standard you are asked to meet, verifies the result, and reports it per drive so it can go straight into an audit file.</p>
-        <div class="modes">
-          <div class="gl mode"><svg><use href="#i-shield"/></svg><div><b>NIST 800-88 Purge and Clear</b><span>The standard most US agencies cite</span></div></div>
-          <div class="gl mode"><svg><use href="#i-shield"/></svg><div><b>DoD 5220.22-M</b><span>Three pass overwrite with verification</span></div></div>
-          <div class="gl mode"><svg><use href="#i-tool"/></svg><div><b>Secure erase and quick erase</b><span>Firmware level, for drives that support it</span></div></div>
-        </div>
-      </div>
-      <div class="gl spec rv">
-        <div class="l"><span>Result per drive</span><b>Pass / fail</b></div>
-        <div class="l"><span>Verification</span><b>Byte-for-byte</b></div>
-        <div class="l"><span>Operation</span><b>Standalone</b></div>
-        <div class="l"><span>Media</span><b>SATA · NVMe · USB · SD</b></div>
-        <div class="l"><span>Warranty</span><b>3 yr / 1 yr</b></div>
-        <div class="l"><span>Contract</span><b>GS-35F-333BA</b></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="rv" style="max-width:46ch;margin-bottom:34px">
-      <div class="label">Procurement</div>
-      <h2 class="t">Set up for how organizations actually buy.</h2>
-    </div>
-    <div class="certs rv">
-      <div class="gl cert"><b>GSA</b><strong>Federal contract</strong><span>GS-35F-333BA, so agencies can order without a new vendor setup.</span></div>
-      <div class="gl cert"><b>IDDA</b><strong>Industry member</strong><span>International Disc Duplicating Association.</span></div>
-      <div class="gl cert"><b>PO</b><strong>Purchase orders</strong><span>Accepted from government, education and established businesses.</span></div>
-      <div class="gl cert"><b>1997</b><strong>Track record</strong><span>Building and supporting duplication hardware in the United States.</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="faq">
-  <div class="wrap">
-    <div class="hrow rv">
-      <div><div class="label">Questions</div><h2 class="t">Before you order.</h2></div>
-      <p class="intro">The things buyers ask most often. If yours is not here, call and ask.</p>
-    </div>
-    <div class="faq rv">
-      <details class="gl q" open><summary>Do I need a computer to run one?</summary><div class="a">No. Every duplicator here is standalone. Seat the source drive and the targets, choose copy or erase on the front panel, press start. No host machine, no driver to install, no software licence to renew.</div></details>
-      <details class="gl q"><summary>What is the difference between a duplicator and a sanitizer?</summary><div class="a">They are the same machine. Copying writes the source to every target and verifies it. Sanitizing erases the drives to a chosen standard and verifies that instead. Every unit on this site does both.</div></details>
-      <details class="gl q"><summary>Which erasure standards are supported?</summary><div class="a">Quick erase, full erase, DoD 5220.22-M three pass, and NIST 800-88 Clear and Purge. Drives that support a firmware level secure erase can use that too. The result is reported per drive, so one failed target cannot pass silently.</div></details>
-      <details class="gl q"><summary>How fast is it really?</summary><div class="a">The published figure is sustained rather than peak, so it holds for a whole transfer. At 5.4 GB per minute a 1 TB drive takes roughly three hours. At 36 GB per minute the same drive takes under half an hour. Real time also depends on the slowest drive in the set.</div></details>
-      <details class="gl q"><summary>Can I copy between different drive sizes?</summary><div class="a">Yes, as long as the target holds the data being copied. Copy modes let you move only the used partitions rather than the whole disk, which is faster and lets you go to a smaller target.</div></details>
-      <details class="gl q"><summary>Do the SATA units take 2.5 and 3.5 inch drives?</summary><div class="a">Yes. The dual-port SATA range handles 2.5 inch SSDs, 2.5 inch hard drives and 3.5 inch disks without caddies or adapters.</div></details>
-      <details class="gl q"><summary>How do I choose between 1:1 and a larger tower?</summary><div class="a">Count how many drives you do in a typical session rather than in a year. A fast 1:1 often beats a slow 1:5 for small batches, and the other way round for deployment work. Tell us the workload and we will size it, including when the cheaper model is the right answer.</div></details>
-      <details class="gl q"><summary>Can we order on a purchase order?</summary><div class="a">Yes. Government, education and established business purchase orders are accepted, and Systor holds GSA contract GS-35F-333BA so federal buyers can order without setting up a new vendor.</div></details>
-      <details class="gl q"><summary>What warranty comes with it?</summary><div class="a">Three years labor and one year parts as standard, with US-based technical support Monday to Friday, 8:00 to 16:00 Pacific.</div></details>
-      <details class="gl q"><summary>How quickly does it ship?</summary><div class="a">Stock units typically leave within 24 hours, configured and tested before they go. US orders ship free. For lead times on larger or rackmount configurations, call and we will confirm before you order.</div></details>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="gl close rv">
-      <div>
-        <div class="label">Talk to a person</div>
-        <h2 class="t">Tell us the job,<br>we'll size the machine.</h2>
-        <p class="intro">Give us the drive size, how many you run in a shift and whether you need certified erasure. We will point you at the model that fits, and say so when a cheaper one does the same work.</p>
-      </div>
-      <div>
-        <a class="crow" href="tel:18664441876"><span class="i"><svg><use href="#i-phone"/></svg></span><span><small>Call sales</small><b>866.444.1876</b></span></a>
-        <a class="crow" href="mailto:sales@esystor.com"><span class="i"><svg><use href="#i-mail"/></svg></span><span><small>Email sales</small><b>sales@esystor.com</b></span></a>
-        <a class="crow" href="mailto:techsupport@esystor.com"><span class="i"><svg><use href="#i-tool"/></svg></span><span><small>Technical support</small><b>techsupport@esystor.com</b></span></a>
-        <div style="margin-top:18px"><a class="btn btn-a" href="page.html#contact" style="width:100%">Request a quote <svg><use href="#i-arrow"/></svg></a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="idx">
-  <div class="wrap">
-    <div class="rv"><div class="label">Full product index</div><h2 class="t" style="font-size:clamp(24px,2.6vw,34px)">Every duplicator family.</h2></div>
-    <div class="idx-g rv">
-      <div><h4>M.2 NVMe PCIe</h4><a href="collection.html">All M.2 NVMe systems</a><a href="collection.html">NX Series</a><a href="collection.html">YL Series</a><a href="collection.html">M2 Series</a><a href="collection.html">HC Series</a><a href="collection.html">XW Series</a><a href="collection.html">SF Series</a></div>
-      <div><h4>Hard drive &amp; SSD</h4><a href="collection.html">All hard drive systems</a><a href="collection.html">Dual-port SATA</a><a href="collection.html">Flatbed SATA</a><a href="collection.html">Rackmount SATA</a><a href="collection.html">USB to hard drive</a><a href="collection.html">Portable SATA</a></div>
-      <div><h4>Flash media</h4><a href="collection.html">All memory card systems</a><a href="collection.html">USB flash</a><a href="collection.html">SD / microSD</a><a href="collection.html">CompactFlash</a><a href="collection.html">CFast</a><a href="collection.html">eUSB drive</a><a href="collection.html">MultiMedia Center</a><a href="collection.html">MultiMedia Center Plus</a><a href="collection.html">All-in-one USB/SD/CF/BD</a></div>
-      <div><h4>CD, DVD &amp; Blu-ray</h4><a href="collection.html">All optical systems</a><a href="collection.html">Tower DVD / CD</a><a href="collection.html">Blu-ray</a><a href="collection.html">Daisy chain</a><a href="collection.html">Rackmount optical</a><a href="collection.html">USB backup DVD</a><a href="collection.html">M-Disc media</a><a href="collection.html">LightScribe media</a></div>
-    </div>
+    <div class="sec-head"><h2 id="res-h">Help after you buy</h2></div>
+    <ul class="res-g">
+      <li><a href="https://esystor.com/mm5/merchant.mvc?Order=0&Store_Code=duplicator&Screen=SUPPORT"><img src="assets/img/support-and-faq-resource.jpg" alt="" loading="lazy"><b>Support</b><span>Talk to the technical team, Monday to Friday.</span></a></li>
+      <li><a href="https://esystor.com/mm5/merchant.mvc?Order=0&Store_Code=duplicator&Screen=FAQ"><img src="assets/img/product-manuals-resource.jpg" alt="" loading="lazy"><b>F.A.Q.s</b><span>Answers on copy modes, formats and drive sizes.</span></a></li>
+      <li><a href="https://esystor.com/mm5/merchant.mvc?Order=0&Store_Code=duplicator&Screen=STORE"><img src="assets/img/warranty-and-registration-resource.jpg" alt="" loading="lazy"><b>Warranty and store policy</b><span>3 years labor and 1 year parts on tower duplicators.</span></a></li>
+    </ul>
   </div>
 </section>
 
 </main>
 
-<footer class="ft"><div class="wrap">
-  <div class="ftg">
-    <div>
-      <img class="flogo" src="https://www.esystor.com/images/systor_logo.png" alt="Systor Systems" width="350" height="120">
-      <p style="max-width:34ch">Systor Systems, Inc. Standalone duplication and sanitization hardware, built and supported in the United States since 1997.</p>
-      <p style="margin-top:14px"><a href="tel:18664441876" style="display:inline;color:#fff" class="mono">866.444.1876</a> · Mon to Fri, 8:00 to 16:00 Pacific</p>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-cats"><div><h3><a href="https://esystor.com/page/category/Systor_NVMe_Duplicators.html">M.2 NVMe PCIe Duplicator / Sanitizer</a></h3><a href="https://esystor.com/page/category/Systor_NVMe_NX_Duplicators.html">NX Series</a><a href="https://esystor.com/page/category/Systor_NVMe_YL_Duplicators.html">YL Series</a><a href="https://esystor.com/page/category/Systor_NVMe_M2_Duplicators.html">M2 Series</a><a href="https://esystor.com/page/category/Systor_NVMe_HC_Duplicators.html">HC Series</a><a href="https://esystor.com/page/category/Systor_NVMe_XW_Duplicators.html">XW Series</a><a href="https://esystor.com/page/category/Systor_NVMe_SF_Duplicators.html">SF Series</a></div><div><h3><a href="https://esystor.com/page/category/HARD_DISK_DUPLICATORS.html">Hard Drive Duplicator / Sanitizer</a></h3><a href="collection.html">Tower SATA HDD/SSD Duplicator</a><a href="https://esystor.com/page/category/Systor_Flatbed_Duplicators.html">Flatbed SATA HDD/SSD Duplicator</a><a href="https://esystor.com/page/category/Systor_Rackmount_Duplicators.html">Rackmount SATA HDD/SSD Duplicator</a><a href="https://esystor.com/page/category/usb-to-hdd-duplicators.html">External USB-Powered HDD/SSD Duplicator</a><a href="https://esystor.com/page/category/PORTABLE_HDD_DUPLICATORS.html">Portable SATA HDD/SSD Duplicator</a></div><div><h3><a href="https://esystor.com/page/category/MEMORY_CARD_DUPLICATORS.html">Flash Media Duplicator</a></h3><a href="https://esystor.com/page/category/USB_DUPLICATOR.html">USB Duplicator</a><a href="https://esystor.com/page/category/SD_CARD_DUPLICATOR.html">SD MicroSD Card Duplicator</a><a href="https://esystor.com/page/category/CF_CARD_DUPLICATORS.html">CF Card Duplicator</a><a href="https://esystor.com/page/category/usb-to-hdd-duplicators.html">External USB-Powered HDD/SSD Duplicator</a><a href="https://esystor.com/page/category/USB_BACK_UP_DVD_DUPLICATOR.html">USB to CD DVD Duplicator</a><a href="https://esystor.com/page/category/MULTIMEDIA_DUPLICATORS.html">MultiMedia Center Duplicator</a></div><div><h3><a href="https://esystor.com/page/category/CD_DVD_DUPLICATORS.html">CD DVD BD Blu-ray Duplicator</a></h3><a href="https://esystor.com/page/category/TOWER_DVD_CD_DUPLICATORS.html">CD/DVD Duplicators</a><a href="https://esystor.com/page/category/BLU_RAY_DUPLICATORS.html">Blu-Ray Duplicators</a><a href="https://esystor.com/page/category/USB_BACK_UP_DVD_DUPLICATOR.html">USB to CD DVD Duplicator</a><a href="https://esystor.com/page/category/MULTIMEDIA_DUPLICATORS.html">MultiMedia Center Duplicator</a><a href="https://esystor.com/page/category/MULTIMEDIA_CENTER_PLUS.html">MultiMedia Center Plus Duplicator</a><a href="https://esystor.com/page/category/ALL-IN-ONE-USB-SD-CF-MMC-DVD-BD.html">All-In-One USB/SD/CF Combo Disc Duplicator</a></div></div>
+    <div class="foot-main">
+      <div class="foot-co">
+        <img src="https://www.esystor.com/images/systor_logo.png" alt="Systor" width="350" height="120">
+        <p><b>Systor Systems, Inc.</b><br>4010 Valley Blvd. #105, Walnut, CA 91789, U.S.A.</p>
+        <p>Europe sales office: 60 Albert Road, New Malden, United Kingdom KT3 6BS</p>
+      </div>
+      <dl class="foot-contact">
+        <div><dt>Toll free</dt><dd><a href="tel:18664441876">1-866-444-1876</a></dd></div>
+        <div><dt>Local</dt><dd><a href="tel:19094442590">909-444-2590</a></dd></div>
+        <div><dt>Fax</dt><dd>909-444-3341</dd></div>
+        <div><dt>Sales email</dt><dd><a href="mailto:sales@esystor.com">sales@esystor.com</a></dd></div>
+        <div><dt>Technical support email</dt><dd><a href="mailto:techsupport@esystor.com">techsupport@esystor.com</a></dd></div>
+        <div><dt>UK phone</dt><dd><a href="tel:+442035141400">+44 (0) 20 3514 1400</a></dd></div>
+      </dl>
+      <div class="foot-trust">
+        <a href="https://www.bbb.org/sanjose/business-reviews/computers-supplies-and-parts/systor-systems-in-walnut-ca-13169265" rel="noopener"><img src="https://www.esystor.com/images/header_over_03.jpg" alt="BBB accredited business" loading="lazy"></a>
+        <a href="https://www.discdupe.org/i/showmember.html?members/systor.htm" rel="noopener"><img src="https://www.esystor.com/mm5/graphics/0002/footer/IDDA-logo.jpg" alt="IDDA member" loading="lazy"></a>
+        <img src="https://verify.authorize.net/anetseal/images/secure90x72.gif" alt="Authorize.Net verified merchant" loading="lazy">
+        <img src="https://www.esystor.com/mm5/graphics/0002/footer/Cards-logo.jpg" alt="Accepted cards" loading="lazy">
+      </div>
     </div>
-    <div><h4>Shop</h4><a href="collection.html">Hard drive &amp; SSD</a><a href="collection.html">M.2 NVMe</a><a href="collection.html">USB &amp; flash</a><a href="collection.html">SD / microSD</a><a href="collection.html">CD, DVD &amp; Blu-ray</a></div>
-    <div><h4>Support</h4><a href="#faq">FAQ</a><a href="page.html#manuals">Manuals &amp; firmware</a><a href="page.html#warranty">Warranty</a><a href="page.html#contact">Contact support</a></div>
-    <div><h4>Company</h4><a href="page.html">About Systor</a><a href="page.html#government">Government &amp; education</a><a href="#range">Models &amp; pricing</a><a href="product-configurator.html">Build a system</a></div>
+    <nav class="foot-links" aria-label="Store information"><a href="https://esystor.com/mm5/merchant.mvc?Order=0&Store_Code=duplicator&Screen=FAQ">F.A.Q.s</a><a href="page.html#government">Government & School Orders</a><a href="https://esystor.com/mm5/merchant.mvc?Order=0&Store_Code=duplicator&Screen=SUPPORT">Support</a><a href="https://esystor.com/mm5/merchant.mvc?Order=0&Store_Code=duplicator&Screen=POLICY">Privacy Policy</a><a href="https://esystor.com/mm5/merchant.mvc?Order=0&Store_Code=duplicator&Screen=STORE">Store Policy</a><a href="https://esystor.com/mm5/merchant.mvc?Order=0&Store_Code=duplicator&Screen=TERMS">Terms of Service</a></nav>
+    <p class="copy">Copyright © 1997-2026 esystor.com. All rights reserved.</p>
   </div>
-  <div class="ftb-badges">
-    <a href="page.html#government"><img src="https://www.esystor.com/images/government_orders.png" alt="GSA government orders" width="250" height="40"></a>
-    <img src="https://www.esystor.com/mm5/graphics/0002/footer/IDDA-logo.jpg" alt="IDDA member" width="100" height="100">
-    <a href="https://www.duplicators4all.com" rel="noopener"><img src="https://www.esystor.com/images/duplicator4all.png" alt="Duplicators4All European buyers" width="200" height="40"></a>
-  </div>
-  <div class="ftb"><span>© 1997 to 2026 Systor Systems, Inc. All rights reserved.</span><span>Privacy · Store policy · Terms of service</span></div>
-</div></footer>
-
-<script>
-(function(){
-  var q=[],active=0,MAX=3;
-  function pump(){while(active<MAX&&q.length){(function(j){
-    active++;var im=new Image();
-    im.onload=function(){j.el.src=j.url;j.el.removeAttribute('data-img');active--;pump()};
-    im.onerror=function(){active--;if(j.tries<4){j.tries++;setTimeout(function(){q.push(j);pump()},300*j.tries)}else pump()};
-    im.src=j.url;})(q.shift());}}
-  [].forEach.call(document.querySelectorAll('img[data-img]'),function(el){q.push({el:el,url:el.dataset.img,tries:0})});
-  pump();
-
-  var rv=[].slice.call(document.querySelectorAll('.rv'));
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px',threshold:.05});
-    rv.forEach(function(el){io.observe(el)});
-    requestAnimationFrame(function(){rv.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)el.classList.add('in')})});
-    setTimeout(function(){rv.forEach(function(el){el.classList.add('in')})},4000);
-  } else rv.forEach(function(el){el.classList.add('in')});
-})();
-(function(){
-  var b=document.querySelector('.burger'),d=document.getElementById('drawer'),
-      sc=document.getElementById('scrim'),x=document.querySelector('.drawer-x');
-  if(!b||!d||!sc)return;
-  function set(open){
-    b.setAttribute('aria-expanded',open?'true':'false');
-    d.classList.toggle('on',open); sc.classList.toggle('on',open);
-    d.setAttribute('aria-hidden',open?'false':'true');
-    sc.hidden=!open;
-    document.body.style.overflow=open?'hidden':'';
-    if(open){var a=d.querySelector('nav a');a&&a.focus()}else b.focus();
-  }
-  b.addEventListener('click',function(){set(b.getAttribute('aria-expanded')!=='true')});
-  x&&x.addEventListener('click',function(){set(false)});
-  sc.addEventListener('click',function(){set(false)});
-  d.addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.classList.contains('on'))set(false)});
-  addEventListener('resize',function(){if(innerWidth>1040&&d.classList.contains('on'))set(false)});
-})();
-(function(){
-  var sel=document.getElementById('langSel');
-  if(!sel)return;
-  function combo(){return document.querySelector('.goog-te-combo')}
-  sel.addEventListener('change',function(){
-    var n=0;(function go(){
-      var c=combo();
-      if(c){c.value=sel.value;c.dispatchEvent(new Event('change'));return}
-      if(n++<25)setTimeout(go,180);
-    })();
-  });
-  setTimeout(function(){
-    var c=combo();
-    if(c&&c.value&&[].some.call(sel.options,function(o){return o.value===c.value}))sel.value=c.value;
-  },1200);
-})();
-function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',autoDisplay:false},'google_translate_element')}
-</script>
+</footer>
+<script src="assets/esystor.js?v=1"></script>
+<script>function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',autoDisplay:false},'google_translate_element')}</script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
