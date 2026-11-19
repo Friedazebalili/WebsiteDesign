@@ -106,19 +106,30 @@ $$('[data-stage]').forEach(function(st){
   if(!reduce){timer=setInterval(function(){pick((i+1)%tabs.length)},5000);st.addEventListener('mouseenter',stop);st.addEventListener('focusin',stop);st.addEventListener('touchstart',stop,{passive:true})}
 });
 
+/* ---------- shop by category tabs ---------- */
+$$('[data-cbrowse]').forEach(function(cb){
+  var tabs=$$('.ct',cb),panels=$$('.cp',cb);
+  panels.forEach(function(p){$$('.shop-grid li',p).forEach(function(li,i){li.style.setProperty('--i',i)})});
+  function pick(n,focus){tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===n);t.tabIndex=k===n?0:-1});
+    panels.forEach(function(p,k){p.hidden=k!==n;p.classList.remove('anim');if(k===n){void p.offsetWidth;p.classList.add('anim')}});
+    if(focus)tabs[n].focus()}
+  tabs.forEach(function(t,n){t.addEventListener('click',function(){pick(n)});
+    t.addEventListener('keydown',function(e){var d={ArrowRight:1,ArrowLeft:-1,ArrowDown:1,ArrowUp:-1}[e.key];if(d){e.preventDefault();pick((n+d+tabs.length)%tabs.length,true)}})});
+});
+
 /* ---------- scroll reveals ---------- */
 if(!reduce&&'IntersectionObserver' in window){
   document.documentElement.classList.add('js-motion');
   var groups=[
     ['.sec-head,.sub-h,.crumbs',''],
-    ['.shop-cat','rv-z'],['.try-in','rv-z'],['.co-in','rv-z'],['.gov-in','rv-z'],
+    ['.ct-row','rv-z'],['.cbrowse .cp:not([hidden])',''],['.try-in','rv-z'],['.co-in','rv-z'],['.gov-in','rv-z'],
     ['.col-hero-in>div:first-child,.ab-hero-in>div','rv-l'],['.col-hero-img,.ab-photo','rv-r'],
     ['.matrix-wrap,.filters,.feat-g>div,.spec,.panel-row,.prose,.story li,.office,.ct-photo,.two>h2,.two>div:first-child',''],
     ['.gallery','rv-l'],['.buy','rv-r']
   ];
   groups.forEach(function(g){$$(g[0]).forEach(function(el){if(el.closest('.hero,.mm,.drawer'))return;el.classList.add('rv');if(g[1])el.classList.add(g[1])})});
   // cascades: cards in a grid come in one after another
-  $$('.shop-grid,.grid,.res-g,.range,.stage-pick,.modes-2').forEach(function(list){
+  $$('.grid,.res-g,.range,.stage-pick,.modes-2,.cbrowse .cp:not([hidden]) .shop-grid').forEach(function(list){
     if(list.closest('.hero'))return;
     [].forEach.call(list.children,function(li,i){li.classList.add('rv');li.style.setProperty('--d',(i%6)*70+'ms')});
   });
