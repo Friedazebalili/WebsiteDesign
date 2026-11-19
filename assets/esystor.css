@@ -920,3 +920,4 @@ body{background:#fff}
   .g-main{padding:16px}
   .g-nav{width:38px;height:38px}
 }
+.g-main{aspect-ratio:5/4}.g-main img{max-height:100%;width:auto}
