@@ -822,3 +822,4 @@ body{background:#fff}
 /* generated keyword photos fill the card tile */
 .res-photo{background:#eceeef}
 .res-photo img{max-width:none;max-height:none;width:100%!important;height:100%!important;object-fit:cover!important;mix-blend-mode:normal}
+.res-g .res-pic{display:grid;padding:0;color:inherit;font-size:inherit}
