@@ -879,3 +879,24 @@ body{background:#fff}
 @media (max-width:720px){.feat-g{grid-template-columns:1fr}}
 .matrix tbody th{width:190px;white-space:nowrap}
 .sec.ab-range,.sec.ab-promise,.sec.contact{padding-top:clamp(28px,3vw,44px)}.ab-range .range img{background:var(--tile)}
+
+/* ---------- compact product cards everywhere ---------- */
+.g5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.grid{gap:12px}
+.pc{border-radius:14px}
+.pc-a{padding:0 0 12px}
+.pc-img,.g3 .pc-img{aspect-ratio:1/1;padding:10px;margin:6px;border-radius:10px}
+.pc-ratio{top:12px;left:12px;font-size:15px;padding:3px 7px;border-radius:6px}
+.pc-name{padding:8px 12px 2px;font-size:14px;font-weight:700;line-height:1.3;flex:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pc-spec{padding:0 12px;font-size:13px;color:var(--ink)}
+.pc-code{padding:2px 12px 0;font-size:12px}
+.pc-row{padding:8px 12px 0;margin-top:auto}
+.pc-price{font-size:19px}
+.pc-stock{font-size:12px}
+/* homepage and product page rows stay 4 across but at the same compact size */
+.picks-sec .g4{grid-template-columns:repeat(4,minmax(0,220px));justify-content:start}
+/* filters stay reachable while scrolling the models */
+.filters{position:sticky;top:var(--mast-h,118px);z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);padding:12px 0 14px}
+@media (max-width:1180px){.g5{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:1040px){.g5{grid-template-columns:repeat(3,minmax(0,1fr))}.filters{position:static}.picks-sec .g4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:720px){.g5,.picks-sec .g4{grid-template-columns:1fr 1fr}.pc-name{font-size:13px}.pc-price{font-size:17px}}
