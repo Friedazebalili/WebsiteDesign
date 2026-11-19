@@ -680,3 +680,10 @@ body{background:#fff}
 .shop-d,.shop-m span{color:#b9c0c7}
 .shop-go{color:#ffb27a}
 @media (max-width:720px){.shop-grid .cc-img{height:110px}.shop-grid .cc-img img{max-height:88px}}
+@media (max-width:720px){
+  .shop-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .shop-pic{height:170px}
+  .shop-pic img{max-height:140px}
+  .shop-grid .cc-t{padding:10px 10px 12px}
+  .shop-grid .cc-t b{font-size:13.5px}
+}
