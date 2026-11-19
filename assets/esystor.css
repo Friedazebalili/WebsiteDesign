@@ -870,3 +870,10 @@ body{background:#fff}
   .g3{grid-template-columns:1fr 1fr}
   .mx-th img{display:none}
 }
+.feat-g{grid-template-columns:repeat(3,1fr)}
+.feat-g>div:nth-child(2){grid-column:1/-1;order:-1;background:var(--chassis);color:#e6e9ec}
+.feat-g>div:nth-child(2) h3{border-bottom-color:#3a3f45;color:#fff}
+.feat-g>div:nth-child(2) ul{display:grid;grid-template-columns:repeat(3,1fr);gap:0 24px}
+.feat-g>div:nth-child(2) li{border-bottom:0}
+@media (max-width:1040px){.feat-g{grid-template-columns:1fr 1fr}.feat-g>div:nth-child(2) ul{grid-template-columns:1fr}}
+@media (max-width:720px){.feat-g{grid-template-columns:1fr}}
