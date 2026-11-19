@@ -198,10 +198,17 @@ if(sw){
   });
 }
 
-/* ---------- product section tabs ---------- */
+/* ---------- product section tabs: one panel open at a time ---------- */
 var tabs=$('[data-tabs]');
-if(tabs&&'IntersectionObserver' in window){
-  var links=$$('a',tabs),io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
-  links.forEach(function(a){var s=$(a.getAttribute('href'));s&&io.observe(s)});
+if(tabs){
+  var links=$$('a',tabs),panes=links.map(function(a){return $(a.getAttribute('href'))}).filter(Boolean);
+  tabs.setAttribute('role','tablist');
+  links.forEach(function(a,i){a.setAttribute('role','tab');a.id='tab-'+panes[i].id;panes[i].setAttribute('role','tabpanel');panes[i].setAttribute('aria-labelledby',a.id)});
+  function open(n,scroll){links.forEach(function(a,k){a.classList.toggle('on',k===n);a.setAttribute('aria-selected',k===n);a.tabIndex=k===n?0:-1});
+    panes.forEach(function(p,k){p.hidden=k!==n;if(k===n){p.classList.remove('pane-in');void p.offsetWidth;p.classList.add('pane-in');$$('.rv',p).forEach(function(e){e.classList.add('in')})}});
+    if(scroll){var y=tabs.getBoundingClientRect().top+scrollY-(mast?mast.offsetHeight:0);if(scrollY>y)scrollTo({top:y,behavior:reduce?'auto':'smooth'})}}
+  links.forEach(function(a,i){a.addEventListener('click',function(e){e.preventDefault();open(i,true)});
+    a.addEventListener('keydown',function(e){var d={ArrowRight:1,ArrowLeft:-1}[e.key];if(d){e.preventDefault();var n=(i+d+links.length)%links.length;open(n);links[n].focus()}})});
+  var start=Math.max(0,panes.findIndex(function(p){return '#'+p.id===location.hash}));open(start,false);
 }
 })();

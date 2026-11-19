@@ -921,3 +921,14 @@ body{background:#fff}
   .g-nav{width:38px;height:38px}
 }
 .g-main{aspect-ratio:5/4}.g-main img{max-height:100%;width:auto}
+
+/* product info tabs: panels open in place */
+.pd-sec[hidden]{display:none}
+.pd-sec{border-bottom:0}
+.tabs{position:sticky}
+.tabs a{cursor:pointer}
+.tabs a.on{color:var(--ink);border-bottom-color:var(--orange)}
+.pane-in{animation:panein .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes panein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.pane-in{animation:none}}
+.sec.pd-sec{min-height:0}
