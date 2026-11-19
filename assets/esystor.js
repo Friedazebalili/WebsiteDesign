@@ -163,9 +163,16 @@ if(ff){
 
 /* ---------- product gallery ---------- */
 $$('[data-gallery]').forEach(function(g){
-  var main=$('.g-main img',g);
-  $$('.g-thumbs button',g).forEach(function(b){b.addEventListener('click',function(){
-    main.src=b.dataset.src;$$('.g-thumbs button',g).forEach(function(x){x.removeAttribute('aria-current')});b.setAttribute('aria-current','true')})});
+  var main=$('.g-main img',g),btns=$$('.g-thumbs button',g),cnt=$('.g-count',g),i=0;
+  function show(n){i=(n+btns.length)%btns.length;main.src=btns[i].dataset.src;
+    btns.forEach(function(x,k){k===i?x.setAttribute('aria-current','true'):x.removeAttribute('aria-current')});
+    if(cnt)cnt.textContent=(i+1)+' / '+btns.length;
+    btns[i].scrollIntoView&&btns[i].closest('.g-thumbs').scrollWidth>btns[i].closest('.g-thumbs').clientWidth&&btns[i].scrollIntoView({block:'nearest',inline:'nearest'})}
+  btns.forEach(function(b,n){b.addEventListener('click',function(){show(n)})});
+  var pv=$('.g-prev',g),nx=$('.g-next',g);pv&&pv.addEventListener('click',function(){show(i-1)});nx&&nx.addEventListener('click',function(){show(i+1)});
+  // swipe on phones
+  var x0=null;main.parentElement.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  main.parentElement.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)show(i+(dx<0?1:-1));x0=null},{passive:true});
 });
 
 /* ---------- buy box ---------- */

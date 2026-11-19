@@ -900,3 +900,23 @@ body{background:#fff}
 @media (max-width:1180px){.g5{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:1040px){.g5{grid-template-columns:repeat(3,minmax(0,1fr))}.filters{position:static}.picks-sec .g4{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:720px){.g5,.picks-sec .g4{grid-template-columns:1fr 1fr}.pc-name{font-size:13px}.pc-price{font-size:17px}}
+
+/* ---------- product gallery: main photo on top, thumbnails in an even row below ---------- */
+.gallery{grid-template-columns:1fr;gap:12px}
+.g-main{grid-column:1;grid-row:1;position:relative;padding:28px}
+.g-thumbs{grid-column:1;grid-row:2;flex-direction:row;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;overflow:visible}
+.g-thumbs li{min-width:0}
+.g-thumbs button{width:100%;height:auto;aspect-ratio:1/1;padding:6px;border:2px solid transparent;transition:border-color .2s}
+.g-thumbs button:hover{border-color:var(--rule-2)}
+.g-thumbs button[aria-current]{border-color:var(--ink)}
+.g-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:999px;border:1px solid var(--rule);background:rgba(255,255,255,.92);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 16px -10px rgba(20,24,28,.4);transition:background .2s}
+.g-nav:hover{background:#fff;border-color:var(--ink)}
+.g-nav svg{width:20px;height:20px}
+.g-prev{left:14px}.g-next{right:14px}
+.g-count{position:absolute;right:16px;bottom:14px;background:rgba(255,255,255,.92);border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:600;color:var(--muted)}
+@media (max-width:720px){
+  .g-thumbs{grid-template-columns:repeat(7,64px);overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+  .g-thumbs button{width:64px;height:64px}
+  .g-main{padding:16px}
+  .g-nav{width:38px;height:38px}
+}
