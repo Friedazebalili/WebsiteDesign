@@ -823,3 +823,50 @@ body{background:#fff}
 .res-photo{background:#eceeef}
 .res-photo img{max-width:none;max-height:none;width:100%!important;height:100%!important;object-fit:cover!important;mix-blend-mode:normal}
 .res-g .res-pic{display:grid;padding:0;color:inherit;font-size:inherit}
+
+/* ---------- inner pages polish ---------- */
+/* headings on top, content full width: no empty left column */
+.two{grid-template-columns:1fr;gap:20px}
+.two>h2,.two>div:first-child>h2{position:static}
+.sec.pd-sec{padding-top:clamp(36px,4vw,56px);padding-bottom:clamp(36px,4vw,56px)}
+
+/* product overview: text beside the feature image */
+#overview .prose{display:grid;grid-template-columns:1.05fr .95fr;column-gap:clamp(24px,4vw,56px);max-width:none;align-items:start}
+#overview .prose p{grid-column:1}
+#overview .desc-img{grid-column:2;grid-row:1/span 3;margin:0;width:100%}
+/* specs flow into two balanced columns */
+.specs{columns:2;column-gap:20px}
+.specs .spec{break-inside:avoid;display:table;margin-bottom:20px}
+.specs .fine{column-span:all}
+.feat-g{grid-template-columns:repeat(4,1fr);gap:24px}
+.feat-g>div{background:var(--paper);border-radius:var(--r);padding:20px}
+.feat-g li{border-bottom-color:#e3e6e9}
+.tbl-wrap{max-width:760px}
+
+/* collection: tighter top, row thumbnails, 3-up grid */
+.col-hero-in{padding-bottom:28px}
+.sec.matrix-sec{padding-top:28px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g3 .pc-img{aspect-ratio:4/3}
+.mx-th{display:flex;align-items:center;gap:12px}
+.mx-th img{width:40px;height:40px;object-fit:contain;mix-blend-mode:multiply;background:var(--tile);border-radius:8px;padding:3px}
+.matrix tbody th{padding:8px 16px}
+
+/* about: story as three cards */
+.story-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.story-3 li,.story-3 li:first-child{display:flex;flex-direction:column;gap:10px;border:0;background:var(--paper);border-radius:var(--r);padding:24px}
+.ab-promise .prose{columns:2;column-gap:48px;max-width:none}
+.ab-promise .prose p{break-inside:avoid}
+
+@media (max-width:1040px){
+  .feat-g{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(2,1fr)}
+  #overview .prose{grid-template-columns:1fr}
+  #overview .desc-img{grid-column:1;grid-row:auto;margin-top:16px}
+}
+@media (max-width:720px){
+  .feat-g,.story-3{grid-template-columns:1fr}
+  .specs,.ab-promise .prose{columns:1}
+  .g3{grid-template-columns:1fr 1fr}
+  .mx-th img{display:none}
+}
