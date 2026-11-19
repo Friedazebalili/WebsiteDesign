@@ -819,3 +819,6 @@ body{background:#fff}
 .res-pic img{max-height:86%;max-width:86%;width:auto!important;aspect-ratio:auto!important;object-fit:contain!important;mix-blend-mode:multiply;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .res-g a:hover .res-pic img{transform:scale(1.06)}
 .ct-photo .res-pic{aspect-ratio:16/11}
+/* generated keyword photos fill the card tile */
+.res-photo{background:#eceeef}
+.res-photo img{max-width:none;max-height:none;width:100%!important;height:100%!important;object-fit:cover!important;mix-blend-mode:normal}
