@@ -1051,3 +1051,4 @@ body{background:#fff}
 @media (max-width:720px){.ab2-lineup img{padding:10px;border-radius:14px}}
 .ab2-vp{display:grid;place-items:center;aspect-ratio:16/10;background:#eceeef}.ab2-vp img{width:auto!important;height:84%!important;aspect-ratio:auto!important;object-fit:contain;mix-blend-mode:multiply}
 .ab2-end-in,.gov-in{width:calc(min(100%,var(--max)) - 2 * var(--gut));margin-left:auto;margin-right:auto}
+.ab2 .gov{padding-top:0}.sec.ab2-values{padding-bottom:clamp(36px,4vw,56px)}
