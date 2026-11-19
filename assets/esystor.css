@@ -877,3 +877,4 @@ body{background:#fff}
 .feat-g>div:nth-child(2) li{border-bottom:0}
 @media (max-width:1040px){.feat-g{grid-template-columns:1fr 1fr}.feat-g>div:nth-child(2) ul{grid-template-columns:1fr}}
 @media (max-width:720px){.feat-g{grid-template-columns:1fr}}
+.matrix tbody th{width:190px;white-space:nowrap}
