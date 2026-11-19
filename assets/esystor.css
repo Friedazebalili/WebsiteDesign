@@ -1052,3 +1052,13 @@ body{background:#fff}
 .ab2-vp{display:grid;place-items:center;aspect-ratio:16/10;background:#eceeef}.ab2-vp img{width:auto!important;height:84%!important;aspect-ratio:auto!important;object-fit:contain;mix-blend-mode:multiply}
 .ab2-end-in,.gov-in{width:calc(min(100%,var(--max)) - 2 * var(--gut));margin-left:auto;margin-right:auto}
 .ab2 .gov{padding-top:0}.sec.ab2-values{padding-bottom:clamp(36px,4vw,56px)}
+
+/* hero slideshow: progress line on the active product, slide-in transition */
+.stage-pick button{position:relative;overflow:hidden}
+.stage-pick button::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--orange);transform:scaleX(0);transform-origin:left}
+.stage-pick button.run::after{animation:stagebar var(--dur,5000ms) linear forwards}
+.stage.paused .stage-pick button.run::after{animation-play-state:paused}
+@keyframes stagebar{to{transform:scaleX(1)}}
+.show{animation:showslide .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes showslide{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.show{animation:none}.stage-pick button::after{display:none}}

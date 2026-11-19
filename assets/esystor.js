@@ -95,15 +95,26 @@ $$('[data-lcd]').forEach(function(p){
   (function boot(){if(state!=='boot')return;if(s<steps.length){show(steps[s][0],steps[s][1]);s++;setTimeout(boot,750)}else menu()})();
 });
 
-/* ---------- hero product stage ---------- */
+/* ---------- hero product stage: auto slideshow ---------- */
 $$('[data-stage]').forEach(function(st){
-  var tabs=$$('[role=tab]',st),shows=$$('.show',st),i=0,timer;
-  function pick(n,focus){i=n;tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===n);t.tabIndex=k===n?0:-1});
-    shows.forEach(function(s,k){s.hidden=k!==n});if(focus)tabs[n].focus()}
-  tabs.forEach(function(t,n){t.addEventListener('click',function(){stop();pick(n)});
-    t.addEventListener('keydown',function(e){var d={ArrowRight:1,ArrowLeft:-1}[e.key];if(d){e.preventDefault();stop();pick((n+d+tabs.length)%tabs.length,true)}})});
-  function stop(){clearInterval(timer)}
-  if(!reduce){timer=setInterval(function(){pick((i+1)%tabs.length)},5000);st.addEventListener('mouseenter',stop);st.addEventListener('focusin',stop);st.addEventListener('touchstart',stop,{passive:true})}
+  var tabs=$$('[role=tab]',st),shows=$$('.show',st),i=0,timer=null,DUR=5000,paused=false;
+  st.style.setProperty('--dur',DUR+'ms');
+  function pick(n,focus){i=(n+tabs.length)%tabs.length;
+    tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i);t.tabIndex=k===i?0:-1;t.classList.remove('run')});
+    shows.forEach(function(s,k){s.hidden=k!==i});
+    void tabs[i].offsetWidth;if(!reduce)tabs[i].classList.add('run');
+    if(focus)tabs[i].focus()}
+  function start(){clearInterval(timer);if(reduce)return;timer=setInterval(function(){if(!paused)pick(i+1)},DUR)}
+  function setPause(v){paused=v;st.classList.toggle('paused',v)}
+  tabs.forEach(function(t,n){t.addEventListener('click',function(){pick(n);start()});
+    t.addEventListener('keydown',function(e){var d={ArrowRight:1,ArrowLeft:-1}[e.key];if(d){e.preventDefault();pick(i+d,true);start()}})});
+  st.addEventListener('mouseenter',function(){setPause(true)});
+  st.addEventListener('mouseleave',function(){setPause(false);pick(i);start()});
+  // swipe on phones
+  var x0=null;st.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  st.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){pick(i+(dx<0?1:-1));start()}x0=null},{passive:true});
+  document.addEventListener('visibilitychange',function(){setPause(document.hidden)});
+  pick(0);start();
 });
 
 /* ---------- shop by category tabs ---------- */
