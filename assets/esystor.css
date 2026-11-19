@@ -1050,3 +1050,4 @@ body{background:#fff}
 .ab2-badge{right:auto;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 12px 28px -12px rgba(20,24,28,.5);text-align:center}
 @media (max-width:720px){.ab2-lineup img{padding:10px;border-radius:14px}}
 .ab2-vp{display:grid;place-items:center;aspect-ratio:16/10;background:#eceeef}.ab2-vp img{width:auto!important;height:84%!important;aspect-ratio:auto!important;object-fit:contain;mix-blend-mode:multiply}
+.ab2-end-in,.gov-in{width:calc(min(100%,var(--max)) - 2 * var(--gut));margin-left:auto;margin-right:auto}
