@@ -106,6 +106,34 @@ $$('[data-stage]').forEach(function(st){
   if(!reduce){timer=setInterval(function(){pick((i+1)%tabs.length)},5000);st.addEventListener('mouseenter',stop);st.addEventListener('focusin',stop);st.addEventListener('touchstart',stop,{passive:true})}
 });
 
+/* ---------- scroll reveals ---------- */
+if(!reduce&&'IntersectionObserver' in window){
+  document.documentElement.classList.add('js-motion');
+  var groups=[
+    ['.sec-head,.sub-h,.crumbs',''],
+    ['.shop-cat','rv-z'],['.try-in','rv-z'],['.co-in','rv-z'],['.gov-in','rv-z'],
+    ['.col-hero-in>div:first-child,.ab-hero-in>div','rv-l'],['.col-hero-img,.ab-photo','rv-r'],
+    ['.matrix-wrap,.filters,.feat-g>div,.spec,.panel-row,.prose,.story li,.office,.ct-photo,.two>h2,.two>div:first-child',''],
+    ['.gallery','rv-l'],['.buy','rv-r']
+  ];
+  groups.forEach(function(g){$$(g[0]).forEach(function(el){if(el.closest('.hero,.mm,.drawer'))return;el.classList.add('rv');if(g[1])el.classList.add(g[1])})});
+  // cascades: cards in a grid come in one after another
+  $$('.shop-grid,.grid,.res-g,.range,.stage-pick,.modes-2').forEach(function(list){
+    if(list.closest('.hero'))return;
+    [].forEach.call(list.children,function(li,i){li.classList.add('rv');li.style.setProperty('--d',(i%6)*70+'ms')});
+  });
+  var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  $$('.rv').forEach(function(el){io2.observe(el)});
+  // anything still hidden after filtering (hidden cards) shows when it appears again
+  addEventListener('change',function(){setTimeout(function(){$$('.rv:not(.in)').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)el.classList.add('in')})},30)});
+  // header shadow and hero product drift
+  var heroImg=function(){return $('.show:not([hidden]) .show-img img')},ticking=false;
+  addEventListener('scroll',function(){if(ticking)return;ticking=true;requestAnimationFrame(function(){
+    var y=scrollY;mast&&mast.classList.toggle('scrolled',y>10);
+    var im=heroImg();if(im&&y<900)im.style.transform='translateY('+(y*-0.06).toFixed(1)+'px) rotate('+(y*0.004).toFixed(2)+'deg)';
+    ticking=false})},{passive:true});
+}
+
 /* ---------- collection filters ---------- */
 var ff=$('[data-filters]');
 if(ff){
