@@ -721,3 +721,13 @@ body{background:#fff}
   .shop-tx{padding:18px 20px 20px}
   .shop-tx h3{font-size:23px}
 }
+
+/* front panel section: copy and modes on the left, panel on the right */
+.try-in{display:grid;grid-template-columns:1fr 420px;gap:clamp(28px,5vw,64px);align-items:center;background:var(--paper);border-radius:24px;padding:clamp(24px,4vw,52px)}
+.try-copy h2{font-size:clamp(28px,3vw,38px);margin-bottom:8px}
+.try-copy .sec-note{margin-bottom:22px}
+.modes-2{grid-template-columns:1fr 1fr;gap:0 28px}
+.modes-2 div{border-top:1px solid var(--rule);border-bottom:0;padding:14px 0}
+.try-in .panel{width:100%}
+@media (max-width:1040px){.try-in{grid-template-columns:1fr}.try-in .panel{max-width:440px}}
+@media (max-width:720px){.modes-2{grid-template-columns:1fr}.try-in{border-radius:18px}}
