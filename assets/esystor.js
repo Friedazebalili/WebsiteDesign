@@ -122,14 +122,14 @@ if(!reduce&&'IntersectionObserver' in window){
   document.documentElement.classList.add('js-motion');
   var groups=[
     ['.sec-head,.sub-h,.crumbs',''],
-    ['.ct-row','rv-z'],['.cbrowse .cp:not([hidden])',''],['.try-in','rv-z'],['.co-in','rv-z'],['.gov-in','rv-z'],
+    ['.ct-row','rv-z'],['.cbrowse .cp:not([hidden])',''],['.try-in','rv-z'],['.co-pic','rv-l'],['.co-txt','rv-r'],['.gov-in','rv-z'],
     ['.col-hero-in>div:first-child,.ab-hero-in>div','rv-l'],['.col-hero-img,.ab-photo','rv-r'],
     ['.matrix-wrap,.filters,.feat-g>div,.spec,.panel-row,.prose,.story li,.office,.ct-photo,.two>h2,.two>div:first-child',''],
     ['.gallery','rv-l'],['.buy','rv-r']
   ];
   groups.forEach(function(g){$$(g[0]).forEach(function(el){if(el.closest('.hero,.mm,.drawer'))return;el.classList.add('rv');if(g[1])el.classList.add(g[1])})});
   // cascades: cards in a grid come in one after another
-  $$('.grid,.res-g,.range,.stage-pick,.modes-2,.cbrowse .cp:not([hidden]) .shop-grid').forEach(function(list){
+  $$('.co-stats,.grid,.res-g,.range,.stage-pick,.modes-2,.cbrowse .cp:not([hidden]) .shop-grid').forEach(function(list){
     if(list.closest('.hero'))return;
     [].forEach.call(list.children,function(li,i){li.classList.add('rv');li.style.setProperty('--d',(i%6)*70+'ms')});
   });
